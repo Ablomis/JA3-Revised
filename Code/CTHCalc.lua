@@ -149,6 +149,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
   local target_pos = IsPoint(target) and target or target:GetPos()
   local knife_throw = IsKindOf(weapon, "MeleeWeapon") and action.ActionType == "Ranged Attack"
   local penalty = weapon:GetAccuracy(attacker_pos:Dist(target_pos), self, action, knife_throw) - 100
+
   if action.ActionType == "Ranged Attack" and HasPerk(target, "LightningReaction") and target.stance ~= "Prone" and not target:HasStatusEffect("LightningReactionCounter") and not action.StealthAttack then
     if modifiers then
       modifiers[#modifiers + 1] = {
