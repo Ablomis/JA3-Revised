@@ -160,13 +160,7 @@ PlaceObj("XTemplate", {
       PlaceObj("XTemplateWindow", {
         "__condition",
         function(parent, context)
-          local apItem = context.AvailableAttacks
-          for k,v in pairs(apItem) do
-            if v == "CancelShot" then
-              apItem[k]="ReadyAP"
-            end
-          end
-          return next(apItem)
+          return next(context.AvailableAttacks)
         end,
         "__class",
         "XContextWindow",
@@ -182,21 +176,15 @@ PlaceObj("XTemplate", {
         PlaceObj("XTemplateForEach", {
           "array",
           function(parent, context)
-            local apItem = context.AvailableAttacks
-            for key in pairs(apItem) do
-              if key == "CancelShot" then
-                apItem[key] = "ReadyAP"
-              end
-            end
-            return apItem
+            return context.AvailableAttacks
           end,
           "condition",
           function(parent, context, item, i)
-            return item ~= "DualShot" and item ~= "CancelShot" and item ~= "CancelShotCone"
+            return item ~= "DualShot" and item ~= "CancelShotCone"
           end,
           "run_after",
           function(child, context, item, i, n, last)
-            if(item=="ReadyAP") then child.idPropVal:SetNameText("Weapon Ready")
+            if(item=="CancelShot") then child.idPropVal:SetNameText("Weapon Ready")
             else child.idPropVal:SetNameText(CombatActions[item].DisplayName) end
             local weapon = ResolvePropObj(context)
             local owner_id = child.parent:GetContext().owner
@@ -204,7 +192,7 @@ PlaceObj("XTemplate", {
             local args = {weapon = weapon}
             if unit and (table.find(unit:GetEquippedWeapons("Handheld A", "BaseWeapon"), weapon) or table.find(unit:GetEquippedWeapons("Handheld B", "BaseWeapon"), weapon)) then
               local ap =0
-              if(item=="ReadyAP") then ap = weapon.ReadyAP
+              if(item=="CancelShot") then ap = weapon.ReadyAP
               else  ap = CombatActions[item]:GetAPCost(unit, args) end
               if ap ~= -1 then
                 child.idPropVal:SetValueText(T({
@@ -215,7 +203,7 @@ PlaceObj("XTemplate", {
                 return
               end
             end
-            if(item=="ReadyAP") then val = weapon.ReadyAP
+            if(item=="CancelShot") then val = weapon.ReadyAP
             else val = (CombatActions[item].ActionPointDelta + (weapon.AttackAP or weapon.ShootAP)) / const.Scale.AP end
             child.idPropVal:SetValueText(T({
               499138807753,
