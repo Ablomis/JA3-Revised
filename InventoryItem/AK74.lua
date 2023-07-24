@@ -4,7 +4,6 @@ DefineClass.AK74 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Assault",
 	object_class = "AssaultRifle",
 	RepairCost = 20,
 	Reliability = 95,

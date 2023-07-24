@@ -4,7 +4,6 @@ DefineClass.Gewehr98 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Rifle",
 	object_class = "SniperRifle",
 	Reliability = 25,
 	ScrapParts = 8,

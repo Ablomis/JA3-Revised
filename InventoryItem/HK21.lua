@@ -4,7 +4,6 @@ DefineClass.HK21 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - MG",
 	object_class = "MachineGun",
 	Reliability = 90,
 	ScrapParts = 16,

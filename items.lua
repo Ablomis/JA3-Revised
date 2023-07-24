@@ -20,8 +20,8 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/GetAttackAPCost.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "RolloverProgress",
-	'CodeFileName', "Code/RolloverProgress.lua",
+	'name', "InventoryRolloverInfo",
+	'CodeFileName', "Code/InventoryRolloverInfo.lua",
 }),
 PlaceObj('ModItemGameRuleDef', {
 	display_name = T(268868906494, --[[ModItemGameRuleDef APReductionOnHit display_name]] "APReductionOnHit"),

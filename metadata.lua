@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 726,
+	'version', 774,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -16,7 +16,7 @@ return PlaceObj('ModDef', {
 		"Code/DamageCalculation.lua",
 		"Code/FirearmProperty.lua",
 		"Code/GetAttackAPCost.lua",
-		"Code/RolloverProgress.lua",
+		"Code/InventoryRolloverInfo.lua",
 		"InventoryItem/AK47.lua",
 		"InventoryItem/AUG.lua",
 		"InventoryItem/AR15.lua",
@@ -44,7 +44,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/MP5K.lua",
 		"InventoryItem/UZI.lua",
 	},
-	'saved', 1690144699,
-	'code_hash', 3893025345592863053,
+	'saved', 1690160647,
+	'code_hash', 3429131808295930600,
 	'steam_id', "3008768068",
 })

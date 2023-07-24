@@ -4,7 +4,6 @@ DefineClass.AKSU = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - SMG",
 	object_class = "SubmachineGun",
 	RepairCost = 50,
 	Reliability = 80,

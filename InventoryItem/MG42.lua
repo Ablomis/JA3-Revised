@@ -4,7 +4,6 @@ DefineClass.MG42 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - MG",
 	object_class = "MachineGun",
 	Reliability = 95,
 	ScrapParts = 12,

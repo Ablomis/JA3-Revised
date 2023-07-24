@@ -4,7 +4,6 @@ DefineClass.M16A2 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Assault",
 	object_class = "AssaultRifle",
 	Reliability = 80,
 	ScrapParts = 10,

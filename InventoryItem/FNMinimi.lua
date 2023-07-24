@@ -4,7 +4,6 @@ DefineClass.FNMinimi = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - MG",
 	object_class = "MachineGun",
 	RepairCost = 120,
 	Reliability = 85,

@@ -4,7 +4,6 @@ DefineClass.BrowningM2HMG = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - MG",
 	object_class = "MachineGun",
 	Reliability = 80,
 	ScrapParts = 20,

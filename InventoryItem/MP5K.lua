@@ -4,7 +4,6 @@ DefineClass.MP5K = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - SMG",
 	object_class = "SubmachineGun",
 	Reliability = 85,
 	ScrapParts = 8,

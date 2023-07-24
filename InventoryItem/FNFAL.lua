@@ -4,7 +4,6 @@ DefineClass.FNFAL = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Assault",
 	object_class = "AssaultRifle",
 	Reliability = 50,
 	ScrapParts = 10,

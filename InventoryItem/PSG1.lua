@@ -4,7 +4,6 @@ DefineClass.PSG1 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Rifle",
 	object_class = "SniperRifle",
 	Reliability = 53,
 	ScrapParts = 14,

@@ -4,7 +4,6 @@ DefineClass.M4Commando = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - SMG",
 	object_class = "SubmachineGun",
 	Reliability = 80,
 	ScrapParts = 10,
