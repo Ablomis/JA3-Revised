@@ -58,15 +58,11 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       Msg("GatherDamageModifications", attacker, target, attack_args or {}, hit or {}, data)
       Msg("GatherTargetDamageModifications", attacker, target, attack_args or {}, hit or {}, data)
       damage = Max(0, MulDivRound(data.base_damage + data.damage_add, data.damage_percent, 100))
-	if action.id == "BurstFire" then 
-		damage = damage*2
-	elseif action.id == "AutoFire" then
-		damage = damage*5
-	elseif action.id == "RunAndGun" then
-		damage = damage*4
-	elseif action.id == "MGBurstFire" then
-		damage=damage*3
-	end
+      if action.id == "BurstFire" then damage = damage*2
+      elseif action.id == "AutoFire" then damage = damage*5
+      elseif action.id == "RunAndGun" then damage = damage*4
+      elseif action.id == "MGBurstFire" then damage=damage*3
+      end
       for _, effect in ipairs(data.effects) do
         EffectTableAdd(effects, effect)
       end

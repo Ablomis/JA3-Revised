@@ -4,7 +4,6 @@ DefineClass.AA12 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Shotgun",
 	object_class = "Shotgun",
 	RepairCost = 50,
 	Reliability = 80,

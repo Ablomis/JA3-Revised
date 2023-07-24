@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 791,
+	'version', 806,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -18,6 +18,8 @@ return PlaceObj('ModDef', {
 		"Code/GetAttackAPCost.lua",
 		"Code/InventoryRolloverInfo.lua",
 		"Code/MaxActionPoints.lua",
+		"Code/RolloverInventoryWeaponBase.lua",
+		"Code/AllAmmoCausesBleeding.lua",
 		"InventoryItem/AK47.lua",
 		"InventoryItem/AUG.lua",
 		"InventoryItem/AR15.lua",
@@ -49,7 +51,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/DoubleBarrelShotgun.lua",
 		"InventoryItem/M41.lua",
 	},
-	'saved', 1690162959,
-	'code_hash', 8520523047730974384,
+	'saved', 1690241710,
+	'code_hash', 6435242324518547086,
 	'steam_id', "3008768068",
 })

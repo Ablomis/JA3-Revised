@@ -27,6 +27,14 @@ PlaceObj('ModItemCode', {
 	'name', "MaxActionPoints",
 	'CodeFileName', "Code/MaxActionPoints.lua",
 }),
+PlaceObj('ModItemCode', {
+	'name', "RolloverInventoryWeaponBase",
+	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "AllAmmoCausesBleeding",
+	'CodeFileName', "Code/AllAmmoCausesBleeding.lua",
+}),
 PlaceObj('ModItemGameRuleDef', {
 	display_name = T(866938960237, --[[ModItemGameRuleDef APReductionOnHit display_name]] "APReductionOnHit"),
 	id = "APReductionOnHit",
@@ -77,6 +85,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'MagazineSize', 30,
 	'PenetrationClass', 2,
 	'WeaponRange', 24,
+	'DamageFalloff', 80,
 	'OverwatchAngle', 1440,
 	'HandSlot', "TwoHanded",
 	'Entity', "Weapon_AK47",
