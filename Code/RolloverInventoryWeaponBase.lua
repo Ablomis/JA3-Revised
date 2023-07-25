@@ -218,8 +218,7 @@ PlaceObj("XTemplate", {
                     unit = SelectedObj
                   end
                   if unit then
-                    totalDmg, dmg = action:GetActionDamage(unit, false, {weapon = context})
-                    dmg = dmg or totalDmg
+                    dmg = context.ammo.Damage
                   end
                   return Untranslated("<valign bottom -3><style InventoryRolloverPropSmall></style><valign center>" .. dmg .. "(" ..MulDivRound(dmg,context.DamageFalloff,100)..")")
                 end

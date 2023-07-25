@@ -62,7 +62,6 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       if not hit.aoe then
         damage = Max(0, MulDivRound(self.ammo.Damage + data.damage_add, data.damage_percent, 100))
         damage = round(-(Max(hit.distance/1000-self.WeaponRange/2,0))*0.5*self.DamageFalloff/100 + damage,1)
-        print(damage)
       end
 
       for _, effect in ipairs(data.effects) do
