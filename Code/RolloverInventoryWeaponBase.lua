@@ -220,7 +220,6 @@ PlaceObj("XTemplate", {
                   if unit then
                     totalDmg, dmg = action:GetActionDamage(unit, false, {weapon = context})
                     dmg = dmg or totalDmg
-                    print(context.DamageFalloff)
                   end
                   return Untranslated("<valign bottom -3><style InventoryRolloverPropSmall></style><valign center>" .. dmg .. "(" ..MulDivRound(dmg,context.DamageFalloff,100)..")")
                 end

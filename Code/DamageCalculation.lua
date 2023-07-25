@@ -38,7 +38,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       hit.critical = nil
     end
     local ignore_armor = hit.aoe or IsKindOf(self, "MeleeWeapon")
-    if not hit.stray or hit.aoe then
+    if true then
       if hit.critical then
         local crit_mod = IsKindOf(attacker, "Unit") and attacker:GetCritDamageMod() or const.Weapons.CriticalDamage
         damage = MulDivRound(damage, 100 + crit_mod, 100)
@@ -59,11 +59,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       Msg("GatherTargetDamageModifications", attacker, target, attack_args or {}, hit or {}, data)
       damage = Max(0, MulDivRound(data.base_damage + data.damage_add, data.damage_percent, 100))
       if not hit.aoe then
-        if action.id == "BurstFire" then damage = damage*2 
-          elseif action.id == "AutoFire" then damage = damage*5 
-          elseif action.id == "RunAndGun" then damage = damage*4 
-          elseif action.id == "MGBurstFire" then damage = damage*3 
-        end
+        damage = Max(0, MulDivRound(self.ammo.Damage + data.damage_add, data.damage_percent, 100))
       end
       for _, effect in ipairs(data.effects) do
         EffectTableAdd(effects, effect)
@@ -82,8 +78,6 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
         end
         EffectTableAdd(effects, part_def.applied_effect)
       end
-    else
-      damage = MulDivRound(damage, 50, 100)
     end
     hit.damage = damage
     target:ApplyHitDamageReduction(hit, self, hit.spot_group or g_DefaultShotBodyPart, nil, ignore_armor, record_breakdown)
