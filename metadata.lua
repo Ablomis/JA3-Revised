@@ -1,13 +1,13 @@
 return PlaceObj('ModDef', {
 	'title', "Revised",
-	'description', "This mod is designed to create more complete experiencel, reflecting real life combat as much as possible.\nThe design philosophy of the mod: deadlier weapons, lower accuracy.\n\nMajor changes:\n1. Auto damage increased\n2. Accuracy decreased to compensate.\n3. Dexterity used for close-range combat, marksmanship for aiming\n4. Lighting reflexes should not work on stealth kill\n5. Each weapon now has AP ready\n6. Increased number of AP for mercs to compensate\n7. All wounds cause bleeding if no armor or armor is penetrated\n8 Damage falloff beyond effective range\n\nThis is ALPHA version of the mod - might be not well balanced. Feedback and suggestions are welcome.",
+	'description', "This mod is designed to create more complete experiencel, reflecting real life combat as much as possible.\nThe design philosophy of the mod: deadlier weapons, lower accuracy.\n\nMajor changes:\n1. Auto damage increased\n2. Accuracy decreased to compensate.\n3. Dexterity used for close-range combat, marksmanship for aiming\n4. Lighting reflexes should not work on stealth kill\n5. Each weapon now has AP ready\n6. Increased number of AP for mercs to compensate\n7. All wounds cause bleeding if no armor or armor is penetrated\n8 Damage falloff beyond effective range\n9. Grenades are always inaccurate\n\nThis is ALPHA version of the mod - might be not well balanced. Feedback and suggestions are welcome.",
 	'image', "Mod/Db7c5fd/Images/JA3Revised 2.png",
 	'last_changes', "Initial commit",
 	'id', "Db7c5fd",
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 941,
+	'version', 952,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -58,7 +58,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/DoubleBarrelShotgun.lua",
 		"InventoryItem/M41.lua",
 	},
-	'saved', 1690313611,
-	'code_hash', -1653022201570886165,
+	'saved', 1690318873,
+	'code_hash', -2884743574186189020,
 	'steam_id', "3008768068",
 })
