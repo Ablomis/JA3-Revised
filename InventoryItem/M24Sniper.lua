@@ -22,6 +22,7 @@ DefineClass.M24Sniper = {
 	MagazineSize = 5,
 	PenetrationClass = 2,
 	WeaponRange = 36,
+	DamageFalloff = 90,
 	OverwatchAngle = 360,
 	Noise = 30,
 	HandSlot = "TwoHanded",

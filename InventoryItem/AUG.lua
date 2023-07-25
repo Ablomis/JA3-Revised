@@ -22,6 +22,7 @@ DefineClass.AUG = {
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 75,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Steyr",

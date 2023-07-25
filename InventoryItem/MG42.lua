@@ -21,6 +21,7 @@ DefineClass.MG42 = {
 	MagazineSize = 100,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 90,
 	OverwatchAngle = 1800,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_MG42",

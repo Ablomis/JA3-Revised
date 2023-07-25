@@ -22,6 +22,7 @@ DefineClass.G36 = {
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 60,
 	PointBlankRange = true,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",

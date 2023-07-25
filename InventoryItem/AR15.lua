@@ -22,6 +22,7 @@ DefineClass.AR15 = {
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 24,
+	DamageFalloff = 75,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_AR15",

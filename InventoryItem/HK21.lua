@@ -23,6 +23,7 @@ DefineClass.HK21 = {
 	MagazineSize = 120,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 90,
 	OverwatchAngle = 1800,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_HK21",

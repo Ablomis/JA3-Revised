@@ -21,6 +21,7 @@ DefineClass.Winchester1894 = {
 	CritChanceScaled = 20,
 	MagazineSize = 9,
 	WeaponRange = 24,
+	DamageFalloff = 90,
 	OverwatchAngle = 360,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Winchester",

@@ -21,6 +21,7 @@ DefineClass.Gewehr98 = {
 	MagazineSize = 5,
 	PenetrationClass = 2,
 	WeaponRange = 32,
+	DamageFalloff = 90,
 	OverwatchAngle = 360,
 	Noise = 30,
 	HandSlot = "TwoHanded",

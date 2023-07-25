@@ -22,6 +22,7 @@ DefineClass.AK74 = {
 	MagazineSize = 30,
 	PenetrationClass = 3,
 	WeaponRange = 24,
+	DamageFalloff = 90,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_AK74",

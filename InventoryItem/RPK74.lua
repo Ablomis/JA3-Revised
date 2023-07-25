@@ -20,6 +20,7 @@ DefineClass.RPK74 = {
 	MagazineSize = 60,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 90,
 	OverwatchAngle = 1800,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_RPK74",

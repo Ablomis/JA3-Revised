@@ -21,6 +21,7 @@ DefineClass.FAMAS = {
 	MagazineSize = 25,
 	PenetrationClass = 2,
 	WeaponRange = 24,
+	DamageFalloff = 75,
 	OverwatchAngle = 1440,
 	Noise = 10,
 	HandSlot = "TwoHanded",

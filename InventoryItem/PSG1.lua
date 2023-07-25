@@ -23,6 +23,7 @@ DefineClass.PSG1 = {
 	MagazineSize = 5,
 	PenetrationClass = 2,
 	WeaponRange = 36,
+	DamageFalloff = 90,
 	OverwatchAngle = 360,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_PSG1",

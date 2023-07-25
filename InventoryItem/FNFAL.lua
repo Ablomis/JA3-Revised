@@ -21,6 +21,7 @@ DefineClass.FNFAL = {
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 24,
+	DamageFalloff = 90,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_FNFAL",

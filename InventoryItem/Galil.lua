@@ -23,6 +23,7 @@ DefineClass.Galil = {
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 90,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Galil",

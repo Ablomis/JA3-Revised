@@ -21,6 +21,7 @@ DefineClass.BrowningM2HMG = {
 	MagazineSize = 100,
 	PenetrationClass = 3,
 	WeaponRange = 30,
+	DamageFalloff = 90,
 	OverwatchAngle = 3600,
 	Noise = 30,
 	HandSlot = "TwoHanded",

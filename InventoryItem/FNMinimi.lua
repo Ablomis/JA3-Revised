@@ -22,6 +22,7 @@ DefineClass.FNMinimi = {
 	MagazineSize = 100,
 	PenetrationClass = 2,
 	WeaponRange = 30,
+	DamageFalloff = 90,
 	OverwatchAngle = 2700,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_FNMinimi",
