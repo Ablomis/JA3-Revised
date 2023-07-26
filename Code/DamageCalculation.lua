@@ -48,6 +48,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
         effects = {},
         base_damage = damage,
         damage_add = 0,
+        damage_min = 0,
         damage_percent = 100,
         ignore_armor = false,
         ignore_body_part_damage = {},
@@ -58,10 +59,13 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       Msg("GatherDamageModifications", attacker, target, attack_args or {}, hit or {}, data)
       Msg("GatherTargetDamageModifications", attacker, target, attack_args or {}, hit or {}, data)
       damage = Max(0, MulDivRound(data.base_damage + data.damage_add, data.damage_percent, 100))
-
+      local damage_min = 0
       if not hit.aoe then
         damage = Max(0, MulDivRound(self.ammo.Damage + data.damage_add, data.damage_percent, 100))
-        damage = round(-(Max(hit.distance/1000-self.WeaponRange/2,0))*0.5*self.DamageFalloff/100 + damage,1)
+        damage_min = MulDivRound(damage,self.DamageFalloff, 100)
+        local k
+        k = (damage - damage_min)/(0.0001*self.WeaponRange^3)
+        damage = round(damage - 0.0001 * k * ((hit.distance/1000)^3),1)
       end
 
       for _, effect in ipairs(data.effects) do
