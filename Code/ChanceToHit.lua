@@ -120,7 +120,7 @@ PlaceObj('ChanceToHitModifier', {
 			else
 				param = "mg_burst_max_held_penalty"
 				if weapon1 and weapon1.Cumbersome then
-					extra = self:ResolveValue("mg_burst_cumbersome_penalty")
+					extra = -20
 				end
 			end
 		elseif action.id == "GrizzlyPerk" then
@@ -136,12 +136,12 @@ PlaceObj('ChanceToHitModifier', {
 		
 		if dist > pb_dist then
 			-- scale in the distance after point-blank range to max penalty
-			local max_dist = self:ResolveValue("max_dist") * const.SlabSizeX		
-			local max_penalty = self:ResolveValue(param) + extra
+			local max_dist = 14 * const.SlabSizeX		
+			local max_penalty = weapon1.Recoil*10 + extra
 			
 			dist = Min(dist, max_dist) - pb_dist
 			max_dist = max_dist - pb_dist
-			penalty = penalty + Min(-1, MulDivRound(dist, max_penalty - penalty, max_dist))
+			penalty = -MulDivRound(dist, max_penalty - penalty, max_dist)
 		end
 		
 		if penalty == 0 then
