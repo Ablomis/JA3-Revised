@@ -4,7 +4,6 @@ DefineClass.MP40 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - SMG",
 	object_class = "SubmachineGun",
 	Reliability = 70,
 	ScrapParts = 6,
@@ -19,6 +18,7 @@ DefineClass.MP40 = {
 	Caliber = "9mm",
 	Damage = 17,
 	MagazineSize = 40,
+	Recoil = 30,
 	PointBlankRange = true,
 	OverwatchAngle = 1440,
 	Noise = 15,

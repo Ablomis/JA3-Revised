@@ -137,7 +137,7 @@ PlaceObj('ChanceToHitModifier', {
 		if dist > pb_dist then
 			-- scale in the distance after point-blank range to max penalty
 			local max_dist = 14 * const.SlabSizeX		
-			local max_penalty = weapon1.Recoil*10 + extra
+			local max_penalty = weapon1.Recoil + extra
 			
 			dist = Min(dist, max_dist) - pb_dist
 			max_dist = max_dist - pb_dist

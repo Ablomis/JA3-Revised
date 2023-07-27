@@ -25,6 +25,7 @@ DefineClass.BarretM82 = {
 	PenetrationClass = 3,
 	WeaponRange = 40,
 	DamageFalloff = 90,
+	Recoil = 28,
 	OverwatchAngle = 360,
 	Noise = 30,
 	HandSlot = "TwoHanded",
@@ -72,8 +73,8 @@ DefineClass.BarretM82 = {
 		"SingleShot",
 		"CancelShot",
 	},
-	ShootAP = 10000,
+	ShootAP = 8000,
 	ReloadAP = 3000,
-	ReadyAP = 4000,
+	ReadyAP = 3000,
 }
 

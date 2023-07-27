@@ -23,7 +23,7 @@ DefineClass.G36 = {
 	PenetrationClass = 2,
 	WeaponRange = 28,
 	DamageFalloff = 60,
-	Recoil = 5,
+	Recoil = 22,
 	PointBlankRange = true,
 	OverwatchAngle = 1440,
 	HandSlot = "TwoHanded",
@@ -105,6 +105,6 @@ DefineClass.G36 = {
 	},
 	ShootAP = 5000,
 	ReloadAP = 3000,
-	ReadyAP = 1000,
+	ReadyAP = 2000,
 }
 

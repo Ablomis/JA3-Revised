@@ -4,7 +4,6 @@ DefineClass.ColtAnaconda = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Handgun",
 	object_class = "Revolver",
 	RepairCost = 30,
 	Reliability = 95,

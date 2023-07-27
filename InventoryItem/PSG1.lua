@@ -24,6 +24,7 @@ DefineClass.PSG1 = {
 	PenetrationClass = 2,
 	WeaponRange = 36,
 	DamageFalloff = 90,
+	Recoil = 28,
 	OverwatchAngle = 360,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_PSG1",
@@ -90,8 +91,8 @@ DefineClass.PSG1 = {
 		"SingleShot",
 		"CancelShot",
 	},
-	ShootAP = 8000,
+	ShootAP = 7000,
 	ReloadAP = 2000,
-	ReadyAP = 4000,
+	ReadyAP = 3000,
 }
 

@@ -22,6 +22,7 @@ DefineClass.Winchester1894 = {
 	MagazineSize = 9,
 	WeaponRange = 24,
 	DamageFalloff = 90,
+	Recoil = 28,
 	OverwatchAngle = 360,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Winchester",

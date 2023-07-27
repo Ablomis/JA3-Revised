@@ -4,7 +4,6 @@ DefineClass.TexRevolver = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Handgun",
 	object_class = "Revolver",
 	RepairCost = 50,
 	Reliability = 95,

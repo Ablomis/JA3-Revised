@@ -24,7 +24,7 @@ DefineClass.DragunovSVD = {
 	PenetrationClass = 2,
 	WeaponRange = 36,
 	DamageFalloff = 90,
-	Recoil = 6,
+	Recoil = 28,
 	OverwatchAngle = 360,
 	Noise = 30,
 	HandSlot = "TwoHanded",
@@ -83,7 +83,7 @@ DefineClass.DragunovSVD = {
 		"BurstFire",
 		"CancelShot",
 	},
-	ShootAP = 8000,
+	ShootAP = 7000,
 	ReloadAP = 3000,
 	ReadyAP = 2000,
 }

@@ -4,7 +4,6 @@ DefineClass.Glock18 = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Handgun",
 	object_class = "Pistol",
 	RepairCost = 70,
 	Reliability = 80,
@@ -22,6 +21,7 @@ DefineClass.Glock18 = {
 	MagazineSize = 15,
 	WeaponRange = 17,
 	DamageFalloff = 40,
+	Recoil = 25,
 	PointBlankRange = true,
 	OverwatchAngle = 2160,
 	Entity = "Weapon_Glock18",

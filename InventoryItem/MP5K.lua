@@ -20,6 +20,7 @@ DefineClass.MP5K = {
 	AimAccuracy = 5,
 	MagazineSize = 15,
 	DamageFalloff = 30,
+	Recoil = 25,
 	PointBlankRange = true,
 	OverwatchAngle = 1440,
 	Noise = 10,

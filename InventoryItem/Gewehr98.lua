@@ -22,7 +22,7 @@ DefineClass.Gewehr98 = {
 	PenetrationClass = 2,
 	WeaponRange = 32,
 	DamageFalloff = 90,
-	Recoil = 2,
+	Recoil = 28,
 	OverwatchAngle = 360,
 	Noise = 30,
 	HandSlot = "TwoHanded",
@@ -57,7 +57,7 @@ DefineClass.Gewehr98 = {
 		"SingleShot",
 		"CancelShot",
 	},
-	ShootAP = 8000,
+	ShootAP = 7000,
 	ReloadAP = 3000,
 	ReadyAP = 3000,
 }

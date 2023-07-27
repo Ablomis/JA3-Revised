@@ -4,7 +4,6 @@ DefineClass.HiPower = {
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
 
-	__copy_group = "Firearm - Handgun",
 	object_class = "Pistol",
 	RepairCost = 70,
 	Reliability = 50,

@@ -23,6 +23,7 @@ DefineClass.M24Sniper = {
 	PenetrationClass = 2,
 	WeaponRange = 36,
 	DamageFalloff = 90,
+	Recoil = 28,
 	OverwatchAngle = 360,
 	Noise = 30,
 	HandSlot = "TwoHanded",
@@ -87,8 +88,8 @@ DefineClass.M24Sniper = {
 		"SingleShot",
 		"CancelShot",
 	},
-	ShootAP = 8000,
+	ShootAP = 7000,
 	ReloadAP = 3000,
-	ReadyAP = 4000,
+	ReadyAP = 3000,
 }
 
