@@ -1,0 +1,7 @@
+--function FirearmBase:GetAccuracy(distance, unit, action)
+--    local base_accuracy = self.AimAccuracy
+--    local k
+--    k = (100 - base_accuracy)/(0.0001*self.WeaponRange^3)
+--    local accuracy = round(100 - 0.0001 * k * ((distance/1000)^3),1)
+--  return accuracy
+--end

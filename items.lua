@@ -83,6 +83,10 @@ PlaceObj('ModItemCode', {
 	'name', "RolloverInventoryWeaponBase",
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
+PlaceObj('ModItemCode', {
+	'name', "CombatActions",
+	'CodeFileName', "Code/CombatActions.lua",
+}),
 PlaceObj('ModItemGameRuleDef', {
 	display_name = T(472916565934, --[[ModItemGameRuleDef APReductionOnHit display_name]] "APReductionOnHit"),
 	id = "APReductionOnHit",
