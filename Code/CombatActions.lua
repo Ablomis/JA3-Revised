@@ -9,6 +9,9 @@ PlaceObj('CombatAction', {
 	ConfigurableKeybind = false,
 	CostBasedOnWeapon = true,
 	FiringModeMember = "Attack",
+	Description = T(775000951525, --[[CombatAction SingleShot Description]] "Cheap attack that conserves ammo."),
+	DisplayName = T(776288626327, --[[CombatAction SingleShot DisplayName]] "Single Shot"),
+	DisplayNameShort = T(641608509701, --[[CombatAction SingleShot DisplayNameShort]] "Single"),
 	GetAPCost = function (self, unit, args)
 		local weapon1, weapon2 = self:GetAttackWeapons(unit, args)
 		if unit:OutOfAmmo(weapon2) or unit:IsWeaponJammed(weapon2) then
@@ -18,7 +21,11 @@ PlaceObj('CombatAction', {
 			return -1
 		end
 		if not weapon1 then return -1 end
-		return unit:GetAttackAPCost(self, weapon1, false, args and args.aim or 0, self.ActionPointDelta) or -1
+		local ap = unit:GetAttackAPCost(self, weapon1, false, args and args.aim or 0, self.ActionPointDelta) or -1
+		if(unit:GetLastAttack()==false) then ap = ap+weapon1.ReadyAP
+		elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon1.ReadyAP
+		end
+		return ap
 	end,
 	GetActionDamage = function (self, unit, target, args)
 		return CombatActionsAttackGenericDamageCalculation(self, unit, args)
@@ -84,6 +91,9 @@ PlaceObj('CombatAction', {
 	num_shots = 3,
 	cth_loss_per_shot=0,
 	CostBasedOnWeapon = true,
+	Description = T(407142474259, --[[CombatAction BurstFire Description]] "Shoots <em><num> bullets</em> at the target. Lower accuracy against distant enemies."),
+	DisplayName = T(956399226505, --[[CombatAction BurstFire DisplayName]] "Burst Fire"),
+	DisplayNameShort = T(434110622708, --[[CombatAction BurstFire DisplayNameShort]] "Burst"),
 	Execute = function (self, units, args)
 		local unit = units[1]
 		local weapon = self:GetAttackWeapons(unit, args)
@@ -97,7 +107,11 @@ PlaceObj('CombatAction', {
 	GetAPCost = function (self, unit, args)
 		if self.CostBasedOnWeapon then
 			local weapon = self:GetAttackWeapons(unit, args)	
-			return weapon and (unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0) + self.ActionPointDelta) or -1
+			local ap = weapon and (unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0) + self.ActionPointDelta) or -1
+			if(unit:GetLastAttack()==false) then ap = ap+weapon.ReadyAP
+			elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon.ReadyAP
+			end
+			return ap
 		end
 		return self.ActionPoints
 	end,
@@ -228,6 +242,9 @@ PlaceObj('CombatAction', {
 	dmg_penalty = 0,
 	num_shots = 15,
 	cth_loss_per_shot=0,
+	Description = T(631854101896, --[[CombatAction AutoFire Description]] "<em>Spends all AP</em>.\nShoots a hail of <em><bullets> bullets</em> and inflict <GameTerm('Suppressed')> even on miss when the enemy is in weapon range. Lower accuracy against distant enemies."),
+	DisplayName = T(729612747243, --[[CombatAction AutoFire DisplayName]] "Auto Fire"),
+	DisplayNameShort = T(845536748856, --[[CombatAction AutoFire DisplayNameShort]] "Auto"),
 	Execute = function (self, units, args)
 		local unit = units[1]
 		args.multishot = true
