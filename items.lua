@@ -65,11 +65,6 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/DamageCalculation.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "GetAttackAPCost",
-	'comment', "Updated AP cost calculation",
-	'CodeFileName', "Code/GetAttackAPCost.lua",
-}),
-PlaceObj('ModItemCode', {
 	'name', "InventoryRolloverInfo",
 	'comment', "Show Ready AP",
 	'CodeFileName', "Code/InventoryRolloverInfo.lua",
