@@ -229,7 +229,6 @@ PlaceObj('CombatAction', {
 	Execute = function (self, units, args)
 		local unit = units[1]
 		local weapon = self:GetAttackWeapons(unit, args)
-		print(weapon:GetAutofireShots(self))
 		args.num_shots = self.num_shots
 		args.multishot = true
 		local ap = self:GetAPCost(unit, args)
