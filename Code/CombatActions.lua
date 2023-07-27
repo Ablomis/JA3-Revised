@@ -2,6 +2,138 @@
 
 PlaceObj('CombatAction', {
 	ActionCamera = true,
+	ActionPoints = 3000,
+	ActionType = "Ranged Attack",
+	ConfigurableKeybind = false,
+	CostBasedOnWeapon = true,
+	dmg_penalty = 0,
+	num_shots = 15,
+	cth_loss_per_shot=1,
+	Execute = function (self, units, args)
+		local unit = units[1]
+		local weapon = self:GetAttackWeapons(unit, args)
+		args.num_shots = weapon:GetAutofireShots(self)
+		args.multishot = true
+		local ap = self:GetAPCost(unit, args)
+		NetStartCombatAction(self.id, unit, ap, args)
+	end,
+	GetAPCost = function (self, unit, args)
+		local weapon = self:GetAttackWeapons(unit, args)
+		if not weapon then return -1 end
+		return unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0)
+	end,
+	GetActionDamage = function (self, unit, target, args)
+		local weapon = args and args.weapon or self:GetAttackWeapons(unit, args)
+		if not weapon then return 0 end
+		local base = unit and unit:GetBaseDamage(weapon) or weapon.Damage
+		local penalty = self.dmg_penalty
+		local num_shots = self.num_shots
+		base = MulDivRound(base, Max(0, 100 + penalty), 100)
+		local damage = num_shots*base
+		return damage, base, damage - base
+	end,
+	GetActionDescription = function (self, units)
+		local description = self.Description
+		if (description or "") == "" then
+			description = self:GetActionDisplayName()
+		end
+		
+		local unit = units[1]
+		local coneDescription = T{""}
+		local interrupts_info = ""
+		local overwatch = g_Overwatch[unit]
+		if overwatch and overwatch.permanent then
+			coneDescription = T(480046777812, " within the set cone")
+			interrupts_info = T{757307734445, "<newline><newline>Interrupt attacks: <interrupts>", interrupts = unit:GetNumMGInterruptAttacks()}
+		end
+		
+		return T{description, coneDescription = coneDescription, interrupts_info = interrupts_info}
+	end,
+	GetActionDisplayName = function (self, units)
+		local name = self.DisplayName
+		if (name or "") == "" then
+			name = Untranslated(self.id)
+		end
+		local unit = units[1]
+		return CombatActionsAppendFreeAimActionName(self, unit, name)
+	end,
+	GetActionIcon = function (self, units)
+		-- replace icon when using Revolver
+		local unit = units and units[1]
+		if unit then
+			local weapon = self:GetAttackWeapons(unit)
+			if IsKindOf(weapon, "Revolver") then
+				return CombatActions.Fanning.Icon
+			end
+		end
+		return self.Icon
+	end,
+	GetActionResults = function (self, unit, args)
+		local args = table.copy(args)
+		args.weapon = args.weapon or self:GetAttackWeapons(unit, args)
+		args.num_shots = args.num_shots or args.weapon and self.num_shots
+		args.multishot = true
+		args.damage_bonus = self.dmg_penalty
+		--args.cth_loss_per_shot = self:ResolveValue("cth_loss_per_shot")
+		local attack_args = unit:PrepareAttackArgs(self.id, args)
+		local results = attack_args.weapon:GetAttackResults(self, attack_args)
+		return results, attack_args
+	end,
+	GetAnyTarget = function (self, units)
+		return CombatActionGetOneAttackableEnemy(self, units and units[1], nil, CombatActionTargetFilters.MGBurstFire, units)
+	end,
+	GetAttackWeapons = function (self, unit, args)
+		if args and args.weapon then return args.weapon end
+		return unit:GetActiveWeapons("Firearm")
+	end,
+	GetTargets = function (self, units)
+		return CombatActionGetAttackableEnemies(self, units and units[1], nil, CombatActionTargetFilters.MGBurstFire, units)
+	end,
+	GetUIState = function (self, units, args)
+		return CombatActionGenericAttackGetUIState(self, units, args)
+	end,
+	Icon = "UI/Icons/Hud/burst_fire",
+	IsTargetableAttack = true,
+	KeybindingFromAction = "actionRedirectHeavyAttack",
+	KeybindingSortId = "2372",
+	MultiSelectBehavior = "first",
+	Parameters = {
+		PlaceObj('PresetParamNumber', {
+			'Name', "num_shots",
+			'Value', 8,
+			'Tag', "<num_shots>",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "cth_loss_per_shot",
+			'Tag', "<cth_loss_per_shot>%",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "dmg_penalty",
+			'Value', -50,
+			'Tag', "<dmg_penalty>%",
+		}),
+		PlaceObj('PresetParamNumber', {
+			'Name', "min_shots",
+			'Value', 1,
+			'Tag', "<min_shots>",
+		}),
+	},
+	RequireState = "any",
+	RequireWeapon = true,
+	Run = function (self, unit, ap, ...)
+		unit:SetActionCommand("FirearmAttack", self.id, ap, ...)
+	end,
+	UIBegin = function (self, units, args)
+		CombatActionAttackStart(self, units, args, "IModeCombatAttack")
+	end,
+	group = "WeaponAttacks",
+	id = "MGBurstFire",
+	save_in = "Libs/Network",
+})
+
+
+PlaceObj('CombatAction', {
+	ActionCamera = true,
 	ActionPointDelta = -1000,
 	ActionType = "Ranged Attack",
 	AimType = "line",
@@ -177,7 +309,7 @@ PlaceObj('CombatAction', {
 		args.num_shots = self.num_shots
 		args.multishot = true
 		args.damage_bonus = self.dmg_penalty
-		--args.cth_loss_per_shot = self:ResolveValue("cth_loss_per_shot")
+		args.cth_loss_per_shot = self.cth_loss_per_shot
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		return results, attack_args
@@ -296,7 +428,7 @@ PlaceObj('CombatAction', {
 		--args.single_fx = true
 		--args.fx_action = "WeaponAutoFire"
 		args.damage_bonus = self.dmg_penalty
-		--args.cth_loss_per_shot = self:ResolveValue("cth_loss_per_shot")
+		args.cth_loss_per_shot = self.cth_loss_per_shot
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		local target = attack_args.target			
@@ -349,7 +481,7 @@ PlaceObj('CombatAction', {
 		}),
 		PlaceObj('PresetParamPercent', {
 			'Name', "dmg_penalty",
-			'Value', -80,
+			'Value', 0,
 			'Tag', "<dmg_penalty>%",
 		}),
 		PlaceObj('PresetParamNumber', {
