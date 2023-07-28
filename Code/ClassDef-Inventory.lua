@@ -52,7 +52,7 @@ DefineClass.FirearmProperties = {
 		{ category = "Caliber", id = "DamageFalloff", name = "Damage Falloff", help = "How much damage falls off at max range.", 
 			editor = "number", default = 50, template = true, scale = "%", min = 0, max = 100, modifiable = true, },
 		{ category = "Caliber", id = "Recoil", name = "Recoil", help = "How strong the recoil is. Influences burst accuracy penalty.", 
-			editor = "number", default = 3, template = true, min = 0, max = 30, modifiable = true, },
+			editor = "number", default = 3, template = true, min = 0, max = 100, modifiable = true, },
 		{ category = "Caliber", id = "PointBlankRange", name = "Point Blank Range", help = "attacks get bonus CTH in point-blank range", 
 			editor = "bool", default = false, template = true, },
 		{ category = "Caliber", id = "OverwatchAngle", name = "Overwatch Angle", help = "overwatch area cone angle", 
