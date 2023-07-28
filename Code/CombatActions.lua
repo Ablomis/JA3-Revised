@@ -158,10 +158,8 @@ PlaceObj('CombatAction', {
 		end
 		if not weapon1 then return -1 end
 		local ap = unit:GetAttackAPCost(self, weapon1, false, args and args.aim or 0, self.ActionPointDelta) or -1
-		--if(unit:GetLastAttack()==false) then ap = ap+weapon1.ReadyAP
-		--elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon1.ReadyAP
-		--end
-		return ap
+		if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+		return ap+weapon1.ReadyAP
 	end,
 	GetActionDamage = function (self, unit, target, args)
 		return CombatActionsAttackGenericDamageCalculation(self, unit, args)
@@ -243,10 +241,8 @@ PlaceObj('CombatAction', {
 		if self.CostBasedOnWeapon then
 			local weapon = self:GetAttackWeapons(unit, args)	
 			local ap = weapon and (unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0) + self.ActionPointDelta) or -1
-			--if(unit:GetLastAttack()==false) then ap = ap+weapon.ReadyAP
-			--elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon.ReadyAP
-			--end
-			return ap
+			if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+			return ap+weapon1.ReadyAP
 		end
 		return self.ActionPoints
 	end,
