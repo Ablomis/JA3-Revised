@@ -210,7 +210,6 @@ PlaceObj('CombatAction', {
 	basicAttack = true,
 	group = "WeaponAttacks",
 	id = "SingleShot",
-	save_in = "Libs/Network",
 })
 
 PlaceObj('CombatAction', {
@@ -359,7 +358,6 @@ PlaceObj('CombatAction', {
 	basicAttack = true,
 	group = "WeaponAttacks",
 	id = "BurstFire",
-	save_in = "Libs/Network",
 })
 
 PlaceObj('CombatAction', {
@@ -499,6 +497,132 @@ PlaceObj('CombatAction', {
 	basicAttack = true,
 	group = "WeaponAttacks",
 	id = "AutoFire",
-	save_in = "Libs/Network",
 })
+
+PlaceObj('CombatAction', {
+	ActionType = "Ranged Attack",
+	AimType = "cone",
+	ConfigurableKeybind = false,
+	min_cost=4,
+	max_cost=8,
+	min_dex=50,
+	Description = T(868121469992, --[[CombatAction MGSetup Description]] "Focus on a cone-shaped area, immobilizing yourself and going <em>prone</em>. You can only shoot enemies inside that cone. Accuracy is increased and enemies will provoke <em>interrupt</em> attacks with actions inside the cone (even if your AP are spent)."),
+	DisplayName = T(893147932181, --[[CombatAction SniperSetup DisplayName]] "Set Sniper Rifle"),
+	Execute = function (self, units, args)
+		local unit = units[1]
+		local ap = self:GetAPCost(unit, args)
+		args.aim_ap = unit:GetUIActionPoints() - ap
+		NetStartCombatAction(self.id, unit, ap, args)
+	end,
+	GetAPCost = function (self, unit, args)
+		local base = self.max_cost * const.Scale.AP
+		local min = self.min_cost * const.Scale.AP
+		local min_dex = self.min_dex
+		local cost = base - MulDivRound(Max(0, unit.Dexterity - min_dex), base - min, 100 - min_dex)
+		cost = Max(min, (cost / const.Scale.AP) * const.Scale.AP)
+		return cost
+	end,
+	GetActionDescription = function (self, units)
+		local unit = units[1]
+		local bonus = 0
+		local cost = self:GetAPCost(unit)
+		if unit and cost >= 0 then
+			local weapon = self:GetAttackWeapons(unit)
+			if not weapon then return self.Description end
+			local aim = Min((unit:GetUIActionPoints() - cost) / const.Scale.AP, weapon.MaxAimActions)
+			local apply, value = Presets.ChanceToHitModifier.Default.Aim:CalcValue(unit, nil, nil, nil, nil, nil, nil, aim)
+			bonus = value
+		end
+		
+		local attacks = 1
+		if unit and (cost or -1) >= 0 then
+			attacks = unit:GetNumMGInterruptAttacks(true)
+		end
+		local description = T{self.Description, bonus = bonus}
+		
+		if unit:UIHasAP(cost, self.id) then
+			description = description .. T{813594976169, "<newline><newline>Max interrupt attacks: <attacks>", attacks = attacks}
+		end
+		
+		return description
+	end,
+	GetActionResults = function (self, unit, args)
+		return CombatActions.Overwatch.GetActionResults(self, unit, args)
+	end,
+	GetAimParams = function (self, unit, weapon)
+		return CombatActions.Overwatch.GetAimParams(self, unit, weapon)
+	end,
+	GetAttackWeapons = function (self, unit, args)
+		if args and args.weapon then return args.weapon end
+		return unit:GetActiveWeapons("Firearm")
+	end,
+	GetMaxAimRange = function (self, unit, weapon)
+		return CombatActions.Overwatch.GetMaxAimRange(self, unit, weapon)
+	end,
+	GetMinAimRange = function (self, unit, weapon)
+		return CombatActions.Overwatch.GetMinAimRange(self, unit, weapon)
+	end,
+	GetUIState = function (self, units, args)
+		local unit = units[1]
+		local cost = self:GetAPCost(unit, args)
+		if cost < 0 then return "hidden" end
+		local weapon = self:GetAttackWeapons(unit, args)
+		local ok, reason = unit:CanUseWeapon(weapon)
+		if not ok then return "disabled", reason end
+		if not unit:UIHasAP(cost) then return "disabled", GetUnitNoApReason(unit) end
+		local in_water = terrain.IsWater(unit)
+		if in_water then 
+			return "disabled", AttackDisableReasons.Water 
+		end
+		local attack = unit:GetDefaultAttackAction()
+		local state, reason = attack:GetUIState(units, args)
+		if state ~= "enabled" and (reason == AttackDisableReasons.NoWeapon or reason == AttackDisableReasons.OutOfAmmo or reason == AttackDisableReasons.WeaponJammed or reason == AttackDisableReasons.InsufficientAmmo) then
+			return state, reason
+		end
+		return "enabled"
+	end,
+	Parameters = {},
+	Icon = "UI/Icons/Hud/SetMachineGun ",
+	KeybindingFromAction = "actionRedirectOverwatch",
+	KeybindingSortId = "2370",
+	RequireState = "any",
+	Run = function (self, unit, ap, ...)
+		unit:SetActionCommand("SniperSetup", self.id, ap, ...)
+	end,
+	UIBegin = function (self, units, args)
+		CombatActionAttackStart(self, units, args, "IModeCombatAreaAim", "cancel")
+	end,
+	group = "MachineGun",
+	id = "SniperSetup"
+})
+
+PlaceObj('CombatAction', {
+	ActionPoints = 1000,
+	Description = T(197752638092, --[[CombatAction SniperGPack Description]] "Cancel sniper setup and move freely."),
+	DisplayName = T(717760265144, --[[CombatAction SniperPack DisplayName]] "Pack Up Sniper Rifle"),
+	Execute = function (self, units, args)
+		local unit = units[1]
+		local ap = self:GetAPCost(unit, args)
+		NetStartCombatAction(self.id, unit, ap, args)
+	end,
+	GetAPCost = function (self, unit, args)
+		if unit:HasStatusEffect("ManningEmplacement") then return -1 end
+		
+		return self.ActionPoints
+	end,
+	Icon = "UI/Icons/Hud/dash",
+	KeybindingSortId = "2375",
+	RequireState = "any",
+	Run = function (self, unit, ap, ...)
+		unit:SetActionCommand("SniperPack", self.id, ap, ...)
+	end,
+	UIBegin = function (self, units, args)
+		self:Execute(units, args)
+	end,
+	group = "MachineGun",
+	id = "SniperPack",
+	param_bindings = {},
+})
+
+
 

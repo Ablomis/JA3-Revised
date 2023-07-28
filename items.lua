@@ -38,9 +38,19 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/9mm AMMO.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "AIApplyAttacks",
+	'comment', "SniperPack for AI",
+	'CodeFileName', "Code/AIApplyAttacks.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "AllAmmoCausesBleeding",
 	'comment', "All ammo causes bleeding",
 	'CodeFileName', "Code/AllAmmoCausesBleeding.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "AreaAttackParameters",
+	'comment', "Added sniper setup",
+	'CodeFileName', "Code/AreaAttackParameters.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "CTHCalc",
@@ -74,6 +84,11 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/GetAttackAPCost.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "GotoSlab",
+	'comment', "SniperPack code",
+	'CodeFileName', "Code/GotoSlab.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "InventoryRolloverInfo",
 	'comment', "Show Ready AP",
 	'CodeFileName', "Code/InventoryRolloverInfo.lua",
@@ -88,8 +103,19 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "IModeCombatAreaAim",
+	'comment', "SniperSetup",
+	'CodeFileName', "Code/IModeCombatAreaAim.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
+	'comment', "SniperSetup code",
 	'CodeFileName', "Code/SniperSetup.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "StationedSniperEffect",
+	'comment', "Sniper effect",
+	'CodeFileName', "Code/StationedSniperEffect.lua",
 }),
 PlaceObj('ModItemGameRuleDef', {
 	display_name = T(472916565934, --[[ModItemGameRuleDef APReductionOnHit display_name]] "APReductionOnHit"),
