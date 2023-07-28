@@ -21,10 +21,8 @@ PlaceObj('CombatAction', {
 		local weapon = self:GetAttackWeapons(unit, args)
 		if not weapon then return -1 end
 		local ap = unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0)
-		if(unit:GetLastAttack()==false) then ap = ap+weapon1.ReadyAP
-		elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon1.ReadyAP
-		end
-		return ap
+		if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+		return ap+weapon.ReadyAP
 	end,
 	GetActionDamage = function (self, unit, target, args)
 		local weapon = args and args.weapon or self:GetAttackWeapons(unit, args)
