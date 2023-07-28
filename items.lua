@@ -65,6 +65,11 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/DamageCalculation.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "GetAttackAPCost",
+	'comment', "Updated AP cost calculation",
+	'CodeFileName', "Code/GetAttackAPCost.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "InventoryRolloverInfo",
 	'comment', "Show Ready AP",
 	'CodeFileName', "Code/InventoryRolloverInfo.lua",
@@ -88,26 +93,8 @@ PlaceObj('ModItemGameRuleDef', {
 	msg_reactions = {
 		PlaceObj('MsgReaction', {
 			Event = "DamageTaken",
-			Handler = function (self, attacker, target, dmg, hit_descr)
-				ap_penalty = 1
-				if target:GetStatusEffect("SpentAP") then
-					ap_penalty = target:GetEffectValue("spent_ap") +1
-				else target:AddStatusEffect("SpentAP") 
-				end
-				target:SetEffectValue("spent_ap", ap_penalty)
-				print('Damage: '..tostring(dmg )..'dmg')
-				print('AP Penalty: '..tostring(ap_penalty )..'AP')
-			end,
-			HandlerCode = function (self, attacker, target, dmg, hit_descr)
-				ap_penalty = 1
-				if target:GetStatusEffect("SpentAP") then
-					ap_penalty = target:GetEffectValue("spent_ap") +1
-				else target:AddStatusEffect("SpentAP") 
-				end
-				target:SetEffectValue("spent_ap", ap_penalty)
-				print('Damage: '..tostring(dmg )..'dmg')
-				print('AP Penalty: '..tostring(ap_penalty )..'AP')
-			end,
+			Handler = GetMissingSourceFallback(),
+			HandlerCode = GetMissingSourceFallback(),
 			param_bindings = false,
 		}),
 	},

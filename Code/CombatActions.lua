@@ -20,7 +20,11 @@ PlaceObj('CombatAction', {
 	GetAPCost = function (self, unit, args)
 		local weapon = self:GetAttackWeapons(unit, args)
 		if not weapon then return -1 end
-		return unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0)
+		local ap = unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0)
+		if(unit:GetLastAttack()==false) then ap = ap+weapon1.ReadyAP
+		elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon1.ReadyAP
+		end
+		return ap
 	end,
 	GetActionDamage = function (self, unit, target, args)
 		local weapon = args and args.weapon or self:GetAttackWeapons(unit, args)
@@ -308,7 +312,7 @@ PlaceObj('CombatAction', {
 		args.num_shots = self.num_shots
 		args.multishot = true
 		args.damage_bonus = self.dmg_penalty
-		args.cth_loss_per_shot = self.cth_loss_per_shot
+		--args.cth_loss_per_shot = self.cth_loss_per_shot
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		return results, attack_args
@@ -427,7 +431,7 @@ PlaceObj('CombatAction', {
 		--args.single_fx = true
 		--args.fx_action = "WeaponAutoFire"
 		args.damage_bonus = self.dmg_penalty
-		args.cth_loss_per_shot = self.cth_loss_per_shot
+		--args.cth_loss_per_shot = self.cth_loss_per_shot
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		local target = attack_args.target			
