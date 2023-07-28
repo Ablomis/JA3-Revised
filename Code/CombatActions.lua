@@ -242,7 +242,7 @@ PlaceObj('CombatAction', {
 			local weapon = self:GetAttackWeapons(unit, args)	
 			local ap = weapon and (unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0) + self.ActionPointDelta) or -1
 			if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
-			return ap+weapon1.ReadyAP
+			return ap+weapon.ReadyAP
 		end
 		return self.ActionPoints
 	end,
