@@ -84,9 +84,9 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/GetAttackAPCost.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "GotoSlab",
-	'comment', "SniperPack code",
-	'CodeFileName', "Code/GotoSlab.lua",
+	'name', "IModeCombatAreaAim",
+	'comment', "SniperSetup",
+	'CodeFileName', "Code/IModeCombatAreaAim.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "InventoryRolloverInfo",
@@ -103,9 +103,8 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "IModeCombatAreaAim",
-	'comment', "SniperSetup",
-	'CodeFileName', "Code/IModeCombatAreaAim.lua",
+	'name', "UnitCaching",
+	'CodeFileName', "Code/UnitCaching.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
