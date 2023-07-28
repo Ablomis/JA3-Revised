@@ -60,6 +60,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/CombatActionGrenade.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "CombatActions",
+	'CodeFileName', "Code/CombatActions.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "DamageCalculation",
 	'comment', "Updated damage calculation",
 	'CodeFileName', "Code/DamageCalculation.lua",
@@ -84,8 +88,8 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "CombatActions",
-	'CodeFileName', "Code/CombatActions.lua",
+	'name', "SniperSetup",
+	'CodeFileName', "Code/SniperSetup.lua",
 }),
 PlaceObj('ModItemGameRuleDef', {
 	display_name = T(472916565934, --[[ModItemGameRuleDef APReductionOnHit display_name]] "APReductionOnHit"),

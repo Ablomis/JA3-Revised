@@ -75,7 +75,7 @@ PlaceObj('CombatAction', {
 	GetActionResults = function (self, unit, args)
 		local args = table.copy(args)
 		args.weapon = args.weapon or self:GetAttackWeapons(unit, args)
-		args.num_shots = args.num_shots or args.weapon and self.num_shots
+		args.num_shots = self.num_shots
 		args.multishot = true
 		args.damage_bonus = self.dmg_penalty
 		--args.cth_loss_per_shot = self:ResolveValue("cth_loss_per_shot")
@@ -158,9 +158,9 @@ PlaceObj('CombatAction', {
 		end
 		if not weapon1 then return -1 end
 		local ap = unit:GetAttackAPCost(self, weapon1, false, args and args.aim or 0, self.ActionPointDelta) or -1
-		if(unit:GetLastAttack()==false) then ap = ap+weapon1.ReadyAP
-		elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon1.ReadyAP
-		end
+		--if(unit:GetLastAttack()==false) then ap = ap+weapon1.ReadyAP
+		--elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon1.ReadyAP
+		--end
 		return ap
 	end,
 	GetActionDamage = function (self, unit, target, args)
@@ -243,9 +243,9 @@ PlaceObj('CombatAction', {
 		if self.CostBasedOnWeapon then
 			local weapon = self:GetAttackWeapons(unit, args)	
 			local ap = weapon and (unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0) + self.ActionPointDelta) or -1
-			if(unit:GetLastAttack()==false) then ap = ap+weapon.ReadyAP
-			elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon.ReadyAP
-			end
+			--if(unit:GetLastAttack()==false) then ap = ap+weapon.ReadyAP
+			--elseif (unit:GetLastAttack()~=unit.aim_attack_args.target) then ap = ap+weapon.ReadyAP
+			--end
 			return ap
 		end
 		return self.ActionPoints
