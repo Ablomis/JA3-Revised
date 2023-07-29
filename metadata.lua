@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1275,
+	'version', 1282,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -23,7 +23,6 @@ return PlaceObj('ModDef', {
 		"Code/AIApplyAttacks.lua",
 		"Code/AllAmmoCausesBleeding.lua",
 		"Code/AreaAttackParameters.lua",
-		"Code/CTHCalc.lua",
 		"Code/ChanceToHit.lua",
 		"Code/ClassDef-Inventory.lua",
 		"Code/CombatActionGrenade.lua",
@@ -78,7 +77,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/PSG1.lua",
 		"InventoryItem/BarretM82.lua",
 	},
-	'saved', 1690605651,
-	'code_hash', -503406707942558994,
+	'saved', 1690606366,
+	'code_hash', -3826513685035920971,
 	'steam_id', "3008768068",
 })

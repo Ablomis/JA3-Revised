@@ -106,10 +106,6 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/AreaAttackParameters.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "CTHCalc",
-	'CodeFileName', "Code/CTHCalc.lua",
-}),
-PlaceObj('ModItemCode', {
 	'name', "ChanceToHit",
 	'comment', "Updated CTH calculation",
 	'CodeFileName', "Code/ChanceToHit.lua",
