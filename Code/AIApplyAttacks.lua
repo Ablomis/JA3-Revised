@@ -133,7 +133,7 @@ function AIPlayAttacks(unit, context, dbg_action, force_or_skip_action)
       unit:SequentialActionsEnd()
       AIPlayCombatAction("MGPack", unit)
       return "restart"
-    elseif unit:HasStatusEffect("StationeSniper") and CombatActions.SniperPack:GetUIState({unit}) == "enabled" then
+    elseif unit:HasStatusEffect("StationedSniper") and CombatActions.SniperPack:GetUIState({unit}) == "enabled" then
         unit:SequentialActionsEnd()
         AIPlayCombatAction("SniperPack", unit)
         return "restart"

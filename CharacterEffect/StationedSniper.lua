@@ -4,7 +4,6 @@ DefineClass.StationedSniper = {
 	__generated_by_class = "ModItemCharacterEffectCompositeDef",
 
 
-	__copy_group = "System",
 	object_class = "CharacterEffect",
 	msg_reactions = {
 		PlaceObj('MsgReaction', {
@@ -51,6 +50,7 @@ DefineClass.StationedSniper = {
 					end
 				end
 			end,
+			param_bindings = false,
 		}),
 	},
 }
