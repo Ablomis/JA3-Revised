@@ -507,8 +507,8 @@ PlaceObj('CombatAction', {
 	min_cost=4,
 	max_cost=8,
 	min_dex=50,
-	Description = T(868121469992, --[[CombatAction MGSetup Description]] "Focus on a cone-shaped area, immobilizing yourself and going <em>prone</em>. You can only shoot enemies inside that cone. Accuracy is increased and enemies will provoke <em>interrupt</em> attacks with actions inside the cone (even if your AP are spent)."),
-	DisplayName = T(893147932181, --[[CombatAction SniperSetup DisplayName]] "Set Sniper Rifle"),
+	Description = "Focus on a cone-shaped area, immobilizing yourself and going <em>prone</em>. You can only shoot enemies inside that cone. Accuracy is increased and enemies will provoke <em>interrupt</em> attacks with actions inside the cone (even if your AP are spent).",
+	DisplayName = "Set Sniper Rifle",
 	Execute = function (self, units, args)
 		local unit = units[1]
 		local ap = self:GetAPCost(unit, args)
@@ -537,7 +537,8 @@ PlaceObj('CombatAction', {
 		
 		local attacks = 1
 		if unit and (cost or -1) >= 0 then
-			attacks = unit:GetNumMGInterruptAttacks(true)
+			--attacks = unit:GetNumMGInterruptAttacks(true)
+			attacks = 1
 		end
 		local description = T{self.Description, bonus = bonus}
 		
