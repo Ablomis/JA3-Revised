@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1202,
+	'version', 1228,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -34,6 +34,7 @@ return PlaceObj('ModDef', {
 		"Code/InventoryRolloverInfo.lua",
 		"Code/MaxActionPoints.lua",
 		"Code/RolloverInventoryWeaponBase.lua",
+		"Code/Unit.lua",
 		"Code/SniperSetup.lua",
 		"Code/UnitActions.lua",
 		"Code/UnitCaching.lua",
@@ -77,7 +78,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/PSG1.lua",
 		"InventoryItem/BarretM82.lua",
 	},
-	'saved', 1690578350,
-	'code_hash', 1441972438269211036,
+	'saved', 1690591784,
+	'code_hash', 834248410260406670,
 	'steam_id', "3008768068",
 })

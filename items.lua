@@ -155,6 +155,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "Unit",
+	'CodeFileName', "Code/Unit.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
 	'comment', "SniperSetup code",
 	'CodeFileName', "Code/SniperSetup.lua",

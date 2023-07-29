@@ -592,22 +592,20 @@ PlaceObj('CombatAction', {
 	UIBegin = function (self, units, args)
 		CombatActionAttackStart(self, units, args, "IModeCombatAreaAim", "cancel")
 	end,
-	group = "MachineGun",
+	group = "SniperRifle",
 	id = "SniperSetup"
 })
 
 PlaceObj('CombatAction', {
 	ActionPoints = 1000,
-	Description = T(197752638092, --[[CombatAction SniperGPack Description]] "Cancel sniper setup and move freely."),
-	DisplayName = T(717760265144, --[[CombatAction SniperPack DisplayName]] "Pack Up Sniper Rifle"),
+	Description = "Cancel sniper setup and move freely.",
+	DisplayName = "Pack Up Sniper Rifle",
 	Execute = function (self, units, args)
 		local unit = units[1]
 		local ap = self:GetAPCost(unit, args)
 		NetStartCombatAction(self.id, unit, ap, args)
 	end,
-	GetAPCost = function (self, unit, args)
-		if unit:HasStatusEffect("ManningEmplacement") then return -1 end
-		
+	GetAPCost = function (self, unit, args)		
 		return self.ActionPoints
 	end,
 	Icon = "UI/Icons/Hud/dash",
@@ -619,9 +617,93 @@ PlaceObj('CombatAction', {
 	UIBegin = function (self, units, args)
 		self:Execute(units, args)
 	end,
-	group = "MachineGun",
+	group = "SniperRifle",
 	id = "SniperPack",
 	param_bindings = {},
+})
+
+PlaceObj('CombatAction', {
+	ActionPoints = 5000,
+	ActionType = "Ranged Attack",
+	AimType = "cone",
+	ConfigurableKeybind = false,
+	Description ="Rotate the sniper rifle's firing cone.",
+	DisplayName = "Rotate Sniper Rifle",
+	Execute = function (self, units, args)
+		local unit = units[1]
+		local ap = self:GetAPCost(unit, args)
+		args.aim_ap = unit:GetUIActionPoints() - ap
+		NetStartCombatAction(self.id, unit, ap, args)
+	end,
+	GetAPCost = function (self, unit, args)
+		local cost = CombatActions.MGSetup:GetAPCost(unit, args) / 2
+		cost = Max(1, cost / const.Scale.AP) * const.Scale.AP
+		return cost
+	end,
+	GetActionDescription = function (self, units)
+		local unit = units[1]
+		local bonus = 0
+		local cost = self:GetAPCost(unit)
+		
+		if unit and cost >= 0 then
+			local weapon = self:GetAttackWeapons(unit)
+			local aim = Min((unit:GetUIActionPoints() - cost) / const.Scale.AP, weapon.MaxAimActions)
+			local apply, value = Presets.ChanceToHitModifier.Default.Aim:CalcValue(unit, nil, nil, nil, nil, nil, nil, aim)
+			bonus = value
+		end
+		
+		local attacks = 1
+		if unit and (cost or -1) >= 0 then
+			attacks = unit:GetNumMGInterruptAttacks(true)
+		end
+		local description = T{self.Description, bonus = bonus}
+		if unit:UIHasAP(cost, self.id) then
+			description = description .. T{813594976169, "<newline><newline>Max interrupt attacks: <attacks>", attacks = attacks}
+		end
+		
+		return description
+	end,
+	GetActionResults = function (self, unit, args)
+		return CombatActions.Overwatch.GetActionResults(self, unit, args)
+	end,
+	GetAimParams = function (self, unit, weapon)
+		return CombatActions.Overwatch.GetAimParams(self, unit, weapon)
+	end,
+	GetAttackWeapons = function (self, unit, args)
+		if args and args.weapon then return args.weapon end
+		return unit:GetActiveWeapons("Firearm")
+	end,
+	GetMaxAimRange = function (self, unit, weapon)
+		return CombatActions.Overwatch.GetMaxAimRange(self, unit, weapon)
+	end,
+	GetMinAimRange = function (self, unit, weapon)
+		return CombatActions.Overwatch.GetMinAimRange(self, unit, weapon)
+	end,
+	GetUIState = function (self, units, args)
+		local unit = units[1]
+		local cost = self:GetAPCost(unit, args)
+		if cost < 0 then return "hidden" end
+		if not unit:UIHasAP(cost) then return "disabled", GetUnitNoApReason(unit) end
+		local in_water = terrain.IsWater(unit)
+		if in_water then 
+			return "disabled", AttackDisableReasons.Water 
+		end
+		return "enabled"
+	end,
+	Icon = "UI/Icons/Hud/bullet_hell",
+	IsAimableAttack = false,
+	KeybindingFromAction = "actionRedirectOverwatch",
+	KeybindingSortId = "2371",
+	MultiSelectBehavior = "hidden",
+	Run = function (self, unit, ap, ...)
+		--PlayVoiceResponse(unit, "Overwatch")
+		unit:SetActionCommand("SniperTarget", self.id, ap, ...)
+	end,
+	UIBegin = function (self, units, args)
+		CombatActionAttackStart(self, units, args, "IModeCombatAreaAim", "cancel")
+	end,
+	group = "SniperRifle",
+	id = "SniperRotate",
 })
 
 
