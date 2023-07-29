@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1258,
+	'version', 1268,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -78,7 +78,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/PSG1.lua",
 		"InventoryItem/BarretM82.lua",
 	},
-	'saved', 1690593413,
-	'code_hash', 2392665978862342154,
+	'saved', 1690594099,
+	'code_hash', 4906635440074693471,
 	'steam_id', "3008768068",
 })

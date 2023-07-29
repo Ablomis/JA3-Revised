@@ -9,10 +9,12 @@ PlaceObj('CombatAction', {
 	dmg_penalty = 0,
 	num_shots = 15,
 	cth_loss_per_shot=1,
+	Description = "Make a burst attack<coneDescription>. Lower accuracy against distant enemies, and further reduced accuracy if fired without being Set.<interrupts_info>",
+	DisplayName = "Long Burst",
 	Execute = function (self, units, args)
 		local unit = units[1]
 		local weapon = self:GetAttackWeapons(unit, args)
-		args.num_shots = weapon:GetAutofireShots(self)
+		args.num_shots = self.num_shots
 		args.multishot = true
 		local ap = self:GetAPCost(unit, args)
 		NetStartCombatAction(self.id, unit, ap, args)
@@ -130,7 +132,6 @@ PlaceObj('CombatAction', {
 	end,
 	group = "WeaponAttacks",
 	id = "MGBurstFire",
-	save_in = "Libs/Network",
 })
 
 

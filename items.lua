@@ -48,6 +48,7 @@ PlaceObj('ModItemCharacterEffectCompositeDef', {
 					end
 				end
 			end,
+			param_bindings = false,
 		}),
 	},
 }),
