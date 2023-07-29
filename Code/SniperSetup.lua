@@ -36,7 +36,7 @@ DefineClass.AIActionSniperSetup = {
       updateLastUnitShoot = ccAttacker
     end
     local targetPos = not IsPoint(attack_args.target) and attack_args.target:GetVisualPos() or attack_args.target
-    local notInGivenCommand = self.command ~= "OverwatchAction" and self.command ~= "MGSetup" and self.command ~= "MGTarget" and self.command ~= "SniperTarget"
+    local notInGivenCommand = self.command ~= "OverwatchAction" and self.command ~= "MGSetup" and self.command ~= "MGTarget" and self.command ~= "SniperTarget" and self.command ~= "SniperSetup"
     local attackerPos = self:GetVisualPos()
     local isRetaliation = attack_args.opportunity_attack_type and attack_args.opportunity_attack_type == "Retaliation"
     local isAIControlled = not ActionCameraPlaying and not self:IsMerc() and g_AIExecutionController and (not self.opportunity_attack or #g_CombatCamAttackStack == 0)

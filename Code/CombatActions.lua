@@ -655,7 +655,7 @@ PlaceObj('CombatAction', {
 		
 		local attacks = 1
 		if unit and (cost or -1) >= 0 then
-			attacks = unit:GetNumMGInterruptAttacks(true)
+			attacks = 1
 		end
 		local description = T{self.Description, bonus = bonus}
 		if unit:UIHasAP(cost, self.id) then

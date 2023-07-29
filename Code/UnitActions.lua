@@ -1,5 +1,4 @@
   function Unit:SniperTarget(action_id, cost_ap, args)
-    print('Targeting')
     args.permanent = true
     --args.num_attacks = self:GetNumMGInterruptAttacks()
     args.num_attacks=1
@@ -8,13 +7,11 @@
 end
 
 function Unit:SniperSetup(action_id, cost_ap, args)
-    print('SniperSetup')
     self.interruptable = false
     if self.stance ~= "Prone" then
       self:DoChangeStance("Prone")
     end
     self:AddStatusEffect("StationedSniper")
-    print('StationedSniper')
     self:UpdateHidden()
     self:FlushCombatCache()
     self:RecalcUIActions(true)

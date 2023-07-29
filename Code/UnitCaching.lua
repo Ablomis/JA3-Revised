@@ -629,7 +629,7 @@ function Unit:RecalcUIActions(force)
     actions = {
       "StopBandaging"
     }
-  elseif self:HasStatusEffect("StationedMachineGun") or self:HasStatusEffect("ManningEmplacement") or self:HasStatusEffect("StationedSniper") then
+  elseif self:HasStatusEffect("StationedMachineGun") or self:HasStatusEffect("ManningEmplacement") then
     actions = {}
     local action = self:GetDefaultAttackAction()
     actions[#actions + 1] = action.id
@@ -637,6 +637,17 @@ function Unit:RecalcUIActions(force)
       if def.id ~= "MGSetup"  then
         actions[#actions + 1] = def.id
       end
+    end)
+    actions[#actions + 1] = "Reload"
+    actions[#actions + 1] = "Unjam"
+elseif self:HasStatusEffect("StationedSniper") then
+    actions = {}
+    local action = self:GetDefaultAttackAction()
+    actions[#actions + 1] = action.id
+    ForEachPresetInGroup("CombatAction", "SniperRifle", function(def)
+    if def.id ~= "SniperSetup"  then
+        actions[#actions + 1] = def.id
+    end
     end)
     actions[#actions + 1] = "Reload"
     actions[#actions + 1] = "Unjam"

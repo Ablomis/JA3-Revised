@@ -246,7 +246,8 @@ if FirstLoad then
     if action_id ~= "MGSetup" and action_id ~= "MGRotate" then
       self.ActionPoints = 0
       Msg("UnitAPChanged", self, action_id)
-    elseif action_id ~= "SniperSetup" and action_id ~= "SniperRotate" then
+    end
+    if action_id ~= "SniperSetup" and action_id ~= "SniperRotate" then
         self.ActionPoints = 0
         Msg("UnitAPChanged", self, action_id)
     end
