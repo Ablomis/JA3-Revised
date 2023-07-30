@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1293,
+	'version', 1370,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -37,6 +37,7 @@ return PlaceObj('ModDef', {
 		"Code/SniperSetup.lua",
 		"Code/Unit.lua",
 		"Code/UnitActions.lua",
+		"Code/UnitAwareness.lua",
 		"Code/UnitCaching.lua",
 		"Code/UnitOverwatch.lua",
 		"InventoryItem/HiPower.lua",
@@ -78,7 +79,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/PSG1.lua",
 		"InventoryItem/BarretM82.lua",
 	},
-	'saved', 1690607631,
-	'code_hash', 120695036002747032,
+	'saved', 1690738503,
+	'code_hash', -4402059730664002507,
 	'steam_id', "3008768068",
 })

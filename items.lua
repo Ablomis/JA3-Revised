@@ -169,6 +169,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/UnitActions.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "UnitAwareness",
+	'CodeFileName', "Code/UnitAwareness.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "UnitCaching",
 	'CodeFileName', "Code/UnitCaching.lua",
 }),
@@ -184,6 +188,29 @@ PlaceObj('ModItemGameRuleDef', {
 			Event = "DamageTaken",
 			Handler = GetMissingSourceFallback(),
 			HandlerCode = GetMissingSourceFallback(),
+			param_bindings = false,
+		}),
+	},
+}),
+PlaceObj('ModItemGameRuleDef', {
+	id = "FullAPOnCombatStart",
+	msg_reactions = {
+		PlaceObj('MsgReaction', {
+			Event = "CombatStarting",
+			Handler = function (self, dynamic_data)
+				  for i = 1, #(g_AttackSpentAPQueue or empty_table) - 2, 3 do
+				    local attacker, time, ap = g_AttackSpentAPQueue[i], g_AttackSpentAPQueue[i + 1], g_AttackSpentAPQueue[i + 2]
+				      attacker:RemoveStatusEffect("SpentAP")
+					print(attacker.ActionPoints )
+				  end
+			end,
+			HandlerCode = function (self, dynamic_data)
+				  for i = 1, #(g_AttackSpentAPQueue or empty_table) - 2, 3 do
+				    local attacker, time, ap = g_AttackSpentAPQueue[i], g_AttackSpentAPQueue[i + 1], g_AttackSpentAPQueue[i + 2]
+				      attacker:RemoveStatusEffect("SpentAP")
+					print(attacker.ActionPoints )
+				  end
+			end,
 			param_bindings = false,
 		}),
 	},
@@ -3010,7 +3037,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'DamageFalloff', 90,
 	'Recoil', 28,
 	'OverwatchAngle', 360,
-	'Noise', 30,
+	'Noise', 0,
 	'HandSlot', "TwoHanded",
 	'Entity', "Weapon_Gewehr98",
 	'ComponentSlots', {
