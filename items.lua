@@ -202,8 +202,22 @@ PlaceObj('ModItemGameRuleDef', {
 	msg_reactions = {
 		PlaceObj('MsgReaction', {
 			Event = "DamageTaken",
-			Handler = GetMissingSourceFallback(),
-			HandlerCode = GetMissingSourceFallback(),
+			Handler = function (self, attacker, target, dmg, hit_descr)
+				ap_penalty = 1
+				if target:GetStatusEffect("SpentAP") then
+					ap_penalty = target:GetEffectValue("spent_ap") +1
+				else target:AddStatusEffect("SpentAP") 
+				end
+				target:SetEffectValue("spent_ap", ap_penalty)
+			end,
+			HandlerCode = function (self, attacker, target, dmg, hit_descr)
+				ap_penalty = 1
+				if target:GetStatusEffect("SpentAP") then
+					ap_penalty = target:GetEffectValue("spent_ap") +1
+				else target:AddStatusEffect("SpentAP") 
+				end
+				target:SetEffectValue("spent_ap", ap_penalty)
+			end,
 			param_bindings = false,
 		}),
 	},
