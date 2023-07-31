@@ -23,3 +23,13 @@ function IsWeaponUpgradeTarget(drag_item, target_item)
     local target = FindWeaponUpgradeTarget(target_item, drag_item)
     return target and IsWeaponAvailableForUpgrade(target, drag_item)
 end
+
+function GetAvailableComponents(unit, slot, weapon)
+    local mod_list
+    unit:ForEachItemInSlot("Inventory", function(item, slot, l, t, mod_list)
+        if item:IsKindOf("WeaponMod") then
+          unit:RemoveItem("Inventory", item)
+          table.insert_unique(mod_list, item)
+        end
+      end,mod_list)
+end

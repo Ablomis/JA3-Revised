@@ -70,7 +70,6 @@ function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_con
     }) or 0
     action_name = T(160472488023, "Reload")
     elseif is_upgrade then
-        print('is upgrade' ,is_upgrade)
         local dest_unit = dest_container
         if IsKindOf(dest_unit, "UnitData") then
           dest_unit = g_Units[dest_unit.session_id]
@@ -588,7 +587,6 @@ function MoveItem(args)
     end
     for k, v in pairs(weapon_obj.components) do
         if(k==item.Slot) then
-            print(k,v)
             if v~='' then
                 local dbItem = PlaceInventoryItem(v)
                 dbItem.condition= 100
