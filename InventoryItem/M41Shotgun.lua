@@ -1,5 +1,5 @@
-UndefineClass('M41')
-DefineClass.M41 = {
+UndefineClass('M41Shotgun')
+DefineClass.M41Shotgun = {
 	__parents = { "Shotgun" },
 	__generated_by_class = "ModItemInventoryItemCompositeDef",
 
@@ -9,10 +9,10 @@ DefineClass.M41 = {
 	Reliability = 71,
 	ScrapParts = 10,
 	Icon = "UI/Icons/Weapons/M1014",
-	DisplayName = T(912289007083, --[[ModItemInventoryItemCompositeDef M41 DisplayName]] "M1014"),
-	DisplayNamePlural = T(492831842739, --[[ModItemInventoryItemCompositeDef M41 DisplayNamePlural]] "M1014s"),
-	Description = T(632714431392, --[[ModItemInventoryItemCompositeDef M41 Description]] "12-gauge semi-auto slick Italian. Boasting little need for maintenance and high level of reliability, it is loved by law enforcement and military alike."),
-	AdditionalHint = T(354076797360, --[[ModItemInventoryItemCompositeDef M41 AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Longer range\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Increased bonus from Aiming"),
+	DisplayName = T(183263371273, --[[ModItemInventoryItemCompositeDef M41Shotgun DisplayName]] "M1014"),
+	DisplayNamePlural = T(376626654469, --[[ModItemInventoryItemCompositeDef M41Shotgun DisplayNamePlural]] "M1014s"),
+	Description = T(863714207754, --[[ModItemInventoryItemCompositeDef M41Shotgun Description]] "12-gauge semi-auto slick Italian. Boasting little need for maintenance and high level of reliability, it is loved by law enforcement and military alike."),
+	AdditionalHint = T(313639405986, --[[ModItemInventoryItemCompositeDef M41Shotgun AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Longer range\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Increased bonus from Aiming"),
 	LargeItem = true,
 	UnitStat = "Marksmanship",
 	Cost = 1700,
@@ -22,10 +22,12 @@ DefineClass.M41 = {
 	AimAccuracy = 5,
 	MagazineSize = 6,
 	WeaponRange = 16,
+	DamageFalloff = 20,
 	Recoil = 28,
 	PointBlankRange = true,
 	OverwatchAngle = 1200,
 	BuckshotConeAngle = 900,
+	BuckshotFalloffDamage = 100,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Benelli_M4",
 	ComponentSlots = {
@@ -71,7 +73,7 @@ DefineClass.M41 = {
 		"CancelShotCone",
 	},
 	ShootAP = 5000,
-	ReloadAP = 3000,
+	ReloadAP = 6000,
 	ReadyAP = 2000,
 }
 
