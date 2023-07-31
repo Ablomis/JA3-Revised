@@ -3,7 +3,7 @@
     --args.num_attacks = self:GetNumMGInterruptAttacks()
     args.num_attacks=1
     self.interruptable = false
-    return self:OverwatchAction(action_id, cost_ap, args)
+    return self:OverwatchAction(action_id, cost_ap, args, 1.5)
 end
 
 function Unit:SniperSetup(action_id, cost_ap, args)
