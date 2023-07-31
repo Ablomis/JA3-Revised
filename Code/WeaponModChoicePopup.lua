@@ -615,7 +615,11 @@ PlaceObj("XTemplate", {
               "slot alternatives",
               "array",
               function(parent, context)
-                print(context.slot.AvailableComponents)
+                --local components = GetAvailableComponents(unit, context.slotPreset.id, nil)
+                for k,v in pairs(GetDialog("ModifyWeaponDlg").idModifyDialog) do
+                    print(k,v)
+                end
+                print(GetDialog("ModifyWeaponDlg").idModifyDialog.selectedWeapon)
                 return context.slot.AvailableComponents
               end,
               "__context",

@@ -99,7 +99,7 @@ if FirstLoad then
       orient = CalcOrientation(step_pos, target_pos)
     }
   end
-  function Unit:OverwatchAction(action_id, cost_ap, args)
+  function Unit:OverwatchAction(action_id, cost_ap, args, cone_multiplier)
     self:EndInterruptableMovement()
     args = table.copy(args)
     args.OverwatchAction = true
@@ -189,6 +189,7 @@ if FirstLoad then
     local aoe_params = action and action:GetAimParams(self, weapon) or weapon:GetAreaAttackParams(action_id, self)
     local distance = Clamp(attacker_pos3D:Dist(target_pos), aoe_params.min_range * const.SlabSizeX, aoe_params.max_range * const.SlabSizeX)
     local cone_angle = aoe_params.cone_angle
+    local cone_angle = cone_angle*cone_multiplier
     local target_angle = CalcOrientation(step_pos, target_pos)
     local expiration_turn = args.expiration_turn
     if not expiration_turn then
