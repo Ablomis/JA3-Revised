@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1552,
+	'version', 1553,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -85,7 +85,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/ReflexSight.lua",
 		"InventoryItem/ReflexSightAdvanced.lua",
 	},
-	'saved', 1690768497,
-	'code_hash', -2671518881504177383,
+	'saved', 1690769050,
+	'code_hash', 2994025708831437241,
 	'steam_id', "3008768068",
 })

@@ -594,9 +594,7 @@ function MoveItem(args)
                 dbItem.condition= 100
                 dbItem.Slot= item.Slot
                 dbItem.Name=v
-                
                 src_container:AddItem('Inventory',dbItem)
-                print(dbItem)
             end
         end
     end
