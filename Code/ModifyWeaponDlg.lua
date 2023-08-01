@@ -597,7 +597,7 @@ DefineClass.ModifyWeaponDlg = {
       dbItem.Name=oldComponent
       table.find_value(self.playerUnits, "session_id", owner):AddItem('Inventory',dbItem)
       if(self.context.mod~=nil) then
-        print(self.context.mod)
+        
         table.find_value(self.playerUnits, "session_id", owner):RemoveItem('Inventory',self.context.mod,"no_update")
         end
 

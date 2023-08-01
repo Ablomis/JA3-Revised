@@ -594,9 +594,7 @@ PlaceObj("XTemplate", {
                 local modifyDlg = GetDialog("ModifyWeaponDlg").idModifyDialog
                 local costs, _, affordable, affordablePerType = modifyDlg:GetChangesCost(item.Slot, item.Name)
                 context.affordable = true
-                context.mod = item
-                modifyDlg.context.mod = item
-               
+                context.mod = item   
                 if true then
                   child.idPartCostAmount:SetText(item.condition)
                   child.idPartCost:SetVisible(true)
@@ -806,8 +804,9 @@ PlaceObj("XTemplate", {
                   "func",
                   function(self, rollover)
                     local popup = self:ResolveId("node")
+                    GetDialog("ModifyWeaponDlg").idModifyDialog.context.mod=self.context.mod
                     if rollover then
-                      popup:ModifyPartPreview(self.context.item.Name, "rollover")
+                      popup:ModifyPartPreview(self.context.mod.Name, "rollover")
                     else
                       popup:ModifyPartPreview(false, "rollover")
                     end
