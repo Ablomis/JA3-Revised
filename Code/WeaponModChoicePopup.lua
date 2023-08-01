@@ -97,44 +97,7 @@ PlaceObj("XTemplate", {
                   costText:SetTranslate(true)
                   return costContainer, costText
                 end
-                local canAffordNone = false
-                local costs, _, _, canAffordTable = modifyDlg:GetChangesCost(popup.context.slot.SlotType)
                 local costCount = 0
-                for costType, amount in sorted_pairs(costs) do
-                  local costPreset = SectorOperationResouces[costType]
-                  local name = costPreset.name
-                  local affordable = canAffordTable[costType]
-                  local color = affordable and GameColors.D or GameColors.F
-                  if affordable then
-                    canAffordNone = false
-                  end
-                  local costContainer, costText = lSpawnCostText()
-                  costText:SetText(T({
-                    247376794745,
-                    "<name><right><style PDARolloverTextBold><amount></style>",
-                    name = name,
-                    amount = amount
-                  }))
-                  local icon = XTemplateSpawn("XImage", costContainer)
-                  icon:SetHAlign("right")
-                  if costType == "Parts" and not affordable then
-                    icon:SetImage("UI/Icons/mod_parts_lack")
-                  else
-                    icon:SetImage(costPreset.icon)
-                  end
-                  icon:SetImageColor(color)
-                  icon:SetUseClipBox(false)
-                  icon:SetClip(false)
-                  icon:SetDock("right")
-                  icon:SetImageScale(point(850, 850))
-                  icon:SetMinWidth(20)
-                  icon:SetMargins(box(5, 0, 0, 0))
-                  if not affordable then
-                    costContainer:SetBackground(GameColors.I)
-                  end
-                  costText:SetTextStyle(affordable and "PDARolloverTextDark" or "PDARolloverTextBigger")
-                  costCount = costCount + 1
-                end
                 if costCount == 0 then
                   local _, costText = lSpawnCostText()
                   costText:SetText(T(693421996481, "<style PDARolloverTextDark>Free</style>"))
@@ -395,7 +358,8 @@ PlaceObj("XTemplate", {
                     local canModify = modifyDlg:CanModifySlot(host.context.slot, part.id)
                     local notBroken = modifyDlg.context.weapon.Condition ~= 0
                     local otherPlayerNotTouching = not OtherPlayerLookingAtSameWeapon()
-                    return affordable and allowed and canModify and notBroken and otherPlayerNotTouching and "enabled" or "disabled"
+                    --print(affordable and allowed and canModify and notBroken and otherPlayerNotTouching and "enabled" or "disabled")
+                    return "enabled"
                   end,
                   "OnAction",
                   function(self, host, source, ...)
@@ -615,50 +579,33 @@ PlaceObj("XTemplate", {
               "slot alternatives",
               "array",
               function(parent, context)
-                --local components = GetAvailableComponents(unit, context.slotPreset.id, nil)
-                for k,v in pairs(GetDialog("ModifyWeaponDlg").idModifyDialog) do
-                    print(k,v)
-                end
-                print(GetDialog("ModifyWeaponDlg").idModifyDialog.selectedWeapon)
-                return context.slot.AvailableComponents
+                local unit = g_Units[GetDialog("ModifyWeaponDlg").idModifyDialog.context.owner]
+                local components = GetAvailableComponents(unit, context.slotPreset.id, nil)
+                return components
               end,
               "__context",
               function(parent, context, item, i, n)
                 return SubContext(context, {
-                  item = IsKindOf(item, "WeaponColor") and item or WeaponComponents[item]
+                  item = IsKindOf(item, "WeaponMod") and item or WeaponComponents[item.Name]
                 })
               end,
               "run_after",
               function(child, context, item, i, n, last)
                 local modifyDlg = GetDialog("ModifyWeaponDlg").idModifyDialog
-                local costs, _, affordable, affordablePerType = modifyDlg:GetChangesCost(context.slot.SlotType, context.item.id)
-                context.affordable = affordable
-                local partCost = false
-                local hasSpecialCost = false
-                for costName, amount in pairs(costs) do
-                  if costName == "Parts" then
-                    partCost = amount
-                  else
-                    hasSpecialCost = costName
-                  end
-                end
-                if hasSpecialCost then
-                  local specialCostPreset = SectorOperationResouces[hasSpecialCost]
-                  child.idSpecialPartCost:SetVisible(true)
-                  child.idSpecialPartCost:SetImage(specialCostPreset.icon)
-                  local canAffordSpecial = affordablePerType[hasSpecialCost]
-                  local color = canAffordSpecial and GameColors.D or GameColors.I
-                  child.idSpecialPartCost:SetImageColor(color)
-                end
-                if partCost then
-                  child.idPartCostAmount:SetText(partCost)
+                local costs, _, affordable, affordablePerType = modifyDlg:GetChangesCost(item.Slot, item.Name)
+                context.affordable = true
+                context.mod = item
+                modifyDlg.context.mod = item
+               
+                if true then
+                  child.idPartCostAmount:SetText(item.condition)
                   child.idPartCost:SetVisible(true)
-                  local canAffordParts = affordablePerType.Parts
-                  local color = canAffordParts and GameColors.D or GameColors.I
-                  child.idPartCostIcon:SetImageColor(color)
-                  child.idPartCostIcon:SetImage(canAffordParts and "UI/SectorOperations/T_Icon_Parts" or "UI/Icons/mod_parts_lack")
+                  --local canAffordParts = affordablePerType.Parts
+                  --local color = canAffordParts and GameColors.D or GameColors.I
+                  --child.idPartCostIcon:SetImageColor(color)
+                  --child.idPartCostIcon:SetImage(canAffordParts and "UI/SectorOperations/T_Icon_Parts" or "UI/Icons/mod_parts_lack")
                 end
-                rawset(child, "itemId", item)
+                rawset(child, "itemId", item.Name)
               end
             }, {
               PlaceObj("XTemplateWindow", {
@@ -693,14 +640,14 @@ PlaceObj("XTemplate", {
                   end
                   local weapon = ResolvePropObj(self.context)
                   local slot = self.context.slot
-                  local item = weapon.components[self.context.item.Slot]
-                  local selected = item == self.context.item.id
+                  local item = weapon.components[self.context.mod.Slot]
+                  local selected = item == self.context.mod.Name
                   self:SetTransparency(selected and 125 or 0)
                   rawset(self, "currentlyEquipped", selected)
-                  if IsKindOf(self.context.item, "WeaponColor") then
-                    self.idIcon:SetBackground(self.context.item.color)
+                  if IsKindOf(self.context.mod, "WeaponColor") then
+                    self.idIcon:SetBackground(self.context.mod.color)
                   else
-                    self.idIcon:SetImage(GetWeaponComponentIcon(self.context.item, weapon))
+                    self.idIcon:SetImage(GetWeaponComponentIcon(self.context.mod, weapon))
                   end
                 end,
                 "FXMouseIn",
@@ -717,7 +664,7 @@ PlaceObj("XTemplate", {
                 RGBA(255, 255, 255, 0),
                 "OnPress",
                 function(self, gamepad)
-                  local itemId = self.context.item and self.context.item.id
+                  local itemId = self.context.mod.Name
                   local currentlyEquipped = rawget(self, "currentlyEquipped")
                   if currentlyEquipped then
                     itemId = false
@@ -860,7 +807,7 @@ PlaceObj("XTemplate", {
                   function(self, rollover)
                     local popup = self:ResolveId("node")
                     if rollover then
-                      popup:ModifyPartPreview(self.context.item and self.context.item.id, "rollover")
+                      popup:ModifyPartPreview(self.context.item.Name, "rollover")
                     else
                       popup:ModifyPartPreview(false, "rollover")
                     end

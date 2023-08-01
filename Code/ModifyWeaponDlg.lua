@@ -472,7 +472,7 @@ DefineClass.ModifyWeaponDlg = {
       return
     end
     local costs, anyChanges, canAfford = self:GetChangesCost(modSlot)
-    if not anyChanges or not canAfford then
+    if not anyChanges then
       return
     end
     local componentToChangeTo = self.weaponClone.components[modSlot]
@@ -591,12 +591,15 @@ DefineClass.ModifyWeaponDlg = {
       clone:SetWeaponComponent(modSlot, componentToChangeTo)
       clone:UpdateVisualObj(self.weaponModel)
       local oldComponent = actualWeapon.components[modSlot]
-
       local dbItem = PlaceInventoryItem(oldComponent)
       dbItem.condition= 100
       dbItem.Slot= modSlot
       dbItem.Name=oldComponent
       table.find_value(self.playerUnits, "session_id", owner):AddItem('Inventory',dbItem)
+      if(self.context.mod~=nil) then
+        print(self.context.mod)
+        table.find_value(self.playerUnits, "session_id", owner):RemoveItem('Inventory',self.context.mod,"no_update")
+        end
 
       NetSyncEvent("WeaponModified", owner, slot, clone.components, clone.components.Color, success, modAdded, bestMechSkillUnit)
       CreateMapRealTimeThread(function()

@@ -257,18 +257,18 @@ PlaceObj('ModItemGameRuleDef', {
 		PlaceObj('MsgReaction', {
 			Event = "UnitStealthChanged",
 			Handler = function (self, unit)
-				--[[local dbItem = PlaceInventoryItem("ReflexSightAdvanced")
+				local dbItem = PlaceInventoryItem("ReflexSightAdvanced")
 				dbItem.condition= 100
 				dbItem.Slot= 'Scope'
 				dbItem.Name='ReflexSightAdvanced'
-				unit:AddItem('Inventory',dbItem)]]--
+				unit:AddItem('Inventory',dbItem)
 			end,
 			HandlerCode = function (self, unit)
-				--[[local dbItem = PlaceInventoryItem("ReflexSightAdvanced")
+				local dbItem = PlaceInventoryItem("ReflexSightAdvanced")
 				dbItem.condition= 100
 				dbItem.Slot= 'Scope'
 				dbItem.Name='ReflexSightAdvanced'
-				unit:AddItem('Inventory',dbItem)]]--
+				unit:AddItem('Inventory',dbItem)
 			end,
 			param_bindings = false,
 		}),

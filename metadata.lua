@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1601,
+	'version', 1694,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -93,7 +93,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/ScopeCOGQuick.lua",
 		"InventoryItem/ThermalScope.lua",
 	},
-	'saved', 1690832788,
-	'code_hash', -830958550769490536,
+	'saved', 1690852684,
+	'code_hash', 1524836819797294772,
 	'steam_id', "3008768068",
 })

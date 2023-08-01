@@ -25,11 +25,11 @@ function IsWeaponUpgradeTarget(drag_item, target_item)
 end
 
 function GetAvailableComponents(unit, slot, weapon)
-    local mod_list
-    print(slot)
-    return unit:ForEachItemInSlot("Inventory", function(item)
+    local mod_list = {}
+    unit:ForEachItemInSlot("Inventory", function(item)
         if item:IsKindOf("WeaponMod") and item.Slot==slot then
-          table.insert_unique(mod_list, item)
+            table.insert(mod_list, item)
         end
       end,mod_list)
+      return mod_list
 end
