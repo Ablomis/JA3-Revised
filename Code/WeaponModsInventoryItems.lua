@@ -36,11 +36,12 @@ DefineClass.WeaponMod = {
 
 DefineClass.Mag = {
     __parents = {
-      "InventoryItem","ItemWithCondition"
+      "InventoryItem"
     },
     properties = {
       {
         id = "Type",
+        category = "Caliber",
         template = true,
         default = 'AR15',
         editor = "combo",
@@ -52,17 +53,34 @@ DefineClass.Mag = {
           end
       },
       {
-        id = "Capacity",
-        template = true,
+        category = "Caliber",
+        id = "MagazineSize",
+        name = "Magazine Size",
+        help = "Number of bullets in a single clip",
+        editor = "number",
         default = 30,
-        editor = "number"
+        template = true,
+        min = 1,
+        max = 500,
+        modifiable = true
       },
       {
         id = "Amount",
+        category = "Caliber",
         template = true,
-        default = 30,
+        default = 0,
         editor = "number"
-      }
+      },
+      {
+        category = "Caliber",
+        id = "Caliber",
+        editor = "combo",
+        default = false,
+        template = true,
+        items = function(self)
+          return PresetGroupCombo("Caliber", "Default")
+        end
+      },
     }
 }
 
