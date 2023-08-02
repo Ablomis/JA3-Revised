@@ -15,7 +15,7 @@ function FindMagReloadTarget(item, ammo)
       return false
     end
     local anyAmmo = 0 < #ammoForWeapon
-    local fullMag = mag.Amount == mag.MagazineSize
+    local fullMag = mag.ammo.Amount == mag.MagazineSize
     if fullMag then
       if not anyAmmo then
         return false, AttackDisableReasons.FullClip

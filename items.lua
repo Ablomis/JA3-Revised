@@ -106,11 +106,6 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/AreaAttackParameters.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "ChanceToHit",
-	'comment', "Updated CTH calculation",
-	'CodeFileName', "Code/ChanceToHit.lua",
-}),
-PlaceObj('ModItemCode', {
 	'name', "ClassDef-Inventory",
 	'CodeFileName', "Code/ClassDef-Inventory.lua",
 }),
@@ -129,6 +124,10 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "CustomSuppActionFXInherit_Actor",
 	'CodeFileName', "Code/CustomSuppActionFXInherit_Actor.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "CustomWeaponComponentEffect",
+	'CodeFileName', "Code/CustomWeaponComponentEffect.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "DamageCalculation",
@@ -174,10 +173,6 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "RolloverInventoryWeaponBase",
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
-}),
-PlaceObj('ModItemCode', {
-	'name', "CustomWeaponComponentEffect",
-	'CodeFileName', "Code/CustomWeaponComponentEffect.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
@@ -3571,16 +3566,5 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
-}),
-PlaceObj('ModItemInventoryItemCompositeDef', {
-	'Group', "Ammo",
-	'Id', "Mag_MP5",
-	'object_class', "Mag",
-	'Repairable', false,
-	'Icon', "UI/Icons/Upgrades/mp5_mag_normal",
-	'DisplayName', T(509154228913, --[[ModItemInventoryItemCompositeDef Mag_MP5 DisplayName]] "MP5 Magazine"),
-	'DisplayNamePlural', T(880180760499, --[[ModItemInventoryItemCompositeDef Mag_MP5 DisplayNamePlural]] "MP5 Magazines"),
-	'Type', "MP5",
-	'Caliber', "9mm",
 }),
 }

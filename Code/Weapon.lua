@@ -84,7 +84,7 @@ function FindWeaponReloadTarget(item, ammo)
     local prev_id = self.ammo and self.ammo.class
     local add = 0
     local change
-    if true then 
+    if not IsKindOf(ammo, "Mag") then 
         if self.ammo and prev_id == ammo.class then
             add = Max(0, Min(ammo.Amount, self.MagazineSize - self.ammo.Amount))
             self.ammo.Amount = self.ammo.Amount + add
@@ -106,7 +106,7 @@ function FindWeaponReloadTarget(item, ammo)
                 self:AddModifier("ammo", mod.target_prop, mod.mod_mul, mod.mod_add)
             end
         end
-    elseif IsKindOf(ammo, "Mag") then
+    else
         if self.ammo and prev_id == ammo.ammo.class then
             add = Max(0, Min(ammo.ammo.Amount, self.MagazineSize - self.ammo.Amount))
             self.ammo.Amount = self.ammo.Amount + add
