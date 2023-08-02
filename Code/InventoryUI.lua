@@ -84,8 +84,8 @@
     if under_item == drag_item then
       under_item = false
     end
-    --local is_reload = IsReload(drag_item, under_item)
-    --local is_mag_reload = IsMagReload(drag_item, under_item)
+    local is_reload = IsReload(drag_item, under_item)
+    local is_mag_reload = IsMagReload(drag_item, under_item)
     local is_upgrade = IsUpgrade(drag_item, under_item)
     local ap_cost, unit_ap, action_name = GetAPCostAndUnit(drag_item, InventoryStartDragContext, InventoryStartDragSlotName, slot:GetContext(), slot.slot_name, under_item, is_reload, is_upgrade, is_mag_reload)
     if not mouse_text then
@@ -368,9 +368,7 @@
       self.idTopRightText:SetText(item:GetConditionText() or "")
     end
     if IsKindOfClasses(item, "Mag") and not IsKindOf(item, "InventoryStack") then
-        if(item.ammo ) then self.idBottomRightText:SetText(item.ammo.Amount or "")
-        else self.idBottomRightText:SetText(0)
-        end
+        self.idBottomRightText:SetText(item.Amount or 0)
     end
     local txt = item:GetItemStatusUI()
     self.idCenterText:SetTextStyle("DescriptionTextAPRed")
@@ -427,8 +425,8 @@
     if IsKindOf(context, "UnitData") and g_Combat then
       context = g_Units[context.session_id]
     end
-   -- local is_reload = IsReload(drag_item, cur_item)
-    --local is_mag_reload = IsMagReload(drag_item, cur_item)
+    local is_reload = IsReload(drag_item, cur_item)
+    local is_mag_reload = IsMagReload(drag_item, cur_item)
     local is_upgrade = IsUpgrade(drag_item, cur_item)
     local ap_cost, unit_ap, action_name = GetAPCostAndUnit(drag_item, InventoryStartDragContext, InventoryStartDragSlotName, context, slot_name, cur_item, is_reload,is_upgrade, is_mag_reload)
     if not mouse_text then
@@ -2748,7 +2746,6 @@
     ItemClassToRecipes = false
   end
   function OnMsg.DataLoaded()
-    print('loaded')
     ItemClassToRecipes = {}
     local push = function(item_class, recipe)
       local t = ItemClassToRecipes[item_class] or {}
@@ -2769,6 +2766,9 @@
     end
     if not target_item then
       return
+    end 
+    if not ItemClassToRecipes then
+        return false
     end
     local drag_id = drag_item.class
     local target_id = target_item.class

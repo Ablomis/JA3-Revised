@@ -65,6 +65,13 @@ DefineClass.Mag = {
         modifiable = true
       },
       {
+        id = "Amount",
+        category = "Caliber",
+        template = true,
+        default = 0,
+        editor = "number"
+      },
+      {
         category = "Caliber",
         id = "Caliber",
         editor = "combo",

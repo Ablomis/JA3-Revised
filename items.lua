@@ -106,6 +106,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/AreaAttackParameters.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "ChanceToHit",
+	'CodeFileName', "Code/ChanceToHit.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "ClassDef-Inventory",
 	'CodeFileName', "Code/ClassDef-Inventory.lua",
 }),
@@ -3566,5 +3570,14 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+}),
+PlaceObj('ModItemInventoryItemCompositeDef', {
+	'Id', "MP5MagazineNormal",
+	'object_class', "Mag",
+	'Icon', "UI/Icons/Upgrades/mp5_mag_normal",
+	'DisplayName', T(511605320312, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayName]] "MP5 Magazine"),
+	'DisplayNamePlural', T(655181146435, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayNamePlural]] "MP5 Magazines"),
+	'Type', "MP5",
+	'Caliber', "9mm",
 }),
 }

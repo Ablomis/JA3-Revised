@@ -404,8 +404,8 @@ function MoveItem(args)
     return false, "no change"
   end
   local is_upgrade = IsUpgrade(item, item_at_dest)
-  --local is_reload = IsReload(item, item_at_dest)
-  --local is_mag_reload = IsMagReload(item, item_at_dest)
+  local is_reload = IsReload(item, item_at_dest)
+  local is_mag_reload = IsMagReload(item, item_at_dest)
   local is_refill = IsMedicineRefill(item, item_at_dest)
   local is_combine = (not IsKindOf(dest_container, "Unit") or not dest_container:IsDead()) and not IsKindOf(dest_container, "ItemContainer") and MoveItem_CombinesItems and InventoryIsCombineTarget(item, item_at_dest)
   if src_container and item.locked then
@@ -576,7 +576,7 @@ function MoveItem(args)
         prev_ammo_dest_container:AddAndStackItem(prev_loaded_ammo)
       end
     end
-    if item.Amount == 0 then
+    if item.Amount == 0 and not IsKindOfClasses(item, "Mag") then
       if src_container then
         src_container:RemoveItem(src_container_slot_name, item, "no_update")
       end

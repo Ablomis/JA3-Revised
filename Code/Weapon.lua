@@ -56,12 +56,11 @@ function FindWeaponReloadTarget(item, ammo)
     end
     local anyAmmo
     local onlyAmmoIsCurrent
-    if IsKindOf(ammoForWeapon, "Ammo", "Ordnance") then 
+    if IsKindOfClasses(ammoForWeapon[1], "Ammo", "Ordnance") then 
         anyAmmo = 0 < #ammoForWeapon
         onlyAmmoIsCurrent = weapon.ammo and #ammoForWeapon == 1 and ammoForWeapon[1].class == weapon.ammo.class
-    elseif IsKindOf(ammoForWeapon, "Mag") then
-        anyAmmo = 0 < ammoForWeapon.ammo.Amount
-        onlyAmmoIsCurrent = weapon.ammo and ammoForWeapon.ammo.Amount == 1 and ammoForWeapon.ammo.class == weapon.ammo.class
+    elseif IsKindOfClasses(ammoForWeapon[1], "Mag") then
+        return true
     end
     local fullMag = weapon.ammo and weapon.ammo.Amount == weapon.MagazineSize
     if fullMag then
@@ -78,13 +77,13 @@ function FindWeaponReloadTarget(item, ammo)
   function Firearm:Reload(ammo, suspend_fx, delayed_fx)
     local prev_ammo = self.ammo
     local prev_ammoAmount
-    --if(self.ammo) then prev_ammoAmount = self.ammo.Amount
-    --else prev_ammoAmount = 0
-    --end
+    if(self.ammo) then prev_ammoAmount = self.ammo.Amount
+    else prev_ammoAmount = 0
+    end
     local prev_id = self.ammo and self.ammo.class
     local add = 0
     local change
-    if not IsKindOf(ammo, "Mag") then 
+    if not IsKindOfClasses(ammo, "Mag") then 
         if self.ammo and prev_id == ammo.class then
             add = Max(0, Min(ammo.Amount, self.MagazineSize - self.ammo.Amount))
             self.ammo.Amount = self.ammo.Amount + add
@@ -106,30 +105,18 @@ function FindWeaponReloadTarget(item, ammo)
                 self:AddModifier("ammo", mod.target_prop, mod.mod_mul, mod.mod_add)
             end
         end
-    else
-        if self.ammo and prev_id == ammo.ammo.class then
-            add = Max(0, Min(ammo.ammo.Amount, self.MagazineSize - self.ammo.Amount))
-            self.ammo.Amount = self.ammo.Amount + add
-            ammo.ammo.Amount = ammo.ammo.Amount - add
-            change = 0 < add
-            ObjModified(self)
-            return false, false, change
-        else
-            change = true
-            if ammo.ammo and 0 < ammo.ammo.Amount then
-                --add = Min(ammo.ammo.Amount, self.MagazineSize)
-                --local item = PlaceInventoryItem(ammo.class)
-                --ammo.ammo.Amount = ammo.Amount - add
-                self.ammo = ammo.ammo.Amount
-                self.ammo.Amount = add
-                ammo.ammo = prev_ammo
-                ammo.ammo.Amount = prev_ammoAmount
-            end
-            self:RemoveModifiers("ammo")
+    elseif IsKindOfClasses(ammo, "Mag") then
+        self.ammo = ammo.ammo
+        if(self.ammo) then self.ammo.Amount = ammo.Amount end
+        ammo.Amount = prev_ammoAmount
+        ammo.ammo = prev_ammo
+        self:RemoveModifiers("ammo")
+        if(self.ammo) then
             for _, mod in ipairs(self.ammo.Modifications) do
                 self:AddModifier("ammo", mod.target_prop, mod.mod_mul, mod.mod_add)
             end
         end
+        ObjModified(self)
     end
     if not suspend_fx then
       CreateGameTimeThread(function(obj, delayed_fx)

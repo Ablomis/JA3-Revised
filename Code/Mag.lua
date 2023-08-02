@@ -15,7 +15,7 @@ function FindMagReloadTarget(item, ammo)
       return false
     end
     local anyAmmo = 0 < #ammoForWeapon
-    local fullMag = mag.ammo.Amount == mag.MagazineSize
+    local fullMag = mag.Amount == mag.MagazineSize
     if fullMag then
       if not anyAmmo then
         return false, AttackDisableReasons.FullClip
@@ -34,8 +34,8 @@ function FindMagReloadTarget(item, ammo)
     local add = 0
     local change
     if mag.ammo and prev_id == ammo.class then
-      add = Max(0, Min(ammo.Amount, mag.MagazineSize - mag.ammo.Amount))
-      mag.ammo.Amount = mag.ammo.Amount + add
+      add = Max(0, Min(ammo.Amount, mag.MagazineSize - mag.Amount))
+      mag.Amount = mag.Amount + add
       ammo.Amount = ammo.Amount - add
       change = 0 < add
       ObjModified(mag)
@@ -47,7 +47,7 @@ function FindMagReloadTarget(item, ammo)
         local item = PlaceInventoryItem(ammo.class)
         ammo.Amount = ammo.Amount - add
         mag.ammo = item
-        mag.ammo.Amount = add
+        mag.Amount = add
       end
     end
     if not suspend_fx then
