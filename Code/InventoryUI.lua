@@ -1,16 +1,4 @@
 
-
-
-
-
-
-
-
-
- 
-
-  ------------------------------------------------------------------------------------
-
   local equip_slot_images = {
     Head = "UI/Icons/Items/background_helmet",
     Legs = "UI/Icons/Items/background_pants",
@@ -97,8 +85,9 @@
       under_item = false
     end
     local is_reload = IsReload(drag_item, under_item)
+    local is_mag_reload = IsMagReload(drag_item, under_item)
     local is_upgrade = IsUpgrade(drag_item, under_item)
-    local ap_cost, unit_ap, action_name = GetAPCostAndUnit(drag_item, InventoryStartDragContext, InventoryStartDragSlotName, slot:GetContext(), slot.slot_name, under_item, is_reload, is_upgrade)
+    local ap_cost, unit_ap, action_name = GetAPCostAndUnit(drag_item, InventoryStartDragContext, InventoryStartDragSlotName, slot:GetContext(), slot.slot_name, under_item, is_reload, is_upgrade, is_mag_reload)
     if not mouse_text then
       mouse_text = action_name or ""
       if InventoryIsCombatMode() and ap_cost and 0 < ap_cost then
@@ -311,6 +300,16 @@
     topRightText:SetTextHAlign("right")
     topRightText:SetTextVAlign("top")
     topRightText:SetHandleMouse(false)
+    local bottomRightText = XTemplateSpawn("XText", self)
+    bottomRightText:SetTranslate(true)
+    bottomRightText:SetTextStyle("InventoryItemsCount")
+    bottomRightText:SetId("idBottomRightText")
+    bottomRightText:SetUseClipBox(false)
+    bottomRightText:SetClip(false)
+    bottomRightText:SetPadding(box(2, 6, 10, 2))
+    bottomRightText:SetTextHAlign("right")
+    bottomRightText:SetTextVAlign("bottom")
+    bottomRightText:SetHandleMouse(false)
     local imgLocked = XTemplateSpawn("XImage", self)
     imgLocked:SetId("idimgLocked")
     imgLocked:SetUseClipBox(false)
@@ -368,6 +367,9 @@
     if IsKindOfClasses(item, "Armor", "Firearm", "HeavyWeapon", "MeleeWeapon", "ToolItem", "Medicine") and not IsKindOf(item, "InventoryStack") then
       self.idTopRightText:SetText(item:GetConditionText() or "")
     end
+    if IsKindOfClasses(item, "Mag") and not IsKindOf(item, "InventoryStack") then
+        self.idBottomRightText:SetText(item.Amount or "")
+    end
     local txt = item:GetItemStatusUI()
     self.idCenterText:SetTextStyle("DescriptionTextAPRed")
     self.idCenterText:SetText(txt)
@@ -424,8 +426,9 @@
       context = g_Units[context.session_id]
     end
     local is_reload = IsReload(drag_item, cur_item)
+    local is_mag_reload = IsMagReload(drag_item, cur_item)
     local is_upgrade = IsUpgrade(drag_item, cur_item)
-    local ap_cost, unit_ap, action_name = GetAPCostAndUnit(drag_item, InventoryStartDragContext, InventoryStartDragSlotName, context, slot_name, cur_item, is_reload,is_upgrade)
+    local ap_cost, unit_ap, action_name = GetAPCostAndUnit(drag_item, InventoryStartDragContext, InventoryStartDragSlotName, context, slot_name, cur_item, is_reload,is_upgrade, is_mag_reload)
     if not mouse_text then
       mouse_text = action_name or ""
       local is_combat = InventoryIsCombatMode()
@@ -1190,7 +1193,7 @@
     end
     local item_at_dest = dx and unit:GetItemInSlot(dest_slot, nil, dx, dy)
     stackable = stackable and item_at_dest and item_at_dest.class == InventoryDragItem.class
-    if IsReload(InventoryDragItem, item_at_dest) or IsUpgrade(InventoryDragItem, item_at_dest) or IsMedicineRefill(InventoryDragItem, item_at_dest) or InventoryIsCombineTarget(InventoryDragItem, item_at_dest) then
+    if IsReload(InventoryDragItem, item_at_dest) or IsMagReload(InventoryDragItem, item_at_dest) or IsUpgrade(InventoryDragItem, item_at_dest) or IsMedicineRefill(InventoryDragItem, item_at_dest) or InventoryIsCombineTarget(InventoryDragItem, item_at_dest) then
       return true
     end
     if not unit:CheckClass(InventoryDragItem, dest_slot) then
@@ -2080,7 +2083,7 @@
     end
     return res
   end
-  function XInventorySlot:GetCostAP(dest, dest_slot_name, dest_pos, is_reload, drag_item, src_context, is_upgrade)
+  function XInventorySlot:GetCostAP(dest, dest_slot_name, dest_pos, is_reload, drag_item, src_context, is_upgrade, is_mag_reload)
     if not InventoryIsCombatMode() or not dest and not dest_pos then
       return 0
     end
@@ -2107,7 +2110,7 @@
       drag_item = item
       item = false
     end
-    return GetAPCostAndUnit(drag_item, src, self.slot_name, dest, dest_slot_name, item, is_reload, is_upgrade)
+    return GetAPCostAndUnit(drag_item, src, self.slot_name, dest, dest_slot_name, item, is_reload, is_upgrade, is_mag_reload)
   end
   function NetSquadBagAction(unit, srcInventory, src_slot_name, item, squadBag, actionName, ap)
     local unit = unit or GetInventoryUnit()

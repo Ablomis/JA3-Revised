@@ -127,6 +127,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/CombatActions.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "CustomSuppActionFXInherit_Actor",
+	'CodeFileName', "Code/CustomSuppActionFXInherit_Actor.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "DamageCalculation",
 	'comment', "Updated damage calculation",
 	'CodeFileName', "Code/DamageCalculation.lua",
@@ -155,6 +159,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/InventoryUI.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "Mag",
+	'CodeFileName', "Code/Mag.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "MaxActionPoints",
 	'comment', "Increased Max AP for mercs",
 	'CodeFileName', "Code/MaxActionPoints.lua",
@@ -166,6 +174,10 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "RolloverInventoryWeaponBase",
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "CustomWeaponComponentEffect",
+	'CodeFileName', "Code/CustomWeaponComponentEffect.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
@@ -3569,5 +3581,6 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'DisplayName', T(509154228913, --[[ModItemInventoryItemCompositeDef Mag_MP5 DisplayName]] "MP5 Magazine"),
 	'DisplayNamePlural', T(880180760499, --[[ModItemInventoryItemCompositeDef Mag_MP5 DisplayNamePlural]] "MP5 Magazines"),
 	'Type', "MP5",
+	'Caliber', "9mm",
 }),
 }

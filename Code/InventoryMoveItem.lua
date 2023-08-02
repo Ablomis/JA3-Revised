@@ -7,11 +7,14 @@ end
 function IsReload(ammo, weapon)
   return weapon and IsWeaponReloadTarget(ammo, weapon)
 end
+function IsMagReload(ammo, mag)
+    return mag and IsMagReloadTarget(ammo, mag)
+  end
 function IsMedicineRefill(meds, medicine)
   return medicine and medicine.object_class == "Medicine" and medicine.Condition < medicine:GetMaxCondition() and IsKindOf(meds, "Meds")
 end
-function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_container, dest_container_slot_name, item_at_dest, is_reload, is_upgrade)
-  if not is_reload and not is_upgrade and not dest_container:CheckClass(item, dest_container_slot_name) then
+function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_container, dest_container_slot_name, item_at_dest, is_reload, is_upgrade, is_mag_reload)
+  if not is_reload and not is_mag_reload and not is_upgrade and not dest_container:CheckClass(item, dest_container_slot_name) then
     return 0, GetInventoryUnit()
   end
   local ap = 0
@@ -69,6 +72,17 @@ function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_con
       pos = pos
     }) or 0
     action_name = T(160472488023, "Reload")
+    elseif is_mag_reload then
+        local dest_unit = dest_container
+        if IsKindOf(dest_unit, "UnitData") then
+          dest_unit = g_Units[dest_unit.session_id]
+        end
+        local inv_unit = GetInventoryUnit()
+        unit = IsKindOf(dest_unit, "Unit") and not dest_unit:IsDead() and dest_unit or inv_unit
+        local action = CombatActions.Reload
+        local pos = dest_container:GetItemPackedPos(item_at_dest)
+        ap = 3
+        action_name = T(160472488023, "Reload")
     elseif is_upgrade then
         local dest_unit = dest_container
         if IsKindOf(dest_unit, "UnitData") then
@@ -391,12 +405,13 @@ function MoveItem(args)
   end
   local is_upgrade = IsUpgrade(item, item_at_dest)
   local is_reload = IsReload(item, item_at_dest)
+  local is_mag_reload = IsMagReload(item, item_at_dest)
   local is_refill = IsMedicineRefill(item, item_at_dest)
   local is_combine = (not IsKindOf(dest_container, "Unit") or not dest_container:IsDead()) and not IsKindOf(dest_container, "ItemContainer") and MoveItem_CombinesItems and InventoryIsCombineTarget(item, item_at_dest)
   if src_container and item.locked then
     return "item is locked"
   end
-  if not is_reload and not is_upgrade and not is_refill then
+  if not is_reload and not is_upgrade and not is_mag_reload and not is_refill then
     if item_at_dest and item_at_dest.locked then
       return "item underneath is locked"
     end
@@ -407,12 +422,12 @@ function MoveItem(args)
   local is_local_changes = exec_locally and not sync_call
   local item_is_stack = IsKindOf(item, "InventoryStack")
   local partial_stack_merge = false
-  if not is_reload and not is_upgrade and not is_combine and not is_refill and not dest_container:CheckClass(item, dest_container_slot_name) then
+  if not is_reload and not is_mag_reload and not is_upgrade and not is_combine and not is_refill and not dest_container:CheckClass(item, dest_container_slot_name) then
     return "Can't add item to container, wrong class"
   end
   local sync_ap, sync_unit
   if not sync_call then
-    sync_ap, sync_unit = GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_container, dest_container_slot_name, item_at_dest, is_reload, is_upgrade)
+    sync_ap, sync_unit = GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_container, dest_container_slot_name, item_at_dest, is_reload, is_upgrade, is_mag_reload)
     sync_ap = ap_cost or sync_ap
     if dbgMoveItem then
       invprint("MoveItem ap cost", sync_ap, "InventoryIsCombatMode()", InventoryIsCombatMode())
@@ -437,7 +452,7 @@ function MoveItem(args)
       elseif not NetStartCombatAction("MoveItems", sync_unit, sync_ap, args) then
         sync_err = "NetStartCombatAction refused to start"
       end
-      if not exec_locally or is_reload or is_refill or is_upgrade then
+      if not exec_locally or is_reload or is_refill or is_upgrade or is_mag_reload then
         return true
       end
     end
@@ -547,6 +562,45 @@ function MoveItem(args)
       return sync_err
     end
     local prev_loaded_ammo = weapon_obj:Reload(item)
+    if prev_loaded_ammo then
+      if prev_loaded_ammo.Amount == 0 then
+        DoneObject(prev_loaded_ammo)
+        prev_loaded_ammo = false
+      else
+        local squad_id = src_container and src_container.Squad or dest_container.Squad
+        if not squad_id then
+          local squads = GetSquadsInSector(gv_CurrentSectorId)
+          squad_id = squads[1] and squads[1].UniqueId
+        end
+        local prev_ammo_dest_container = GetSquadBagInventory(squad_id)
+        prev_ammo_dest_container:AddAndStackItem(prev_loaded_ammo)
+      end
+    end
+    if item.Amount == 0 then
+      if src_container then
+        src_container:RemoveItem(src_container_slot_name, item, "no_update")
+      end
+      DoneObject(item)
+      item = false
+    else
+    end
+    ObjModified(src_container)
+    if dest_container ~= src_container then
+      ObjModified(dest_container)
+    end
+    MoveItem_UpdateUnitOutfit(src_container, dest_container, check_only)
+    InventoryUIRespawn()
+    return false
+  end
+  if is_mag_reload then
+    local mag_obj = FindMagReloadTarget(item_at_dest, item)
+    if not mag_obj then
+      return "invalid reload target"
+    end
+    if Sync() then
+      return sync_err
+    end
+    local prev_loaded_ammo = MagReload(mag_obj, item)
     if prev_loaded_ammo then
       if prev_loaded_ammo.Amount == 0 then
         DoneObject(prev_loaded_ammo)

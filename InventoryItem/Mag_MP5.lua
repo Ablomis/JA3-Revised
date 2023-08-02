@@ -10,5 +10,6 @@ DefineClass.Mag_MP5 = {
 	DisplayName = T(509154228913, --[[ModItemInventoryItemCompositeDef Mag_MP5 DisplayName]] "MP5 Magazine"),
 	DisplayNamePlural = T(880180760499, --[[ModItemInventoryItemCompositeDef Mag_MP5 DisplayNamePlural]] "MP5 Magazines"),
 	Type = "MP5",
+	Caliber = "9mm",
 }
 
