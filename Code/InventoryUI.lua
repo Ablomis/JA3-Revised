@@ -368,7 +368,9 @@
       self.idTopRightText:SetText(item:GetConditionText() or "")
     end
     if IsKindOfClasses(item, "Mag") and not IsKindOf(item, "InventoryStack") then
-        self.idBottomRightText:SetText(item.Amount or "")
+        if(item.ammo ) then self.idBottomRightText:SetText(item.ammo.Amount or "")
+        else self.idBottomRightText:SetText(0)
+        end
     end
     local txt = item:GetItemStatusUI()
     self.idCenterText:SetTextStyle("DescriptionTextAPRed")
