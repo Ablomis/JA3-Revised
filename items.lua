@@ -320,6 +320,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",
@@ -394,6 +395,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",
@@ -481,6 +483,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",
@@ -691,6 +694,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -760,6 +764,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'ComponentSlots', {
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -813,6 +818,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -914,6 +920,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -1024,6 +1031,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -1127,6 +1135,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",
@@ -1220,6 +1229,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",
@@ -1333,6 +1343,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -1426,6 +1437,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormalFine",
 				"MagLarge",
@@ -1640,6 +1652,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",
@@ -1730,6 +1743,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",
@@ -1866,6 +1880,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",
@@ -1968,6 +1983,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -2084,6 +2100,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",
@@ -2230,6 +2247,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",
@@ -2309,6 +2327,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagLargeFine",
@@ -2489,6 +2508,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -2603,6 +2623,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -2661,6 +2682,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",
@@ -2936,6 +2958,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -3191,6 +3214,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -3276,6 +3300,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -3373,6 +3398,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",
@@ -3454,6 +3480,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",
@@ -3500,6 +3527,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "ReflexSight",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "ReflexSightAdvanced",
@@ -3510,6 +3538,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "ReflexSightAdvanced",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "ImprovedIronsight",
@@ -3520,6 +3549,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "ImprovedIronsight",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "LROptics",
@@ -3530,6 +3560,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "LROptics",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "LROpticsAdvanced",
@@ -3540,6 +3571,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "LROpticsAdvanced",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "ScopeCOG",
@@ -3550,6 +3582,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "ScopeCOG",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "ScopeCOGQuick",
@@ -3560,6 +3593,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "ScopeCOGQuick",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "ThermalScope",
@@ -3570,6 +3604,43 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'AdditionalHint', "",
 	'UnitStat', "Mechanical",
 	'is_valuable', true,
+	'Name', "ThermalScope",
+}),
+PlaceObj('ModItemInventoryItemCompositeDef', {
+	'Id', "AdvancedCompensator",
+	'object_class', "WeaponMod",
+	'Icon', "UI/Icons/Upgrades/muzzle_steyr_01",
+	'DisplayName', T(797353505013, --[[ModItemInventoryItemCompositeDef AdvancedCompensator DisplayName]] "Advanced Compensator"),
+	'DisplayNamePlural', T(389927544611, --[[ModItemInventoryItemCompositeDef AdvancedCompensator DisplayNamePlural]] "Advanced Compensators"),
+	'AdditionalHint', "",
+	'UnitStat', "Mechanical",
+	'is_valuable', true,
+	'Slot', "Muzzle",
+	'Name', "AdvancedCompensator",
+}),
+PlaceObj('ModItemInventoryItemCompositeDef', {
+	'Id', "Compensator",
+	'object_class', "WeaponMod",
+	'Icon', "UI/Icons/Upgrades/m16_muzzle",
+	'DisplayName', T(922523910464, --[[ModItemInventoryItemCompositeDef Compensator DisplayName]] "Compensator"),
+	'DisplayNamePlural', T(159758795617, --[[ModItemInventoryItemCompositeDef Compensator DisplayNamePlural]] "Compensators"),
+	'AdditionalHint', "",
+	'UnitStat', "Mechanical",
+	'is_valuable', true,
+	'Slot', "Muzzle",
+	'Name', "Compensator",
+}),
+PlaceObj('ModItemInventoryItemCompositeDef', {
+	'Id', "RecoilBooster",
+	'object_class', "WeaponMod",
+	'Icon', "UI/Icons/Upgrades/booster_NATO",
+	'DisplayName', T(729755713432, --[[ModItemInventoryItemCompositeDef RecoilBooster DisplayName]] "Recoil Booster"),
+	'DisplayNamePlural', T(285613747265, --[[ModItemInventoryItemCompositeDef RecoilBooster DisplayNamePlural]] "Recoil Boosters"),
+	'AdditionalHint', "",
+	'UnitStat', "Mechanical",
+	'is_valuable', true,
+	'Slot', "Muzzle",
+	'Name', "RecoilBooster",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "MP5MagazineNormal",

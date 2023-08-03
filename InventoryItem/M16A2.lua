@@ -66,6 +66,7 @@ DefineClass.M16A2 = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",

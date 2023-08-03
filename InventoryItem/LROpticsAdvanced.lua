@@ -11,5 +11,6 @@ DefineClass.LROpticsAdvanced = {
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,
+	Name = "LROpticsAdvanced",
 }
 

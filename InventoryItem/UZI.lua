@@ -36,6 +36,7 @@ DefineClass.UZI = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",

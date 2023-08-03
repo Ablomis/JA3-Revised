@@ -11,5 +11,6 @@ DefineClass.ScopeCOGQuick = {
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,
+	Name = "ScopeCOGQuick",
 }
 

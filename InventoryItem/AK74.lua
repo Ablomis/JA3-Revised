@@ -39,6 +39,7 @@ DefineClass.AK74 = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormalFine",
 				"MagLarge",

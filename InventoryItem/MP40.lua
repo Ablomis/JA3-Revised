@@ -27,6 +27,7 @@ DefineClass.MP40 = {
 	ComponentSlots = {
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",

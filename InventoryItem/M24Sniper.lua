@@ -47,6 +47,7 @@ DefineClass.M24Sniper = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagLarge",

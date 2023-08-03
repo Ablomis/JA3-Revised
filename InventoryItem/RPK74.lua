@@ -43,6 +43,7 @@ DefineClass.RPK74 = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagNormal",
 				"MagNormalFine",

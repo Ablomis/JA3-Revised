@@ -36,6 +36,7 @@ DefineClass.HiPower = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",

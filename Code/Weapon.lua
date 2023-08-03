@@ -24,11 +24,15 @@ function IsWeaponUpgradeTarget(drag_item, target_item)
     return target and IsWeaponAvailableForUpgrade(target, drag_item)
 end
 
-function GetAvailableComponents(unit, slot, weapon)
+function GetAvailableComponents(unit, slot, available_components)
     local mod_list = {}
     unit:ForEachItemInSlot("Inventory", function(item)
         if item:IsKindOf("WeaponMod") and item.Slot==slot then
-            table.insert(mod_list, item)
+            for k,v in pairs(available_components) do
+                if(v==item.Name) then
+                    table.insert(mod_list, item)  
+                end   
+            end
         end
       end,mod_list)
       return mod_list

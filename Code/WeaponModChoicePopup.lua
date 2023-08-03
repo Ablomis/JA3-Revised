@@ -579,8 +579,14 @@ PlaceObj("XTemplate", {
               "slot alternatives",
               "array",
               function(parent, context)
+                local available_components
+                for k,v in pairs(context[1].ComponentSlots) do
+                    if v.SlotType == context.slotPreset.id then
+                        available_components = v.AvailableComponents
+                    end
+                end
                 local unit = g_Units[GetDialog("ModifyWeaponDlg").idModifyDialog.context.owner]
-                local components = GetAvailableComponents(unit, context.slotPreset.id, nil)
+                local components = GetAvailableComponents(unit, context.slotPreset.id, available_components)
                 return components
               end,
               "__context",
@@ -596,12 +602,8 @@ PlaceObj("XTemplate", {
                 context.affordable = true
                 context.mod = item   
                 if true then
-                  child.idPartCostAmount:SetText(item.condition)
+                  child.idPartCostAmount:SetText(item.Condition)
                   child.idPartCost:SetVisible(true)
-                  --local canAffordParts = affordablePerType.Parts
-                  --local color = canAffordParts and GameColors.D or GameColors.I
-                  --child.idPartCostIcon:SetImageColor(color)
-                  --child.idPartCostIcon:SetImage(canAffordParts and "UI/SectorOperations/T_Icon_Parts" or "UI/Icons/mod_parts_lack")
                 end
                 rawset(child, "itemId", item.Name)
               end
@@ -638,7 +640,7 @@ PlaceObj("XTemplate", {
                   end
                   local weapon = ResolvePropObj(self.context)
                   local slot = self.context.slot
-                  local item = weapon.components[self.context.mod.Slot]
+                  local item = weapon.components[self.context.mod]
                   local selected = item == self.context.mod.Name
                   self:SetTransparency(selected and 125 or 0)
                   rawset(self, "currentlyEquipped", selected)

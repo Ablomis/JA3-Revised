@@ -44,6 +44,7 @@ DefineClass.Bereta92 = {
 		}),
 		PlaceObj('WeaponComponentSlot', {
 			'SlotType', "Magazine",
+			'Modifiable', false,
 			'AvailableComponents', {
 				"MagLarge",
 				"MagNormal",

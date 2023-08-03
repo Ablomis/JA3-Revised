@@ -11,5 +11,6 @@ DefineClass.ImprovedIronsight = {
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,
+	Name = "ImprovedIronsight",
 }
 

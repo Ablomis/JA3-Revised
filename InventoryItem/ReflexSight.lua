@@ -11,5 +11,6 @@ DefineClass.ReflexSight = {
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,
+	Name = "ReflexSight",
 }
 

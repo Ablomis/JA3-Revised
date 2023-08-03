@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1864,
+	'version', 1961,
 	'lua_revision', 233360,
 	'saved_with_revision', 338408,
 	'code', {
@@ -95,9 +95,12 @@ return PlaceObj('ModDef', {
 		"InventoryItem/ScopeCOG.lua",
 		"InventoryItem/ScopeCOGQuick.lua",
 		"InventoryItem/ThermalScope.lua",
+		"InventoryItem/AdvancedCompensator.lua",
+		"InventoryItem/Compensator.lua",
+		"InventoryItem/RecoilBooster.lua",
 		"InventoryItem/MP5MagazineNormal.lua",
 	},
-	'saved', 1690953912,
-	'code_hash', -8584061959911954597,
+	'saved', 1691040078,
+	'code_hash', -2693329823882108605,
 	'steam_id', "3008768068",
 })

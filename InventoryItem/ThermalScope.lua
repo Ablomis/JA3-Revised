@@ -11,5 +11,6 @@ DefineClass.ThermalScope = {
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,
+	Name = "ThermalScope",
 }
 

@@ -27,9 +27,16 @@ DefineClass.WeaponMod = {
         items = function(self)
             return {
               "AK",
-              "Rail"
+              "Rail",
+              "Muzzle"
             }
           end
+      },
+      {
+        id = "Name",
+        template = true,
+        editor = "text",
+        category = "General",
       }
     }
 }
