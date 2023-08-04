@@ -623,6 +623,8 @@ function Unit:EnumUIActions()
   actions[#actions + 1] = "ItemSkills"
   return actions
 end
+
+
 function Unit:RecalcUIActions(force)
   local actions
   if self:GetBandageTarget() then

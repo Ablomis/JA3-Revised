@@ -101,11 +101,6 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/AllAmmoCausesBleeding.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "AreaAttackParameters",
-	'comment', "Added sniper setup",
-	'CodeFileName', "Code/AreaAttackParameters.lua",
-}),
-PlaceObj('ModItemCode', {
 	'name', "ChanceToHit",
 	'CodeFileName', "Code/ChanceToHit.lua",
 }),
@@ -3130,7 +3125,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'DamageFalloff', 90,
 	'Recoil', 28,
 	'OverwatchAngle', 360,
-	'Noise', 0,
+	'Noise', 30,
 	'HandSlot', "TwoHanded",
 	'Entity', "Weapon_Gewehr98",
 	'ComponentSlots', {
@@ -3648,7 +3643,6 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Icon', "UI/Icons/Upgrades/mp5_mag_normal",
 	'DisplayName', T(511605320312, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayName]] "MP5 Magazine"),
 	'DisplayNamePlural', T(655181146435, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayNamePlural]] "MP5 Magazines"),
-	'Type', "MP5",
 	'Caliber', "9mm",
 }),
 }

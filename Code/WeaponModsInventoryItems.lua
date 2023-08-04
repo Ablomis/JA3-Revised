@@ -47,7 +47,7 @@ DefineClass.Mag = {
     },
     properties = {
       {
-        id = "Type",
+        id = "Platform",
         category = "Caliber",
         template = true,
         default = 'AR15',
@@ -55,7 +55,10 @@ DefineClass.Mag = {
         items = function(self)
             return {
               "MP5",
-              "AR15"
+              "AR15",
+              "FAMAS",
+              'AK762',
+              'AK545'
             }
           end
       },

@@ -69,7 +69,8 @@ if FirstLoad then
       self.prepared_attack_obj:UpdateFromOverwatch(overwatch)
     end
   end
-  local CalcEarlyOverwatchEntry = function(unit, action_id, weapon, args, attack_data, target_pos)
+  local CalcEarlyOverwatchEntry = function(unit, action_id, weapon, args, attack_data, target_pos, cone_multiplier)
+    local cone_multiplier = cone_multiplier or 1
     local step_pos = attack_data.step_pos
     local stance = attack_data.stance
     local attacker_pos3D = attack_data.step_pos
@@ -81,6 +82,7 @@ if FirstLoad then
     local aoe_params = action and action:GetAimParams(unit, weapon) or weapon:GetAreaAttackParams(action_id, unit)
     local distance = Clamp(attacker_pos3D:Dist(target_pos), aoe_params.min_range * const.SlabSizeX, aoe_params.max_range * const.SlabSizeX)
     local cone_angle = aoe_params.cone_angle
+    local cone_angle = cone_angle * cone_multiplier
     local target_angle = CalcOrientation(step_pos, target_pos)
     return {
       pos = step_pos,
@@ -100,6 +102,7 @@ if FirstLoad then
     }
   end
   function Unit:OverwatchAction(action_id, cost_ap, args, cone_multiplier)
+    cone_multiplier = cone_multiplier or 1 
     self:EndInterruptableMovement()
     args = table.copy(args)
     args.OverwatchAction = true
@@ -167,7 +170,7 @@ if FirstLoad then
         args
       })
     end
-    local overwatch = CalcEarlyOverwatchEntry(self, action_id, weapon, args, attack_args, target_pos)
+    local overwatch = CalcEarlyOverwatchEntry(self, action_id, weapon, args, attack_args, target_pos, cone_multiplier)
     self:UpdateOverwatchVisual(overwatch)
     if not args.activated then
       self:ProvokeOpportunityAttacks("attack interrupt")
@@ -244,13 +247,9 @@ if FirstLoad then
         end
       end
     end
-    if action_id ~= "MGSetup" and action_id ~= "MGRotate" then
+    if action_id ~= "MGSetup" and action_id ~= "MGRotate" and action_id ~= "SniperSetup" and action_id ~= "SniperRotate"  then
       self.ActionPoints = 0
       Msg("UnitAPChanged", self, action_id)
-    end
-    if action_id ~= "SniperSetup" and action_id ~= "SniperRotate" then
-        self.ActionPoints = 0
-        Msg("UnitAPChanged", self, action_id)
     end
     Msg("OverwatchChanged", self)
     args.activated = true
