@@ -7,9 +7,9 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 1990,
+	'version', 2016,
 	'lua_revision', 233360,
-	'saved_with_revision', 338408,
+	'saved_with_revision', 339125,
 	'code', {
 		"CharacterEffect/StationedSniper.lua",
 		"Code/.44 Ammo.lua",
@@ -99,7 +99,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/RecoilBooster.lua",
 		"InventoryItem/MP5MagazineNormal.lua",
 	},
-	'saved', 1691114916,
-	'code_hash', -3925683738915533493,
+	'saved', 1691123693,
+	'code_hash', 5526263972998895628,
 	'steam_id', "3008768068",
 })
