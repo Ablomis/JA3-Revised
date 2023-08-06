@@ -196,3 +196,45 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     return final, base, modifiers, penalty
   end
 
+  function Unit:CanStealth(stance)
+    stance = stance or self.stance
+    local is_stealthy_stance
+    if self.species == "Human" then
+      is_stealthy_stance = stance ~= "Standing"
+      if HasPerk(self, "FleetingShadow") then
+        is_stealthy_stance = true
+      end
+    elseif self.species == "Crocodile" then
+      is_stealthy_stance = true
+    end
+    local effects = self.StatusEffects
+    local visual_contact = self.enemy_visual_contact
+    if g_Combat and effects.Spotted then
+      visual_contact = false
+    elseif not self:HasStatusEffect("Hidden") then
+      local enemies = GetAllEnemyUnits(self)
+      for _, enemy in ipairs(enemies) do
+        visual_contact = visual_contact or HasVisibilityTo(enemy, self)
+      end
+    end
+    if not (not visual_contact and is_stealthy_stance and not self:IsDead() and not self:IsDowned() and (self.command ~= "ExitCombat" or self:HasStatusEffect("Hidden")) and self:IsValidPos()) or self.team.side == "neutral" then
+      return false
+    end
+    if effects.BandagingDowned or effects.Revealed or effects.StationedMachineGun or effects.StationedSniper or effects.ManningEmplacement then
+      return false
+    end
+    return true
+  end
+
+  function Unit:IsStanceChangeLocked()
+    if IsKindOf(self:GetActiveWeapons(), "MachineGun") and (self.behavior == "OverwatchAction" or self.combat_behavior == "OverwatchAction") then
+      return true
+    end
+    if IsKindOf(self:GetActiveWeapons(), "SniperRifle") and (self.behavior == "OverwatchAction" or self.combat_behavior == "OverwatchAction") then
+      return true
+    end
+    if self:GetBandageTarget() then
+      return true
+    end
+    return false
+  end

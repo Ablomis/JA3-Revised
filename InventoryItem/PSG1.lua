@@ -26,6 +26,7 @@ DefineClass.PSG1 = {
 	DamageFalloff = 90,
 	Recoil = 28,
 	OverwatchAngle = 360,
+	NotDeployedPenalty = 30,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_PSG1",
 	ComponentSlots = {

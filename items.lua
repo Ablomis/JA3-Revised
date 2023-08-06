@@ -50,6 +50,37 @@ PlaceObj('ModItemCharacterEffectCompositeDef', {
 			end,
 			param_bindings = false,
 		}),
+		PlaceObj('MsgReaction', {
+			Event = "UnitEndTurn",
+			Handler = function (self, unit)
+				local reaction_idx = table.find(self.msg_reactions or empty_table, "Event", "UnitEndTurn")
+				if not reaction_idx then return end
+				
+				local function exec(self, unit)
+				if g_Overwatch[unit] then
+					g_Overwatch[unit].num_attacks = 1
+					ObjModified(unit)
+				end
+				end
+				local id = GetCharacterEffectId(self)
+				
+				if id then
+					if IsKindOf(unit, "StatusEffectObject") and unit:HasStatusEffect(id) then
+						exec(self, unit)
+					end
+				else
+					exec(self, unit)
+				end
+				
+			end,
+			HandlerCode = function (self, unit)
+				if g_Overwatch[unit] then
+					g_Overwatch[unit].num_attacks = 1
+					ObjModified(unit)
+				end
+			end,
+			param_bindings = false,
+		}),
 	},
 }),
 PlaceObj('ModItemCode', {
@@ -89,6 +120,10 @@ PlaceObj('ModItemCode', {
 	'name', "9mm AMMO",
 	'comment', "All 9mm Ammo changes",
 	'CodeFileName', "Code/9mm AMMO.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "AIActions",
+	'CodeFileName', "Code/AIActions.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "AIApplyAttacks",

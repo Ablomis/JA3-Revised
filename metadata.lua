@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2016,
+	'version', 2030,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -20,6 +20,7 @@ return PlaceObj('ModDef', {
 		"Code/762 WP Ammo.lua",
 		"Code/762NATO Ammo.lua",
 		"Code/9mm AMMO.lua",
+		"Code/AIActions.lua",
 		"Code/AIApplyAttacks.lua",
 		"Code/AllAmmoCausesBleeding.lua",
 		"Code/ChanceToHit.lua",
@@ -99,7 +100,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/RecoilBooster.lua",
 		"InventoryItem/MP5MagazineNormal.lua",
 	},
-	'saved', 1691123693,
-	'code_hash', 5526263972998895628,
+	'saved', 1691364805,
+	'code_hash', -7132543918795308989,
 	'steam_id', "3008768068",
 })
