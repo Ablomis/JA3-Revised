@@ -18,6 +18,7 @@ DefineClass.M14SAW = {
 	Caliber = "762NATO",
 	Damage = 28,
 	AimAccuracy = 5,
+	BaseAccuracy = 98,
 	MagazineSize = 20,
 	PenetrationClass = 2,
 	WeaponRange = 28,

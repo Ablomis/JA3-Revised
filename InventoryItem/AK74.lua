@@ -20,6 +20,7 @@ DefineClass.AK74 = {
 	Caliber = "762WP",
 	Damage = 22,
 	AimAccuracy = 3,
+	BaseAccuracy = 90,
 	MagazineSize = 30,
 	PenetrationClass = 3,
 	WeaponRange = 28,

@@ -20,6 +20,7 @@ DefineClass.HK21 = {
 	Caliber = "762NATO",
 	Damage = 28,
 	AimAccuracy = 6,
+	BaseAccuracy = 85,
 	MagazineSize = 120,
 	PenetrationClass = 2,
 	WeaponRange = 32,

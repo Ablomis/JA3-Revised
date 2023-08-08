@@ -18,6 +18,7 @@ DefineClass.FNFAL = {
 	Cost = 1800,
 	Caliber = "762NATO",
 	Damage = 28,
+	BaseAccuracy = 95,
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 28,

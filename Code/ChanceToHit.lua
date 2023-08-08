@@ -204,3 +204,98 @@ PlaceObj('ChanceToHitModifier', {
 	display_name='Not deployed',
 	id = "WeaponNotDeployed",
 })
+
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		if not attacker or not target then 
+			return false, 0
+		end
+		
+		local param
+		local metaText = {}
+		
+		local extra = 0
+		if action.id == "BurstFire" then
+			param = "burst_max_penalty"
+		elseif action.id == "AutoFire" then
+			param = "auto_max_penalty"
+		elseif action.id == "MGBurstFire" then
+			if g_Overwatch[attacker] and g_Overwatch[attacker].permanent then
+				param = "mg_burst_max_penalty"
+			else
+				param = "mg_burst_max_held_penalty"
+				if weapon1 and weapon1.Cumbersome then
+					extra = self:ResolveValue("mg_burst_cumbersome_penalty")
+				end
+			end
+		elseif action.id == "GrizzlyPerk" then
+			param = "mg_burst_max_penalty"
+			metaText[#metaText + 1] = GrizzlyPerk.DisplayName
+		else
+			return false, 0
+		end
+		
+		local penalty = self:ResolveValue("base_penalty")
+		local pb_dist = const.Weapons.PointBlankRange * const.SlabSizeX
+		local dist = attacker_pos:Dist(target_pos)
+		
+		if dist > pb_dist then
+			-- scale in the distance after point-blank range to max penalty
+			local max_dist = self:ResolveValue("max_dist") * const.SlabSizeX		
+			local max_penalty = self:ResolveValue(param) + extra
+			
+			dist = Min(dist, max_dist) - pb_dist
+			max_dist = max_dist - pb_dist
+			penalty = penalty + Min(-1, MulDivRound(dist, max_penalty - penalty, max_dist))
+		end
+		
+		if penalty == 0 then
+			return false, 0
+		end
+		
+		if action.id == "BurstFire" then
+			return false, 0, T(913932180355, "Burst Fire"), #metaText ~= 0 and metaText
+		end
+		
+		return false, 0, false, #metaText ~= 0 and metaText
+	end,
+	Parameters = {
+		PlaceObj('PresetParamNumber', {
+			'Name', "max_dist",
+			'Value', 14,
+			'Tag', "<max_dist>",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "base_penalty",
+			'Tag', "<base_penalty>%",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "auto_max_penalty",
+			'Value', -50,
+			'Tag', "<auto_max_penalty>%",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "burst_max_penalty",
+			'Value', -20,
+			'Tag', "<burst_max_penalty>%",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "mg_burst_max_penalty",
+			'Value', -50,
+			'Tag', "<mg_burst_max_penalty>%",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "mg_burst_max_held_penalty",
+			'Value', -60,
+			'Tag', "<mg_burst_max_held_penalty>%",
+		}),
+		PlaceObj('PresetParamPercent', {
+			'Name', "mg_burst_cumbersome_penalty",
+			'Value', -20,
+			'Tag', "<mg_burst_cumbersome_penalty>%",
+		}),
+	},
+	display_name = T(520853928478, --[[ChanceToHitModifier Default Autofire display_name]] "Autofire"),
+	group = "Default",
+	id = "Autofire",
+})

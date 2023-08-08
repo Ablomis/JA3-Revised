@@ -18,6 +18,7 @@ DefineClass.DragunovSVD = {
 	Caliber = "762WP",
 	Damage = 30,
 	AimAccuracy = 3,
+	BaseAccuracy = 95,
 	CritChance = 10,
 	CritChanceScaled = 0,
 	MagazineSize = 10,

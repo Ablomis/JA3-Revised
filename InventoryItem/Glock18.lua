@@ -18,6 +18,7 @@ DefineClass.Glock18 = {
 	Caliber = "9mm",
 	Damage = 17,
 	AimAccuracy = 4,
+	BaseAccuracy = 95,
 	MagazineSize = 15,
 	WeaponRange = 17,
 	DamageFalloff = 40,

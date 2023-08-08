@@ -18,6 +18,7 @@ DefineClass.ColtPeacemaker = {
 	Caliber = "44CAL",
 	Damage = 20,
 	AimAccuracy = 4,
+	BaseAccuracy = 90,
 	MagazineSize = 6,
 	PointBlankRange = true,
 	OverwatchAngle = 2160,

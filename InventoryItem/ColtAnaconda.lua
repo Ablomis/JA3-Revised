@@ -19,6 +19,7 @@ DefineClass.ColtAnaconda = {
 	Caliber = "44CAL",
 	Damage = 24,
 	AimAccuracy = 5,
+	BaseAccuracy = 85,
 	MagazineSize = 6,
 	PenetrationClass = 2,
 	DamageFalloff = 40,

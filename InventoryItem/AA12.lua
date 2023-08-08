@@ -20,6 +20,7 @@ DefineClass.AA12 = {
 	Caliber = "12gauge",
 	Damage = 26,
 	ObjDamageMod = 150,
+	BaseAccuracy = 75,
 	MagazineSize = 15,
 	WeaponRange = 14,
 	Recoil = 28,

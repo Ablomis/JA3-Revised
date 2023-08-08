@@ -18,6 +18,7 @@ DefineClass.HiPower = {
 	Caliber = "9mm",
 	Damage = 17,
 	AimAccuracy = 4,
+	BaseAccuracy = 90,
 	MagazineSize = 10,
 	WeaponRange = 16,
 	DamageFalloff = 40,

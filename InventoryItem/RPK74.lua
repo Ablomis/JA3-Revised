@@ -17,6 +17,7 @@ DefineClass.RPK74 = {
 	Cost = 1800,
 	Caliber = "762WP",
 	Damage = 27,
+	BaseAccuracy = 80,
 	MagazineSize = 60,
 	PenetrationClass = 2,
 	WeaponRange = 30,

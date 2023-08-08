@@ -18,6 +18,7 @@ DefineClass.Gewehr98 = {
 	Caliber = "762NATO",
 	Damage = 28,
 	AimAccuracy = 5,
+	BaseAccuracy = 96,
 	MagazineSize = 5,
 	PenetrationClass = 2,
 	WeaponRange = 32,

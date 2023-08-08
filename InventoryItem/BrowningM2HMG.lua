@@ -18,6 +18,7 @@ DefineClass.BrowningM2HMG = {
 	Cost = 4200,
 	Caliber = "50BMG",
 	Damage = 40,
+	BaseAccuracy = 70,
 	MagazineSize = 100,
 	PenetrationClass = 3,
 	WeaponRange = 30,

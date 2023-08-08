@@ -18,6 +18,7 @@ DefineClass.Bereta92 = {
 	Caliber = "9mm",
 	Damage = 18,
 	AimAccuracy = 6,
+	BaseAccuracy = 95,
 	CritChanceScaled = 30,
 	MagazineSize = 15,
 	WeaponRange = 18,

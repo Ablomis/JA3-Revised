@@ -18,6 +18,7 @@ DefineClass.MG42 = {
 	Cost = 1200,
 	Caliber = "762NATO",
 	Damage = 28,
+	BaseAccuracy = 70,
 	MagazineSize = 100,
 	PenetrationClass = 2,
 	WeaponRange = 30,

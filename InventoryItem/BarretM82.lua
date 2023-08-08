@@ -20,6 +20,7 @@ DefineClass.BarretM82 = {
 	Caliber = "50BMG",
 	Damage = 60,
 	AimAccuracy = 5,
+	BaseAccuracy = 97,
 	CritChanceScaled = 20,
 	MagazineSize = 5,
 	PenetrationClass = 3,

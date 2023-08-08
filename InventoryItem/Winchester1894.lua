@@ -18,6 +18,7 @@ DefineClass.Winchester1894 = {
 	Caliber = "44CAL",
 	Damage = 25,
 	AimAccuracy = 5,
+	BaseAccuracy = 95,
 	CritChanceScaled = 20,
 	MagazineSize = 9,
 	WeaponRange = 24,

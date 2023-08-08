@@ -19,6 +19,7 @@ DefineClass.FNMinimi = {
 	Caliber = "556",
 	Damage = 22,
 	AimAccuracy = 4,
+	BaseAccuracy = 80,
 	MagazineSize = 100,
 	PenetrationClass = 2,
 	WeaponRange = 30,

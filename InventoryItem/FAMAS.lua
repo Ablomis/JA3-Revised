@@ -18,6 +18,7 @@ DefineClass.FAMAS = {
 	Caliber = "556",
 	Damage = 20,
 	AimAccuracy = 4,
+	BaseAccuracy = 95,
 	MagazineSize = 25,
 	PenetrationClass = 2,
 	WeaponRange = 26,

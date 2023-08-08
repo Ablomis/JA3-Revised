@@ -20,6 +20,7 @@ DefineClass.Galil = {
 	Caliber = "762NATO",
 	Damage = 28,
 	AimAccuracy = 3,
+	BaseAccuracy = 90,
 	CritChanceScaled = 30,
 	MagazineSize = 30,
 	PenetrationClass = 2,

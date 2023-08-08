@@ -19,6 +19,7 @@ DefineClass.AKSU = {
 	Cost = 2250,
 	Caliber = "762WP",
 	Damage = 20,
+	BaseAccuracy = 85,
 	CritChanceScaled = 20,
 	MagazineSize = 30,
 	PenetrationClass = 2,

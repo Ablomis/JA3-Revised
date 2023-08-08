@@ -20,6 +20,7 @@ DefineClass.DesertEagle = {
 	Damage = 28,
 	ObjDamageMod = 200,
 	AimAccuracy = 4,
+	BaseAccuracy = 90,
 	MagazineSize = 7,
 	PenetrationClass = 2,
 	PointBlankRange = true,

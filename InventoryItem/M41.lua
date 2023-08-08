@@ -20,6 +20,7 @@ DefineClass.M41 = {
 	Damage = 32,
 	ObjDamageMod = 150,
 	AimAccuracy = 5,
+	BaseAccuracy = 75,
 	MagazineSize = 6,
 	WeaponRange = 16,
 	Recoil = 28,

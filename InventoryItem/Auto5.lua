@@ -20,6 +20,7 @@ DefineClass.Auto5 = {
 	Damage = 26,
 	ObjDamageMod = 150,
 	AimAccuracy = 4,
+	BaseAccuracy = 75,
 	MagazineSize = 5,
 	WeaponRange = 12,
 	Recoil = 28,

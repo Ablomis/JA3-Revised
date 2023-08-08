@@ -78,7 +78,7 @@ PlaceObj('CombatAction', {
 		args.num_shots = self.num_shots
 		args.multishot = true
 		args.damage_bonus = self.dmg_penalty
-		--args.cth_loss_per_shot = self:ResolveValue("cth_loss_per_shot")
+		args.cth_loss_per_shot = args.weapon.Recoil
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		return results, attack_args

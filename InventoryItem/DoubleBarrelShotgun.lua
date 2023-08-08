@@ -20,6 +20,7 @@ DefineClass.DoubleBarrelShotgun = {
 	Damage = 28,
 	ObjDamageMod = 150,
 	AimAccuracy = 1,
+	BaseAccuracy = 75,
 	CritChanceScaled = 30,
 	MagazineSize = 2,
 	WeaponRange = 16,

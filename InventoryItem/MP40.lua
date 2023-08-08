@@ -16,6 +16,7 @@ DefineClass.MP40 = {
 	UnitStat = "Marksmanship",
 	Cost = 800,
 	Caliber = "9mm",
+	Platform = "MP40",
 	Damage = 17,
 	MagazineSize = 40,
 	Recoil = 30,

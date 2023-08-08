@@ -19,6 +19,7 @@ DefineClass.TexRevolver = {
 	Caliber = "44CAL",
 	Damage = 20,
 	AimAccuracy = 5,
+	BaseAccuracy = 95,
 	CritChanceScaled = 30,
 	MagazineSize = 6,
 	DamageFalloff = 45,

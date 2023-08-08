@@ -19,6 +19,7 @@ DefineClass.AUG = {
 	Caliber = "556",
 	Damage = 22,
 	AimAccuracy = 6,
+	BaseAccuracy = 95,
 	MagazineSize = 30,
 	PenetrationClass = 2,
 	WeaponRange = 30,
