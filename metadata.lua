@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2030,
+	'version', 2042,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -40,6 +40,7 @@ return PlaceObj('ModDef', {
 		"Code/MaxActionPoints.lua",
 		"Code/ModifyWeaponDlg.lua",
 		"Code/RolloverInventoryWeaponBase.lua",
+		"Code/GetRangeAccuracy.lua",
 		"Code/SniperSetup.lua",
 		"Code/Unit.lua",
 		"Code/UnitActions.lua",
@@ -100,7 +101,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/RecoilBooster.lua",
 		"InventoryItem/MP5MagazineNormal.lua",
 	},
-	'saved', 1691364805,
-	'code_hash', -7132543918795308989,
+	'saved', 1691469257,
+	'code_hash', 1424067236530057686,
 	'steam_id', "3008768068",
 })

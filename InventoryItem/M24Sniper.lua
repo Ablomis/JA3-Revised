@@ -26,7 +26,6 @@ DefineClass.M24Sniper = {
 	Recoil = 28,
 	OverwatchAngle = 360,
 	Noise = 30,
-	NotDeployedPenalty = 30,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_M24",
 	ComponentSlots = {

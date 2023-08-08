@@ -27,7 +27,6 @@ DefineClass.DragunovSVD = {
 	Recoil = 28,
 	OverwatchAngle = 360,
 	Noise = 30,
-	NotDeployedPenalty = 10,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Dragunov",
 	ComponentSlots = {

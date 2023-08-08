@@ -24,7 +24,6 @@ DefineClass.Winchester1894 = {
 	DamageFalloff = 90,
 	Recoil = 28,
 	OverwatchAngle = 360,
-	NotDeployedPenalty = 10,
 	HandSlot = "TwoHanded",
 	Entity = "Weapon_Winchester",
 	ComponentSlots = {

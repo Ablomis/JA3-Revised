@@ -8,6 +8,7 @@ DefineClass.MP5MagazineNormal = {
 	Icon = "UI/Icons/Upgrades/mp5_mag_normal",
 	DisplayName = T(239163359158, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayName]] "MP5 Magazine"),
 	DisplayNamePlural = T(345183000766, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayNamePlural]] "MP5 Magazines"),
+	Platform = "MP5",
 	Caliber = "9mm",
 }
 

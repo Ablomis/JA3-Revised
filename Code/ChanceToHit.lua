@@ -75,8 +75,7 @@ PlaceObj('ChanceToHitModifier', {
 	},
 	group = "Default",
 	id = "Aim",
-	param_bindings = {},
-	save_in = "Libs/Network",
+	param_bindings = {}
 })
 
 PlaceObj('ChanceToHitModifier', {
@@ -97,7 +96,6 @@ PlaceObj('ChanceToHitModifier', {
 	},
 	group = "Default",
 	id = "PointBlank",
-	save_in = "Libs/Network",
 })
 
 PlaceObj('ChanceToHitModifier', {
@@ -192,4 +190,17 @@ PlaceObj('ChanceToHitModifier', {
 	},
 	group = "Default",
 	id = "Autofire",
+})
+
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		if IsKindOf(weapon1, "SniperRifle") and not attacker:HasStatusEffect("StationedSniper") then
+			return true, weapon1.NotDeployedPenalty
+		end
+		
+		return false, 0
+	end,
+	group = "Default",
+	display_name='Not deployed',
+	id = "WeaponNotDeployed",
 })

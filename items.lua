@@ -209,6 +209,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "GetRangeAccuracy",
+	'CodeFileName', "Code/GetRangeAccuracy.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
 	'comment', "SniperSetup code",
 	'CodeFileName', "Code/SniperSetup.lua",
@@ -1339,7 +1343,9 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'UnitStat', "Marksmanship",
 	'Cost', 800,
 	'Caliber', "762WP",
+	'Platform', "AK762",
 	'Damage', 25,
+	'BaseAccuracy', 90,
 	'MagazineSize', 30,
 	'PenetrationClass', 2,
 	'WeaponRange', 26,
@@ -3671,6 +3677,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Icon', "UI/Icons/Upgrades/mp5_mag_normal",
 	'DisplayName', T(239163359158, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayName]] "MP5 Magazine"),
 	'DisplayNamePlural', T(345183000766, --[[ModItemInventoryItemCompositeDef MP5MagazineNormal DisplayNamePlural]] "MP5 Magazines"),
+	'Platform', "MP5",
 	'Caliber', "9mm",
 }),
 }
