@@ -65,7 +65,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
         damage_min = MulDivRound(damage,self.DamageFalloff, 100)
         local k
         k = (damage - damage_min)/(0.0001*self.WeaponRange^3)
-        damage = round(damage - 0.0001 * k * ((hit.distance/1000)^3) + 0.5,1)
+        damage = Max(damage_min,round(damage - 0.0001 * k * (((hit.distance-self.WeaponRange)/1000)^3) + 0.5,1))
       end
 
       for _, effect in ipairs(data.effects) do

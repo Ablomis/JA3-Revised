@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2085,
+	'version', 2099,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -101,7 +101,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/RecoilBooster.lua",
 		"InventoryItem/MP5MagazineNormal.lua",
 	},
-	'saved', 1691471989,
-	'code_hash', 402993940044133325,
+	'saved', 1691473217,
+	'code_hash', 6677621701599129430,
 	'steam_id', "3008768068",
 })
