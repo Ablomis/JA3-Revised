@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2213,
+	'version', 2234,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -106,7 +106,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/TacticalGrip.lua",
 		"InventoryItem/MP5MagazineNormal.lua",
 	},
-	'saved', 1691634123,
-	'code_hash', -2985288774600813635,
+	'saved', 1691639434,
+	'code_hash', 5769745071481654205,
 	'steam_id', "3008768068",
 })
