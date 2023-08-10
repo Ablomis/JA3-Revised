@@ -144,6 +144,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/ClassDef-Inventory.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "ColoredAmmo",
+	'CodeFileName', "Code/ColoredAmmo.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "Combat",
 	'CodeFileName', "Code/Combat.lua",
 }),
@@ -174,9 +178,21 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/GetAttackAPCost.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "GetRangeAccuracy",
+	'CodeFileName', "Code/GetRangeAccuracy.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "IModeCombatAreaAim",
 	'comment', "SniperSetup",
 	'CodeFileName', "Code/IModeCombatAreaAim.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "Inventory",
+	'CodeFileName', "Code/Inventory.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "InventoryContextMenu",
+	'CodeFileName', "Code/InventoryContextMenu.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "InventoryMoveItem",
@@ -207,10 +223,6 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "RolloverInventoryWeaponBase",
 	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
-}),
-PlaceObj('ModItemCode', {
-	'name', "GetRangeAccuracy",
-	'CodeFileName', "Code/GetRangeAccuracy.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
@@ -1363,10 +1375,9 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Damage', 25,
 	'BaseAccuracy', 90,
 	'MagazineSize', 30,
-	'PenetrationClass', 2,
-	'WeaponRange', 26,
+	'PenetrationClass', 3,
 	'DamageFalloff', 80,
-	'Recoil', 30,
+	'Recoil', 15,
 	'OverwatchAngle', 1440,
 	'HandSlot', "TwoHanded",
 	'Entity', "Weapon_AK47",
@@ -3711,6 +3722,30 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'is_valuable', true,
 	'Slot', "Muzzle",
 	'Name', "RecoilBooster",
+}),
+PlaceObj('ModItemInventoryItemCompositeDef', {
+	'Id', "VerticalGrip",
+	'object_class', "WeaponMod",
+	'Icon', "UI/Icons/Upgrades/mp5_grip",
+	'DisplayName', T(463416523544, --[[ModItemInventoryItemCompositeDef VerticalGrip DisplayName]] "Vertical Grip"),
+	'DisplayNamePlural', T(811244195469, --[[ModItemInventoryItemCompositeDef VerticalGrip DisplayNamePlural]] "Vertical Grip"),
+	'AdditionalHint', "",
+	'UnitStat', "Mechanical",
+	'is_valuable', true,
+	'Slot', "Under",
+	'Name', "VerticalGrip",
+}),
+PlaceObj('ModItemInventoryItemCompositeDef', {
+	'Id', "TacticalGrip",
+	'object_class', "WeaponMod",
+	'Icon', "UI/Icons/Upgrades/tactical_grip",
+	'DisplayName', T(126856604385, --[[ModItemInventoryItemCompositeDef TacticalGrip DisplayName]] "Tactical Grip"),
+	'DisplayNamePlural', T(931554308265, --[[ModItemInventoryItemCompositeDef TacticalGrip DisplayNamePlural]] "Tactical Grip"),
+	'AdditionalHint', "",
+	'UnitStat', "Mechanical",
+	'is_valuable', true,
+	'Slot', "Under",
+	'Name', "TacticalGrip",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "MP5MagazineNormal",

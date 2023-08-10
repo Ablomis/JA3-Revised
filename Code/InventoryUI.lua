@@ -300,16 +300,16 @@
     topRightText:SetTextHAlign("right")
     topRightText:SetTextVAlign("top")
     topRightText:SetHandleMouse(false)
-    local bottomRightText = XTemplateSpawn("XText", self)
-    bottomRightText:SetTranslate(true)
-    bottomRightText:SetTextStyle("InventoryItemsCount")
-    bottomRightText:SetId("idBottomRightText")
-    bottomRightText:SetUseClipBox(false)
-    bottomRightText:SetClip(false)
-    bottomRightText:SetPadding(box(2, 6, 10, 2))
-    bottomRightText:SetTextHAlign("right")
-    bottomRightText:SetTextVAlign("bottom")
-    bottomRightText:SetHandleMouse(false)
+    local magBulletText = XTemplateSpawn("XText", self)
+    magBulletText:SetTranslate(true)
+    magBulletText:SetTextStyle("InventoryItemsCount")
+    magBulletText:SetId("idMagBulletText")
+    magBulletText:SetUseClipBox(false)
+    magBulletText:SetClip(false)
+    magBulletText:SetPadding(box(2, 6, 10, 2))
+    magBulletText:SetTextHAlign("right")
+    magBulletText:SetTextVAlign("bottom")
+    magBulletText:SetHandleMouse(false)
     local imgLocked = XTemplateSpawn("XImage", self)
     imgLocked:SetId("idimgLocked")
     imgLocked:SetUseClipBox(false)
@@ -368,7 +368,13 @@
       self.idTopRightText:SetText(item:GetConditionText() or "")
     end
     if IsKindOfClasses(item, "Mag") and not IsKindOf(item, "InventoryStack") then
-        self.idBottomRightText:SetText(item.Amount or 0)
+      local colorStyle = 'AmmoBasicColor'
+      if item.ammo and item.ammo.colorStyle and item.ammo.colorStyle ~= 'AmmoBasicColor' then
+        colorStyle  = item.ammo.colorStyle
+      end
+      local text = '<color ' .. colorStyle .. '>' .. item.Amount or 0 .. '</color>'
+      self.idMagBulletText:SetText(text)
+        
     end
     if IsKindOfClasses(item, "WeaponMod") and not IsKindOf(item, "InventoryStack") then
         self.idTopRightText:SetText(item:GetConditionText())

@@ -306,8 +306,9 @@ PlaceObj('CombatAction', {
 		args.num_shots = self.num_shots
 		args.multishot = true
 		args.damage_bonus = self.dmg_penalty
-		--args.cth_loss_per_shot = self.cth_loss_per_shot
+		args.cth_loss_per_shot = 1
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
+		print(attack_args.cth_loss_per_shot or 0)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		return results, attack_args
 	end,
@@ -424,7 +425,7 @@ PlaceObj('CombatAction', {
 		--args.single_fx = true
 		--args.fx_action = "WeaponAutoFire"
 		args.damage_bonus = self.dmg_penalty
-		--args.cth_loss_per_shot = self.cth_loss_per_shot
+		args.cth_loss_per_shot = args.weapon.Recoil
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
 		local target = attack_args.target			

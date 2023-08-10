@@ -42,9 +42,13 @@ function FindWeaponReloadTarget(item, ammo)
     if not IsKindOfClasses(ammo, "Ammo", "Ordnance","Mag") or not IsKindOf(item, "Firearm") then
       return false
     end
+    if IsKindOfClasses("Mag") and not item.Platform == ammo.Platform then
+      return false
+    end
     if item.Caliber == ammo.Caliber then
       return item
     end
+    
     local sub = item:GetSubweapon("Firearm")
     if sub then
       return sub.Caliber == ammo.Caliber and sub
@@ -203,3 +207,20 @@ function FindWeaponReloadTarget(item, ammo)
       return IsKindOfClasses(self, "Shotgun", "MachineGun","SniperRifle") and self.WeaponRange or MulDivRound(self.WeaponRange, 75, 100)
     end
   end
+
+  function GetBulletCount(weapon)
+    if IsKindOf(weapon, "Firearm") then
+      if weapon.emplacement_weapon then
+        return false
+      end
+      return weapon.ammo and weapon.ammo.Amount or 0
+    elseif IsKindOfClasses(weapon, "Grenade", "StackableMeleeWeapon") then
+      return weapon.Amount or 0
+    elseif IsKindOf(weapon, "Mag") then
+      return weapon.Amount or 0
+    else
+      return false
+    end
+  end
+
+  

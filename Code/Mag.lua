@@ -2,7 +2,7 @@ function FindMagReloadTarget(item, ammo)
     if not IsKindOfClasses(ammo, "Ammo", "Ordnance") or not IsKindOf(item, "Mag") then
       return false
     end
-    if item.Caliber == ammo.Caliber and item.Platform == ammo.Platform  then
+    if item.Caliber == ammo.Caliber  then
       return item
     end
   end
