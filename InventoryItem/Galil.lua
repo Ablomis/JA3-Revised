@@ -18,6 +18,7 @@ DefineClass.Galil = {
 	is_valuable = true,
 	Cost = 2500,
 	Caliber = "762NATO",
+	Platform = "GALIL",
 	Damage = 28,
 	AimAccuracy = 3,
 	BaseAccuracy = 90,

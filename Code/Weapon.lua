@@ -399,12 +399,14 @@ function FindWeaponReloadTarget(item, ammo)
       if shot_attack_args.multishot then
         roll = attack_results.attack_roll[i]
         shot_cth = Max(0, attack_results.chance_to_hit - shot_attack_args.cth_loss_per_shot * (i - 1))
+        print(shot_cth)
         shot_miss = roll > shot_cth
         shot_crit = not shot_miss and attack_results.crit_roll[i] <= attack_results.crit_chance
         miss = miss and shot_miss
         crit = crit or shot_crit
       else
         shot_cth = Max(0, attack_results.chance_to_hit - shot_attack_args.cth_loss_per_shot * (i - 1))
+        print(shot_cth)
         shot_miss = (not kill or 1 < i) and roll > shot_cth
         shot_crit = crit and i == 1
       end

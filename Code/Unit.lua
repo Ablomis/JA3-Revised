@@ -26,7 +26,8 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local target_pos = args and args.target_pos or IsPoint(target) and target or target:GetPos()
     local base = 0
     local modifiers = not chance_only and {}
-    local skill = round(self.Dexterity/2,1)
+    local skill  = round(35 + 0.00055 * ((self.Dexterity-70)^3) + 0.5,1)
+    --local skill  = round(self.Dexterity/2,1)
     if action.id == "SteroidPunch" then
       skill = self.Strength
     end

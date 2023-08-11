@@ -17,6 +17,7 @@ DefineClass.FNFAL = {
 	is_valuable = true,
 	Cost = 1800,
 	Caliber = "762NATO",
+	Platform = "FNFAL",
 	Damage = 28,
 	BaseAccuracy = 95,
 	MagazineSize = 30,

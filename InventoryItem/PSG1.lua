@@ -17,6 +17,7 @@ DefineClass.PSG1 = {
 	is_valuable = true,
 	Cost = 3200,
 	Caliber = "762NATO",
+	Platform = "M14",
 	Damage = 30,
 	AimAccuracy = 5,
 	CritChanceScaled = 30,

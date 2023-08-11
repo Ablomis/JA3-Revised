@@ -67,10 +67,7 @@ function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_con
     unit = IsKindOf(dest_unit, "Unit") and not dest_unit:IsDead() and dest_unit or inv_unit
     local action = CombatActions.Reload
     local pos = dest_container:GetItemPackedPos(item_at_dest)
-    ap = ap + action:GetAPCost(unit, {
-      weapon = item_at_dest.class,
-      pos = pos
-    }) or 0
+    ap = 10
     action_name = T(160472488023, "Reload")
     elseif is_mag_reload then
         local dest_unit = dest_container
@@ -81,7 +78,10 @@ function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_con
         unit = IsKindOf(dest_unit, "Unit") and not dest_unit:IsDead() and dest_unit or inv_unit
         local action = CombatActions.Reload
         local pos = dest_container:GetItemPackedPos(item_at_dest)
-        ap = 3
+        ap = ap + action:GetAPCost(unit, {
+          weapon = item_at_dest.class,
+          pos = pos
+        }) or 0
         action_name = T(160472488023, "Reload")
     elseif is_upgrade then
         local dest_unit = dest_container

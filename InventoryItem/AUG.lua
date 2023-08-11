@@ -17,6 +17,7 @@ DefineClass.AUG = {
 	is_valuable = true,
 	Cost = 2500,
 	Caliber = "556",
+	Platform = "AUG",
 	Damage = 22,
 	AimAccuracy = 6,
 	BaseAccuracy = 95,

@@ -58,7 +58,16 @@ DefineClass.Mag = {
               "AR15",
               "FAMAS",
               'AK762',
-              'AK545'
+              'AK545',
+              "AUG",
+              "M14",
+              "GALIL",
+              "FNFAL",
+              "UZI",
+              "MP40",
+              "SVD",
+              "HK21",
+              "SAW"
             }
           end
       },

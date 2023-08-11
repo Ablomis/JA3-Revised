@@ -16,6 +16,7 @@ DefineClass.FAMAS = {
 	UnitStat = "Marksmanship",
 	Cost = 800,
 	Caliber = "556",
+	Platform = "FAMAS",
 	Damage = 20,
 	AimAccuracy = 4,
 	BaseAccuracy = 95,

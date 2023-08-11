@@ -18,6 +18,7 @@ DefineClass.AKSU = {
 	is_valuable = true,
 	Cost = 2250,
 	Caliber = "762WP",
+	Platform = "AK545",
 	Damage = 20,
 	BaseAccuracy = 85,
 	CritChanceScaled = 20,

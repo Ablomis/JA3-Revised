@@ -18,6 +18,7 @@ DefineClass.AK74 = {
 	is_valuable = true,
 	Cost = 4000,
 	Caliber = "762WP",
+	Platform = "AK545",
 	Damage = 22,
 	AimAccuracy = 3,
 	BaseAccuracy = 90,

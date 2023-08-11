@@ -18,6 +18,7 @@ DefineClass.HK21 = {
 	is_valuable = true,
 	Cost = 3500,
 	Caliber = "762NATO",
+	Platform = "HK21",
 	Damage = 28,
 	AimAccuracy = 6,
 	BaseAccuracy = 85,

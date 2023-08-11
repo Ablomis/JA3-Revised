@@ -17,6 +17,7 @@ DefineClass.FNMinimi = {
 	UnitStat = "Marksmanship",
 	Cost = 2750,
 	Caliber = "556",
+	Platform = "SAW",
 	Damage = 22,
 	AimAccuracy = 4,
 	BaseAccuracy = 80,

@@ -5,6 +5,7 @@ PlaceObj('ChanceToHitModifier', {
 		local min_mrk = 0
 		local mrk_scale = 10
 		local mrk = attacker.Marksmanship
+		local dex = attacker.Dexterity
 		
 		if IsKindOfClasses(weapon1, "FirearmProperties", "MeleeWeaponProperties") then
 			min_bonus = weapon1.AimAccuracy
@@ -19,8 +20,9 @@ PlaceObj('ChanceToHitModifier', {
 			min_bonus = Max(1, MulDivRound(min_bonus, 100 - modifyVal, 100))
 			metaText[#metaText + 1] = compDef.DisplayName
 		end
-		
-		local bonus = num * min_bonus + MulDivRound(Max(0, mrk - min_mrk) * num, mrk_scale, 100) 
+		local dex_back = round(35 + 0.00055 * ((dex-70)^3) + 0.5,1)
+		--local bonus = num * min_bonus + MulDivRound(Max(0, mrk - min_mrk) * num, mrk_scale, 100) 
+		local bonus = (mrk/3 + min_bonus) * num - dex_back
 		
 		-- target camo
 		if IsKindOf(target, "Unit") then

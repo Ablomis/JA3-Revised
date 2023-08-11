@@ -16,6 +16,7 @@ DefineClass.M14SAW = {
 	UnitStat = "Marksmanship",
 	Cost = 1200,
 	Caliber = "762NATO",
+	Platform = "M14",
 	Damage = 28,
 	AimAccuracy = 5,
 	BaseAccuracy = 98,

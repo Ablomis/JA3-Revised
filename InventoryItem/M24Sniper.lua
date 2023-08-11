@@ -17,6 +17,7 @@ DefineClass.M24Sniper = {
 	UnitStat = "Marksmanship",
 	Cost = 2500,
 	Caliber = "762NATO",
+	Platform = "M14",
 	Damage = 30,
 	AimAccuracy = 5,
 	MagazineSize = 5,

@@ -46,5 +46,6 @@ DefineClass.MP40 = {
 	},
 	ShootAP = 5000,
 	ReloadAP = 3000,
+	ReadyAP = 1000,
 }
 
