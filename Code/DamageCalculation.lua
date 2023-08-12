@@ -61,7 +61,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
         damage_min = MulDivRound(damage,self.DamageFalloff, 100)
         local k
         k = (damage - damage_min)/(0.0001*self.WeaponRange^3)
-        damage = Min(Max(damage_min,round(damage - 0.0001 * k * ((hit.distance/10000-self.WeaponRange)^3),1)),damage) 
+        damage = Min(Max(damage_min,round(damage - 0.0001 * k * ((hit.distance/1000-self.WeaponRange)^3),1)),damage) 
       end
 
       for _, effect in ipairs(data.effects) do
@@ -87,10 +87,8 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
     if hit.critical then
       --local crit_mod = IsKindOf(attacker, "Unit") and attacker:GetCritDamageMod() or const.Weapons.CriticalDamage
       --damage = MulDivRound(damage, 100 + crit_mod, 100)
-      --hit.damage = hit.damage + MulDivRound(const.Combat.CriticalDamage, target:Random(100) + 50,100)
-      hit.damage = hit.damage+const.Combat.CriticalDamage
+      hit.damage = hit.damage + MulDivRound(const.Combat.CriticalDamage, target:Random(100) + 50,100)
     end
-    print('Damage Calc',hit.damage)
     if hit.grazing then
       hit.effects = {}
       hit.damage = Max(1, MulDivRound(hit.damage, const.Combat.GrazingHitDamage, 100))

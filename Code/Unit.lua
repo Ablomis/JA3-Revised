@@ -333,8 +333,8 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     return pierced
   end
 
-  function Unit:CalcCritChance(weapon, target, aim, attack_pos, target_spot_group, action, distance )
-    local distance = distance or 0
+  function Unit:CalcCritChance(weapon, target, aim, attack_pos, target_spot_group, action )
+    local distance = self:GetDist(target)
     if not IsKindOfClasses(weapon, "Firearm", "MeleeWeapon") then
       return 0
     end
@@ -352,11 +352,10 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return 100
     end
 
-    local critChance = weapon.ammo.CritChance
+    local critChance = weapon.ammo.CritChance or 0
     local k
     k = (critChance - const.Combat.MinCritChance)/(0.0001*weapon.WeaponRange^3)
-    critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/10000-weapon.WeaponRange)^3),1)),critChance)
-    print(critChance)
+    critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/1000-weapon.WeaponRange)^3),1)),critChance)
 
     if(target_spot_group=='Head') then
       critChance = const.Combat.HeadCritChance

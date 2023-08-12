@@ -82,10 +82,10 @@ PlaceObj('ChanceToHitModifier', {
 
 PlaceObj('ChanceToHitModifier', {
 	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
-		if attacker and weapon1 and weapon1.PointBlankRange and attacker:IsPointBlankRange(target) then
+		--[[if attacker and weapon1 and weapon1.PointBlankRange and attacker:IsPointBlankRange(target) then
 			local dexBonus = round(attacker.Dexterity/2,1)
 			return true, dexBonus
-		end
+		end]]--
 		
 		return false, 0
 	end,
@@ -97,6 +97,7 @@ PlaceObj('ChanceToHitModifier', {
 		}),
 	},
 	group = "Default",
+	display_name='PointBlank',
 	id = "PointBlank",
 })
 

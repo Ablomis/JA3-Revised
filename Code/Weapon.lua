@@ -311,10 +311,7 @@ function FindWeaponReloadTarget(item, ammo)
       dmg_breakdown = shot_attack_args.damage_breakdown and {} or false
     }
     if not shot_attack_args.opportunity_attack_type or HasPerk(attacker, "OpportunisticKiller") then
-      local step_pos3D = shot_attack_args.step_pos:IsValidZ() and shot_attack_args.step_pos or shot_attack_args.step_pos:SetTerrainZ()
-      local distAttackerToTarget = step_pos3D:Dist(target_pos)
-      print( distAttackerToTarget)
-      attack_results.crit_chance = attacker:CalcCritChance(self, target, shot_attack_args.aim, shot_attack_args.step_pos, shot_attack_args.target_spot_group, distAttackerToTarget) + shot_attack_args.stealth_bonus_crit_chance
+      attack_results.crit_chance = attacker:CalcCritChance(self, target, shot_attack_args.aim, shot_attack_args.step_pos, shot_attack_args.target_spot_groupt) + shot_attack_args.stealth_bonus_crit_chance
     else
       attack_results.crit_chance = 0
     end
@@ -742,7 +739,7 @@ function Firearm:BulletCalcDamage(hit_data)
       stray = obj ~= target
       target_reached = target_reached or target and obj == target
       if not prediction and hit_data.critical == nil then
-        local critChance = attacker:CalcCritChance(self, target, hit_data.aim, hit_data.step_pos, hit_data.target_spot_group or hit.spot_group, action, hit.distance)
+        local critChance = attacker:CalcCritChance(self, target, hit_data.aim, hit_data.step_pos, hit_data.target_spot_group or hit.spot_group, action)
         local critRoll = attacker:Random(100)
         hit_data.critical = critChance > critRoll
       end
@@ -753,7 +750,6 @@ function Firearm:BulletCalcDamage(hit_data)
     hit.stray = stray
     hit.critical = not stray and hit_data.critical
     hit.damage = dmg
-    print('CalcBullet',hit.damage)
     local breakdown = obj == target and record_breakdown
     self:PrecalcDamageAndStatusEffects(attacker, obj, hit_data.step_pos, hit.damage, hit, hit_data.applied_status, hit_data, breakdown, action, prediction)
     hit.impact_force = 0 < hit.damage and impact_force + self:GetDistanceImpactForce(hit.distance) or 0
