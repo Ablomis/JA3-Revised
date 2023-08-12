@@ -8,10 +8,10 @@ DefineClass.M14SAW = {
 	Reliability = 80,
 	ScrapParts = 10,
 	Icon = "UI/Icons/Weapons/M14",
-	DisplayName = T(271777738497, --[[ModItemInventoryItemCompositeDef M14SAW DisplayName]] "M-14"),
-	DisplayNamePlural = T(839000412764, --[[ModItemInventoryItemCompositeDef M14SAW DisplayNamePlural]] "M-14s"),
-	Description = T(282532036605, --[[ModItemInventoryItemCompositeDef M14SAW Description]] "Take a Garand rifle, then make it heavier and capable of firing full auto. Simply put, it's a Frankenstein monster."),
-	AdditionalHint = T(340884467523, --[[ModItemInventoryItemCompositeDef M14SAW AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Increased bonus from Aiming"),
+	DisplayName = T(476329354217, --[[ModItemInventoryItemCompositeDef M14SAW DisplayName]] "M-14"),
+	DisplayNamePlural = T(663034521621, --[[ModItemInventoryItemCompositeDef M14SAW DisplayNamePlural]] "M-14s"),
+	Description = T(315831804332, --[[ModItemInventoryItemCompositeDef M14SAW Description]] "Take a Garand rifle, then make it heavier and capable of firing full auto. Simply put, it's a Frankenstein monster."),
+	AdditionalHint = T(568605768298, --[[ModItemInventoryItemCompositeDef M14SAW AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Increased bonus from Aiming"),
 	LargeItem = true,
 	UnitStat = "Marksmanship",
 	Cost = 1200,
@@ -118,6 +118,6 @@ DefineClass.M14SAW = {
 	},
 	ShootAP = 6000,
 	ReloadAP = 3000,
-	ReadyAP = 3000,
+	ReadyAP = 4000,
 }
 

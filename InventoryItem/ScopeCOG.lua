@@ -6,8 +6,8 @@ DefineClass.ScopeCOG = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/prism_scope",
-	DisplayName = T(822003266971, --[[ModItemInventoryItemCompositeDef ScopeCOG DisplayName]] "Prism Scope"),
-	DisplayNamePlural = T(198296845992, --[[ModItemInventoryItemCompositeDef ScopeCOG DisplayNamePlural]] "Prism Scope"),
+	DisplayName = T(676966722960, --[[ModItemInventoryItemCompositeDef ScopeCOG DisplayName]] "Prism Scope"),
+	DisplayNamePlural = T(354737875511, --[[ModItemInventoryItemCompositeDef ScopeCOG DisplayNamePlural]] "Prism Scope"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

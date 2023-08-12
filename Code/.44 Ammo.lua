@@ -13,11 +13,13 @@ DefineClass._44CAL_HP = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "44CAL",
-  Damage = 18,
+  Mass = 13.0,
+  BaseVelocity = 270,
+  CritChance = 60,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"})
   },
-  AppliedEffects = {"Bleeding"}
 }
 
 UndefineClass("_44CAL_Basic")
@@ -32,8 +34,10 @@ DefineClass._44CAL_Basic = {
   Description = T(595708803192, ".44 Ammo for Revolvers and Rifles."),
   MaxStacks = 500,
   Caliber = "44CAL",
-  Damage = 18,
-  AppliedEffects = {"Bleeding"}
+  Mass = 13.0,
+  BaseVelocity = 270,
+  CritChance = 60,
+  PenetrationClass = 2,
 }
 
 UndefineClass("_44CAL_HP")
@@ -51,11 +55,13 @@ DefineClass._44CAL_HP = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "44CAL",
-  Damage = 18,
+  Mass = 13.0,
+  BaseVelocity = 270,
+  CritChance = 60,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"})
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 }
 
 UndefineClass("_44CAL_Match")
@@ -71,14 +77,16 @@ DefineClass._44CAL_Match = {
   AdditionalHint = T(898089454154, "<bullet_point> Increased bonus from Aiming"),
   MaxStacks = 500,
   Caliber = "44CAL",
-  Damage = 18,
+  Mass = 13.0,
+  BaseVelocity = 270,
+  CritChance = 60,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {
       mod_add = 2,
       target_prop = "AimAccuracy"
     })
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 }
 
 UndefineClass("_44CAL_Shock")
@@ -98,13 +106,15 @@ DefineClass._44CAL_Shock = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "44CAL",
-  Damage = 18,
+  Mass = 13.0,
+  BaseVelocity = 270,
+  CritChance = 60,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {
       mod_add = -4,
       target_prop = "WeaponRange"
     })
-  },
-  AppliedEffects = {"Exposed", "Bleeding"}
+  }
 }

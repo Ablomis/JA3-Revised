@@ -8,10 +8,10 @@ DefineClass.PSG1 = {
 	Reliability = 53,
 	ScrapParts = 14,
 	Icon = "UI/Icons/Weapons/PSG1",
-	DisplayName = T(743340637639, --[[ModItemInventoryItemCompositeDef PSG1 DisplayName]] "PSG1"),
-	DisplayNamePlural = T(617482449206, --[[ModItemInventoryItemCompositeDef PSG1 DisplayNamePlural]] "PSG1s"),
-	Description = T(257340262230, --[[ModItemInventoryItemCompositeDef PSG1 Description]] 'Semi-auto precision rifle initially designed for law enforcement after the 1972 Munich Olympics. They skipped adding any iron sights and went straight to a scope. Adjustable buttstock, cheekpiece, trigger unit, and much more. This gun screams "I can watch this hostage situation all day as I wait for the greenlight". '),
-	AdditionalHint = T(701718832214, --[[ModItemInventoryItemCompositeDef PSG1 AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> High Crit chance"),
+	DisplayName = T(803232519362, --[[ModItemInventoryItemCompositeDef PSG1 DisplayName]] "PSG1"),
+	DisplayNamePlural = T(523097842812, --[[ModItemInventoryItemCompositeDef PSG1 DisplayNamePlural]] "PSG1s"),
+	Description = T(939059230503, --[[ModItemInventoryItemCompositeDef PSG1 Description]] 'Semi-auto precision rifle initially designed for law enforcement after the 1972 Munich Olympics. They skipped adding any iron sights and went straight to a scope. Adjustable buttstock, cheekpiece, trigger unit, and much more. This gun screams "I can watch this hostage situation all day as I wait for the greenlight". '),
+	AdditionalHint = T(275464812647, --[[ModItemInventoryItemCompositeDef PSG1 AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> High Crit chance"),
 	LargeItem = true,
 	UnitStat = "Marksmanship",
 	is_valuable = true,
@@ -95,6 +95,6 @@ DefineClass.PSG1 = {
 	},
 	ShootAP = 7000,
 	ReloadAP = 2000,
-	ReadyAP = 3000,
+	ReadyAP = 4000,
 }
 

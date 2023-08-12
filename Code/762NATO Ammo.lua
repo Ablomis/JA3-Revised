@@ -11,8 +11,11 @@ DefineClass._762NATO_Basic = {
   MaxStacks = 500,
   Caliber = "762NATO",
   Damage = 27,
+  Mass=10.0,
+  BaseVelocity=850,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {PlaceObj("CaliberModification", {mod_add = 2, target_prop = "PenetrationClass"})}
-  ,AppliedEffects = {"Bleeding"}
 }
 ,
 
@@ -30,12 +33,16 @@ DefineClass._762NATO_AP = {
   MaxStacks = 500,
   Caliber = "762NATO",
   Damage = 24,
+  Mass=10.0,
+  BaseVelocity=850,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {
     PlaceObj("CaliberModification", {
       mod_add = 5,
       target_prop = "PenetrationClass"
     })
-  },AppliedEffects = {"Bleeding"}
+  }
 }
 ,
 UndefineClass("_762NATO_HP")
@@ -55,11 +62,14 @@ DefineClass._762NATO_HP = {
   MaxStacks = 500,
   Caliber = "762NATO",
   Damage = 27,
+  Mass=10.0,
+  BaseVelocity=850,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {mod_add = -2, target_prop = "PenetrationClass"})
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 }
 ,
 UndefineClass("_762NATO_Match")
@@ -76,10 +86,14 @@ DefineClass._762NATO_Match = {
   MaxStacks = 500,
   Caliber = "762NATO",
   Damage = 27,
+  Mass=10.0,
+  BaseVelocity=850,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "AimAccuracy"}),
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "PenetrationClass"})
-  },AppliedEffects = {"Bleeding"}
+  }
 }
 ,
 UndefineClass("_762NATO_Tracer")
@@ -96,9 +110,13 @@ DefineClass._762NATO_Tracer = {
   MaxStacks = 500,
   Caliber = "762NATO",
   Damage = 27,
+  Mass=10.0,
+  BaseVelocity=850,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "PenetrationClass"}),
     PlaceObj("CaliberModification", {mod_add = 1, target_prop = "AimAccuracy"})
   },
-  AppliedEffects = {"Exposed", "Bleeding"}
+  AppliedEffects = {"Exposed"}
 }

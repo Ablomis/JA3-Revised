@@ -8,10 +8,10 @@ DefineClass.BarretM82 = {
 	Reliability = 10,
 	ScrapParts = 16,
 	Icon = "UI/Icons/Weapons/M82",
-	DisplayName = T(162409468067, --[[ModItemInventoryItemCompositeDef BarretM82 DisplayName]] "M82"),
-	DisplayNamePlural = T(114919455238, --[[ModItemInventoryItemCompositeDef BarretM82 DisplayNamePlural]] "M82s"),
-	Description = T(270722966701, --[[ModItemInventoryItemCompositeDef BarretM82 Description]] 'The .50 BMG is a heavy machine gun cartridge - hence the name. But place it in a semi auto long range gun and you have a great anti-materiel rifle. Or "shoot through walls" gun. It does need a muzzle break the size of a small shovel to counteract that recoil however. '),
-	AdditionalHint = T(877486429205, --[[ModItemInventoryItemCompositeDef BarretM82 AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Very high damage\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> High attack costs\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Very noisy\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Cumbersome (no Free Move)"),
+	DisplayName = T(605159364584, --[[ModItemInventoryItemCompositeDef BarretM82 DisplayName]] "M82"),
+	DisplayNamePlural = T(850255145150, --[[ModItemInventoryItemCompositeDef BarretM82 DisplayNamePlural]] "M82s"),
+	Description = T(430836350293, --[[ModItemInventoryItemCompositeDef BarretM82 Description]] 'The .50 BMG is a heavy machine gun cartridge - hence the name. But place it in a semi auto long range gun and you have a great anti-materiel rifle. Or "shoot through walls" gun. It does need a muzzle break the size of a small shovel to counteract that recoil however. '),
+	AdditionalHint = T(780807253796, --[[ModItemInventoryItemCompositeDef BarretM82 AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Very high damage\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> High attack costs\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Very noisy\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Cumbersome (no Free Move)"),
 	LargeItem = true,
 	Cumbersome = true,
 	UnitStat = "Marksmanship",
@@ -77,6 +77,6 @@ DefineClass.BarretM82 = {
 	},
 	ShootAP = 8000,
 	ReloadAP = 3000,
-	ReadyAP = 3000,
+	ReadyAP = 5000,
 }
 

@@ -5,11 +5,24 @@ DefineClass.AmmoProperties = {
 
 	properties = {
 		{ category = "Caliber", id = "Caliber", 
-			editor = "combo", default = false, template = true, items = function (self) return PresetGroupCombo("Caliber", "Default") end, },
-		{ id = "Damage", name = "Damage", help = "Bullet base damage.", 
-			editor = "number", default = 1, min = 1, max = 200, modifiable = true, },
+			editor = "combo", default = false, template = true, items = function (self) return {
+				"44CAL",
+				"545x39",
+				"762x54R",
+				"9mm",
+				"50BMG",
+				"556",
+				"762WP",
+				"762NATO",
+				"12gauge"
+			} end, },
 		{ id = "Weight", name = "Weight", help = "Bullet weight in grams.", 
 			editor = "number", default = 10, min = 1, max = 100, modifiable = true, },
+		{ id = "BaseVelocity", name = "Velocity", help = "Base velocity of the bullet.", 
+		editor = "number", default = 800, min = 1, max = 1500, modifiable = true, },
+		{ category = "Caliber", id = "PenetrationClass", 
+			editor = "number", default = 1, template = true, 
+			name = function(self) return "Penetration Class: " .. (PenetrationClassIds[self.PenetrationClass] or "") end, slider = true, min = 1, max = 5, modifiable = true, },
 		{ category = "Caliber", id = "MaxStacks", name = "Max Stacks", help = "Ammo can stack up to that number.", 
 			editor = "number", default = 10, template = true, slider = true, min = 1, max = 10000, },
 		{ id = "Modifications", 
@@ -25,7 +38,17 @@ DefineClass.FirearmProperties = {
 
 	properties = {
 		{ category = "Caliber", id = "Caliber", 
-			editor = "combo", default = false, template = true, items = function (self) return PresetGroupCombo("Caliber", "Default") end, },
+			editor = "combo", default = false, template = true, items = function (self) return {
+				"44CAL",
+				"545x39",
+				"762x54R",
+				"9mm",
+				"50BMG",
+				"556",
+				"762WP",
+				"762NATO",
+				"12gauge"
+			} end, },
 		{ category = "Caliber", id = "Platform", 
 		editor = "combo", default = false, template = true, items = function (self) return {
 			"MP5",
@@ -42,7 +65,10 @@ DefineClass.FirearmProperties = {
 			"SVD",
 			"HK21",
 			"SAW",
-			'HiPower'
+			'HiPower',
+			"Beretta",
+			"Glock",
+			"DesertEagle"
 		  } end, },
 		{ category = "General", id = "btnAddAmmo", 
 			editor = "buttons", default = false, buttons = { {name = "Add Ammo To Current Unit", func = "UIPlaceInInventoryAmmo"}, }, template = true, },
@@ -67,8 +93,8 @@ DefineClass.FirearmProperties = {
 			editor = "number", default = 0, template = true, min = 0, max = 100, modifiable = true, },
 		{ category = "Caliber", id = "WeaponRange", name = "Range", help = "Range at which the penalty of the gun is 100.", 
 			editor = "number", default = 20, template = true, slider = true, min = 1, max = 200, modifiable = true, },
-		{ category = "Caliber", id = "BarrelLength", name = "Barrel Length", help = "The length of the barrel in cm.", 
-			editor = "number", default = 50, template = true, scale = "cm", slider = true, min = 0, max = 1000, modifiable = true, },
+		{ category = "Caliber", id = "BarrelLengthMod", name = "Barrel Length Mod", help = "Modifier to bullet velocity based on barrel length", 
+			editor = "number", default = 100, template = true,  scale = "%", slider = true, step = 1, min = 50, max = 200, modifiable = true, },
 		{ category = "Caliber", id = "Weight", name = "Weapon Weight", help = "How much the weapon weights in Kg.", 
 			editor = "number", default = 3000, template = true, scale = "kg", step = 100, min = 100, max = 30000, modifiable = true, },
 		{ category = "Caliber", id = "DamageFalloff", name = "Damage Falloff", help = "How much damage falls off at max range.", 

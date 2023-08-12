@@ -67,7 +67,11 @@ DefineClass.Mag = {
               "MP40",
               "SVD",
               "HK21",
-              "SAW"
+              "SAW",
+              'HiPower',
+              "Beretta",
+              "Glock",
+              "DesertEagle"
             }
           end
       },
@@ -97,7 +101,17 @@ DefineClass.Mag = {
         default = false,
         template = true,
         items = function(self)
-          return PresetGroupCombo("Caliber", "Default")
+          return {
+            "44CAL",
+            "545x39",
+            "762x54R",
+            "9mm",
+            "50BMG",
+            "556",
+            "762WP",
+            "762NATO",
+            "12gauge"
+          }
         end
       },
       ammo = false,

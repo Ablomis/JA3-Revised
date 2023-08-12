@@ -10,10 +10,13 @@ DefineClass._556_Basic = {
   Description = T(114938435533, "5.56 Ammo for Assault Rifles, SMGs, and Machine Guns."),
   MaxStacks = 500,
   Caliber = "556",
-  Damage = 18,
+  Mass= 4.0,
+  BaseVelocity = 961,
+  CritChance = 55,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "PenetrationClass"}),
-  },AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_556_AP")
@@ -29,11 +32,13 @@ DefineClass._556_AP = {
   AdditionalHint = T(850324784601, "<bullet_point> Improved armor penetration"),
   MaxStacks = 500,
   Caliber = "556",
-  Damage = 16,
+  Mass= 4.0,
+  BaseVelocity = 961,
+  CritChance = 55,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 4, target_prop = "PenetrationClass"})
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_556_HP")
@@ -52,12 +57,14 @@ DefineClass._556_HP = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "556",
-  Damage = 18,
+  Mass= 4.0,
+  BaseVelocity = 961,
+  CritChance = 55,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {mod_add = -1, target_prop = "PenetrationClass"})
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_556_Match")
@@ -73,7 +80,10 @@ DefineClass._556_Match = {
   AdditionalHint = T(898089454154, "<bullet_point> Increased bonus from Aiming"),
   MaxStacks = 500,
   Caliber = "556",
-  Damage = 18,
+  Mass= 4.0,
+  BaseVelocity = 961,
+  CritChance = 55,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "AimAccuracy"},
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "PenetrationClass"}))
@@ -97,12 +107,15 @@ DefineClass._556_Tracer = {
     ),
   MaxStacks = 500,
   Caliber = "556",
-  Damage = 16,
+  Mass= 4.0,
+  BaseVelocity = 961,
+  CritChance = 55,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 1,target_prop = "AimAccuracy"},
     PlaceObj("CaliberModification", {mod_add = 2, target_prop = "PenetrationClass"}))
   },
-  AppliedEffects = {"Exposed", "Bleeding"}
+  AppliedEffects = {"Exposed"}
 }
 
 

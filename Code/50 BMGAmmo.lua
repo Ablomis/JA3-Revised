@@ -10,7 +10,10 @@ DefineClass._50BMG_Basic = {
   Description = T(340399158576, ".50 Ammo for Machine Guns, Snipers and Handguns."),
   MaxStacks = 500,
   Caliber = "50BMG",
-  Damage = 80,
+  Mass=45,
+  BaseVelocity = 908,
+  CritChance = 75,
+  PenetrationClass = 5,
 }
 
 UndefineClass("_50BMG_HE")
@@ -28,7 +31,10 @@ DefineClass._50BMG_HE = {
 <bullet_point> High Crit chance]]),
   MaxStacks = 500,
   Caliber = "50BMG",
-  Damage = 80,
+  Mass=45,
+  BaseVelocity = 908,
+  CritChance = 75,
+  PenetrationClass = 5,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {
@@ -53,7 +59,10 @@ DefineClass._50BMG_Incendiary = {
 <bullet_point> Inflicts <em>Burning</em>]]),
   MaxStacks = 500,
   Caliber = "50BMG",
-  Damage = 80,
+  Mass=45,
+  BaseVelocity = 908,
+  CritChance = 75,
+  PenetrationClass = 5,
   Modifications = {},
   AppliedEffects = {"Exposed", "Burning"}
 }
@@ -73,7 +82,10 @@ DefineClass._50BMG_SLAP = {
 <bullet_point> Slightly higher Crit chance]]),
   MaxStacks = 500,
   Caliber = "50BMG",
-  Damage = 80,
+  Mass=45,
+  BaseVelocity = 908,
+  CritChance = 75,
+  PenetrationClass = 5,
   Modifications = {
     PlaceObj("CaliberModification", {
       mod_add = 1,

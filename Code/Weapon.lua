@@ -311,7 +311,10 @@ function FindWeaponReloadTarget(item, ammo)
       dmg_breakdown = shot_attack_args.damage_breakdown and {} or false
     }
     if not shot_attack_args.opportunity_attack_type or HasPerk(attacker, "OpportunisticKiller") then
-      attack_results.crit_chance = attacker:CalcCritChance(self, target, shot_attack_args.aim, shot_attack_args.step_pos, shot_attack_args.target_spot_group, action) + shot_attack_args.stealth_bonus_crit_chance
+      local step_pos3D = shot_attack_args.step_pos:IsValidZ() and shot_attack_args.step_pos or shot_attack_args.step_pos:SetTerrainZ()
+      local distAttackerToTarget = step_pos3D:Dist(target_pos)
+      print( distAttackerToTarget)
+      attack_results.crit_chance = attacker:CalcCritChance(self, target, shot_attack_args.aim, shot_attack_args.step_pos, shot_attack_args.target_spot_group, distAttackerToTarget) + shot_attack_args.stealth_bonus_crit_chance
     else
       attack_results.crit_chance = 0
     end
@@ -703,3 +706,78 @@ function FindWeaponReloadTarget(item, ammo)
     end
     return attack_results
   end
+
+function Firearm:BulletCalcDamage(hit_data)
+  local attacker = hit_data.obj
+  local target = hit_data.target
+  local action = CombatActions[hit_data.action_id]
+  local hits = hit_data.hits
+  local record_breakdown = hit_data.record_breakdown
+  local prediction = hit_data.prediction
+  local dmg_mod = hit_data.damage_bonus or 0
+  if type(dmg_mod) == "table" then
+    dmg_mod = dmg_mod[obj]
+  end
+  if record_breakdown and dmg_mod then
+    table.insert(record_breakdown, {
+      name = action and action:GetActionDisplayName({attacker}) or T(328963668848, "Base"),
+      value = dmg_mod
+    })
+  end
+  local basedmg = attacker:GetBaseDamage(self, target, record_breakdown)
+  local dmg = MulDivRound(basedmg, Max(0, 100 + (dmg_mod or 0)), 100)
+  if not prediction then
+    dmg = RandomizeWeaponDamage(dmg)
+  end
+  local target_reached
+  local forced_target_hit = hit_data.forced_target_hit
+  local impact_force = self:GetImpactForce()
+  for idx, hit in ipairs(hits) do
+    local stray = hit.stray
+    local dmg = dmg
+    local obj = hit.obj
+    local is_unit
+    if obj and IsKindOf(obj, "Unit") and not stray then
+      is_unit = true
+      stray = obj ~= target
+      target_reached = target_reached or target and obj == target
+      if not prediction and hit_data.critical == nil then
+        local critChance = attacker:CalcCritChance(self, target, hit_data.aim, hit_data.step_pos, hit_data.target_spot_group or hit.spot_group, action, hit.distance)
+        local critRoll = attacker:Random(100)
+        hit_data.critical = critChance > critRoll
+      end
+      if not stray then
+        hit.spot_group = hit_data.target_spot_group or hit.spot_group
+      end
+    end
+    hit.stray = stray
+    hit.critical = not stray and hit_data.critical
+    hit.damage = dmg
+    print('CalcBullet',hit.damage)
+    local breakdown = obj == target and record_breakdown
+    self:PrecalcDamageAndStatusEffects(attacker, obj, hit_data.step_pos, hit.damage, hit, hit_data.applied_status, hit_data, breakdown, action, prediction)
+    hit.impact_force = 0 < hit.damage and impact_force + self:GetDistanceImpactForce(hit.distance) or 0
+    if idx < #hits and 0 < (hit.armor_prevented or 0) and not hit.ignored and (not forced_target_hit or target_reached) then
+      local penetrated = false
+      if is_unit and (not target or target_reached) then
+        for item, degrade in pairs(hit.armor_decay) do
+          if hit.armor_pen[item] then
+            penetrated = true
+            break
+          end
+        end
+      end
+      if not penetrated then
+        for i = idx + 1, #hits do
+          hits[i] = nil
+        end
+        hit_data.stuck_pos = hit.pos
+        if hit_data.target_hit_idx and idx < hit_data.target_hit_idx then
+          hit_data.target_hit_idx = nil
+          hit_data.stuck = true
+        end
+        break
+      end
+    end
+  end
+end

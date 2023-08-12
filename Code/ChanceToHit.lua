@@ -22,7 +22,7 @@ PlaceObj('ChanceToHitModifier', {
 		end
 		local dex_back = round(35 + 0.00055 * ((dex-70)^3) + 0.5,1)
 		--local bonus = num * min_bonus + MulDivRound(Max(0, mrk - min_mrk) * num, mrk_scale, 100) 
-		local bonus = (mrk/3 + min_bonus) * num - dex_back
+		local bonus = (mrk/3) * num - dex_back
 		
 		-- target camo
 		if IsKindOf(target, "Unit") then

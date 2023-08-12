@@ -10,10 +10,12 @@ DefineClass._762WP_Basic = {
   Description = T(908352421544, "7.62 Warsaw Pact ammo for Assault Rifles, SMGs, Machine Guns, and Snipers."),
   MaxStacks = 500,
   Caliber = "762WP",
-  Damage = 24,
+  Mass = 8.0,
+  BaseVelocity = 738,
+  CritChance = 55,
+  PenetrationClass = 3,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 1,target_prop = "PenetrationClass"})},
-    AppliedEffects = {"Bleeding"}
 }
 ,
 UndefineClass("_762WP_AP")
@@ -29,10 +31,13 @@ DefineClass._762WP_AP = {
   AdditionalHint = T(302328653162, "<bullet_point> Improved armor penetration"),
   MaxStacks = 500,
   Caliber = "762WP",
-  Damage = 21,
+  Mass = 8.0,
+  BaseVelocity = 738,
+  CritChance = 55,
+  PenetrationClass = 3,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 4,target_prop = "PenetrationClass"})
-  },AppliedEffects = {"Bleeding"}
+  }
 }
 ,
 UndefineClass("_762WP_HP")
@@ -51,12 +56,14 @@ DefineClass._762WP_HP = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "762WP",
-  Damage = 24,
+  Mass = 8.0,
+  BaseVelocity = 738,
+  CritChance = 55,
+  PenetrationClass = 3,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {mod_add = -2,target_prop = "PenetrationClass"})
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 }
 ,
 UndefineClass("_762WP_Match")
@@ -72,11 +79,14 @@ DefineClass._762WP_Match = {
   AdditionalHint = T(898089454154, "<bullet_point> Increased bonus from Aiming"),
   MaxStacks = 500,
   Caliber = "762WP",
-  Damage = 24,
+  Mass = 8.0,
+  BaseVelocity = 738,
+  CritChance = 55,
+  PenetrationClass = 3,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 2,target_prop = "AimAccuracy"}),
     PlaceObj("CaliberModification", {mod_add = 1,target_prop = "PenetrationClass"})
-},AppliedEffects = {"Bleeding"}
+}
 }
 ,
 UndefineClass("_762WP_Tracer")
@@ -92,9 +102,12 @@ DefineClass._762WP_Tracer = {
   AdditionalHint = T(527792163999, "<bullet_point> Hit enemies are <em>Exposed</em> and lose the benefits of Cover"),
   MaxStacks = 500,
   Caliber = "762WP",
-  Damage = 21,
+  Mass = 8.0,
+  BaseVelocity = 738,
+  CritChance = 55,
+  PenetrationClass = 3,
   Modifications = {PlaceObj("CaliberModification", {mod_add = 1,target_prop = "PenetrationClass"}),
                 {PlaceObj("CaliberModification", {mod_add = 1,target_prop = "AimAccuracy"})},
-  AppliedEffects = {"Exposed", "Bleeding"}
+  AppliedEffects = {"Exposed"}
 }
 }

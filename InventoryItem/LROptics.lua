@@ -6,8 +6,8 @@ DefineClass.LROptics = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/scope_longrange",
-	DisplayName = T(287387667068, --[[ModItemInventoryItemCompositeDef LROptics DisplayName]] "Sniper Scope x5"),
-	DisplayNamePlural = T(726014556019, --[[ModItemInventoryItemCompositeDef LROptics DisplayNamePlural]] "Sniper Scope x5"),
+	DisplayName = T(146160947447, --[[ModItemInventoryItemCompositeDef LROptics DisplayName]] "Sniper Scope x5"),
+	DisplayNamePlural = T(733691827083, --[[ModItemInventoryItemCompositeDef LROptics DisplayNamePlural]] "Sniper Scope x5"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

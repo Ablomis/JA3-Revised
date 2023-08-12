@@ -10,9 +10,11 @@ DefineClass._76254R_Basic = {
   Description = T("7.62x54R Ammo for Soviet Rifles and Sniper Rifles."),
   MaxStacks = 500,
   Caliber = "762x54R",
-  Damage = 27,
+  Mass=11.7,
+  BaseVelocity = 786,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {PlaceObj("CaliberModification", {mod_add = 3, target_prop = "PenetrationClass"})}
-  ,AppliedEffects = {"Bleeding"}
 },
 
 UndefineClass("_76254R_AP")
@@ -28,10 +30,13 @@ DefineClass._76254R_AP = {
   AdditionalHint = T(850324784601, "<bullet_point> Improved armor penetration"),
   MaxStacks = 500,
   Caliber = "762x54R",
-  Damage = 24,
+  Mass=11.7,
+  BaseVelocity = 786,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 5, target_prop = "PenetrationClass"})
-  },AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_762x54R_HP")
@@ -50,15 +55,17 @@ DefineClass._762x54R_HP = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "762x54R",
-  Damage = 27,
+  Mass=11.7,
+  BaseVelocity = 786,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {
       mod_add = 1,
       target_prop = "PenetrationClass"
     })
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_762x54R_Match")
@@ -74,13 +81,16 @@ DefineClass._762x54R_Match = {
   AdditionalHint = T(898089454154, "<bullet_point> Increased bonus from Aiming"),
   MaxStacks = 500,
   Caliber = "762x54R",
-  Damage = 27,
+  Mass=11.7,
+  BaseVelocity = 786,
+  CritChance = 55,
+  PenetrationClass = 3,
   Modifications = {
     PlaceObj("CaliberModification", {
-      mod_add = 2,
+      mod_add = 4,
       target_prop = "AimAccuracy"
     },PlaceObj("CaliberModification", {mod_add = 3, target_prop = "PenetrationClass"}))
-  },AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_762x54R_Tracer")
@@ -96,12 +106,14 @@ DefineClass._762x54R_Tracer = {
   AdditionalHint = T(527792163999, "<bullet_point> Hit enemies are <em>Exposed</em> and lose the benefits of Cover"),
   MaxStacks = 500,
   Caliber = "762x54R",
-  Damage = 27,
+  Mass=11.7,
+  BaseVelocity = 786,
+  CritChance = 55,
+  PenetrationClass = 4,
   Modifications = {PlaceObj("CaliberModification", {mod_add = 3, target_prop = "PenetrationClass"}),
   PlaceObj("CaliberModification", {
     mod_add = 2,
-    target_prop = "AimAccuracy"}),
-  AppliedEffects = {"Exposed","Bleeding"}
+    target_prop = "AimAccuracy"})
   }
 }
 

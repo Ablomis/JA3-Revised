@@ -10,8 +10,10 @@ DefineClass._9mm_Basic = {
   Description = T(667953407193, "9 mm ammo for Handguns and SMGs."),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 15,
-  AppliedEffects = {"Bleeding"}
+  Mass = 7.45,
+  BaseVelocity = 360,
+  PenetrationClass = 1,
+  CritChance = 34,
 },
 
 UndefineClass("_9mm_AP")
@@ -27,14 +29,16 @@ DefineClass._9mm_AP = {
   AdditionalHint = T(689365321555, "<bullet_point> Improved armor penetration"),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 13,
+  Mass = 7.45,
+  BaseVelocity = 360,
+  CritChance = 34,
+  PenetrationClass = 1,
   Modifications = {
     PlaceObj("CaliberModification", {
       mod_add = 2,
       target_prop = "PenetrationClass"
     })
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_9mm_HP")
@@ -53,15 +57,17 @@ DefineClass._9mm_HP = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 15,
+  Mass = 7.45,
+  BaseVelocity = 360,
+  CritChance = 34,
+  PenetrationClass = 1,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {
       mod_add = -2,
       target_prop = "PenetrationClass"
     })
-  },
-  AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_9mm_Match")
@@ -77,13 +83,16 @@ DefineClass._9mm_Match = {
   AdditionalHint = T(169874693254, "<bullet_point> Increased bonus from Aiming"),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 15,
+  Mass = 7.45,
+  BaseVelocity = 360,
+  CritChance = 34,
+  PenetrationClass = 1,
   Modifications = {
     PlaceObj("CaliberModification", {
       mod_add = 3,
       target_prop = "AimAccuracy"
     })
-  },AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_9mm_Shock")
@@ -103,7 +112,10 @@ DefineClass._9mm_Shock = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 15,
+  Mass = 7.45,
+  BaseVelocity = 360,
+  CritChance = 34,
+  PenetrationClass = 1,
   Modifications = {
     PlaceObj("CaliberModification", {mod_add = 50, target_prop = "CritChance"}),
     PlaceObj("CaliberModification", {
@@ -111,7 +123,7 @@ DefineClass._9mm_Shock = {
       target_prop = "PenetrationClass"
     })
   },
-  AppliedEffects = {"Exposed", "Bleeding"}
+  AppliedEffects = {"Exposed"}
 },
 
 UndefineClass("_9mm_Subsonic")
@@ -127,10 +139,13 @@ DefineClass._9mm_Subsonic = {
   AdditionalHint = T(368177980365, "<bullet_point> Less noisy"),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 13,
+  Mass = 7.45,
+  BaseVelocity = 360,
+  CritChance = 34,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {mod_mul = 500, target_prop = "Noise"})
-  },AppliedEffects = {"Bleeding"}
+  }
 },
 
 UndefineClass("_9mm_Tracer")
@@ -148,13 +163,16 @@ DefineClass._9mm_Tracer = {
   <bullet_point> Increased bonus from Aiming]]),
   MaxStacks = 500,
   Caliber = "9mm",
-  Damage = 13,
+  Mass = 7.45,
+  BaseVelocity = 360,
+  CritChance = 34,
+  PenetrationClass = 2,
   Modifications = {
     PlaceObj("CaliberModification", {
         mod_add = 3,
         target_prop = "AimAccuracy"
       }),
-},AppliedEffects = {"Bleeding"}
+}
 }
 
 

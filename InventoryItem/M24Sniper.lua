@@ -8,10 +8,10 @@ DefineClass.M24Sniper = {
 	Reliability = 44,
 	ScrapParts = 14,
 	Icon = "UI/Icons/Weapons/M24",
-	DisplayName = T(806020367664, --[[ModItemInventoryItemCompositeDef M24Sniper DisplayName]] "M24"),
-	DisplayNamePlural = T(348085654352, --[[ModItemInventoryItemCompositeDef M24Sniper DisplayNamePlural]] "M24s"),
-	Description = T(661979777819, --[[ModItemInventoryItemCompositeDef M24Sniper Description]] "US Army sniper weapon system that replaced the M21 (based on the M14). Apparently semi-auto was still not up to par with what snipers needed in terms of reliability and accuracy that bolt action can provide. "),
-	AdditionalHint = T(298021258573, --[[ModItemInventoryItemCompositeDef M24Sniper AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Cumbersome (no Free Move)\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Very noisy"),
+	DisplayName = T(211187062274, --[[ModItemInventoryItemCompositeDef M24Sniper DisplayName]] "M24"),
+	DisplayNamePlural = T(358473176417, --[[ModItemInventoryItemCompositeDef M24Sniper DisplayNamePlural]] "M24s"),
+	Description = T(876696531297, --[[ModItemInventoryItemCompositeDef M24Sniper Description]] "US Army sniper weapon system that replaced the M21 (based on the M14). Apparently semi-auto was still not up to par with what snipers needed in terms of reliability and accuracy that bolt action can provide. "),
+	AdditionalHint = T(486808996283, --[[ModItemInventoryItemCompositeDef M24Sniper AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Cumbersome (no Free Move)\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Very noisy"),
 	LargeItem = true,
 	Cumbersome = true,
 	UnitStat = "Marksmanship",
@@ -92,6 +92,6 @@ DefineClass.M24Sniper = {
 	},
 	ShootAP = 7000,
 	ReloadAP = 3000,
-	ReadyAP = 3000,
+	ReadyAP = 4000,
 }
 

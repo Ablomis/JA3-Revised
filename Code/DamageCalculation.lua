@@ -12,22 +12,22 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
         base_chance = Protected:ResolveValue("base_chance")
       end
       chance = InterpolateCoverEffect(coverage, base_chance, 0)
-      hit.grazing_reason = "cover"
+      --hit.grazing_reason = "cover"
     end
     if not ignoreGrazing and not hit.aoe then
       if target:IsConcealedFrom(attacker) then
         chance = chance + const.EnvEffects.FogGrazeChance
-        hit.grazing_reason = "fog"
+        --hit.grazing_reason = "fog"
       end
       if target:IsObscuredFrom(attacker) then
         chance = chance + const.EnvEffects.DustStormGrazeChance
-        hit.grazing_reason = "duststorm"
+        --hit.grazing_reason = "duststorm"
       end
     end
     if not prediction then
       local grazing_roll = target:Random(100)
       if chance > grazing_roll then
-        hit.grazing = true
+        hit.grazing = false
       else
         hit.grazing_reason = false
       end
@@ -39,10 +39,6 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
     end
     local ignore_armor = hit.aoe or IsKindOf(self, "MeleeWeapon")
     if true then
-      if hit.critical then
-        local crit_mod = IsKindOf(attacker, "Unit") and attacker:GetCritDamageMod() or const.Weapons.CriticalDamage
-        damage = MulDivRound(damage, 100 + crit_mod, 100)
-      end
       local data = {
         breakdown = record_breakdown or {},
         effects = {},
@@ -65,7 +61,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
         damage_min = MulDivRound(damage,self.DamageFalloff, 100)
         local k
         k = (damage - damage_min)/(0.0001*self.WeaponRange^3)
-        damage = Max(damage_min,round(damage - 0.0001 * k * (((hit.distance-self.WeaponRange)/1000)^3) + 0.5,1))
+        damage = Min(Max(damage_min,round(damage - 0.0001 * k * ((hit.distance/10000-self.WeaponRange)^3),1)),damage) 
       end
 
       for _, effect in ipairs(data.effects) do
@@ -88,6 +84,13 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
     end
     hit.damage = damage
     target:ApplyHitDamageReduction(hit, self, hit.spot_group or g_DefaultShotBodyPart, nil, ignore_armor, record_breakdown)
+    if hit.critical then
+      --local crit_mod = IsKindOf(attacker, "Unit") and attacker:GetCritDamageMod() or const.Weapons.CriticalDamage
+      --damage = MulDivRound(damage, 100 + crit_mod, 100)
+      --hit.damage = hit.damage + MulDivRound(const.Combat.CriticalDamage, target:Random(100) + 50,100)
+      hit.damage = hit.damage+const.Combat.CriticalDamage
+    end
+    print('Damage Calc',hit.damage)
     if hit.grazing then
       hit.effects = {}
       hit.damage = Max(1, MulDivRound(hit.damage, const.Combat.GrazingHitDamage, 100))

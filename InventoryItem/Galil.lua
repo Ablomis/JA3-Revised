@@ -9,10 +9,10 @@ DefineClass.Galil = {
 	Reliability = 77,
 	ScrapParts = 10,
 	Icon = "UI/Icons/Weapons/Galil",
-	DisplayName = T(608208777488, --[[ModItemInventoryItemCompositeDef Galil DisplayName]] "Galil"),
-	DisplayNamePlural = T(271367765054, --[[ModItemInventoryItemCompositeDef Galil DisplayNamePlural]] "Galils"),
-	Description = T(492742428934, --[[ModItemInventoryItemCompositeDef Galil Description]] "Designed with a bottle opener so the soldiers don't damage the mags while using the gun to open bottles. Tries to emulate the AK-47 for some reason. "),
-	AdditionalHint = T(481183386399, --[[ModItemInventoryItemCompositeDef Galil AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> High Crit chance\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Longer range\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> In-built bottle opener"),
+	DisplayName = T(278971411199, --[[ModItemInventoryItemCompositeDef Galil DisplayName]] "Galil"),
+	DisplayNamePlural = T(837535999436, --[[ModItemInventoryItemCompositeDef Galil DisplayNamePlural]] "Galils"),
+	Description = T(120103063155, --[[ModItemInventoryItemCompositeDef Galil Description]] "Designed with a bottle opener so the soldiers don't damage the mags while using the gun to open bottles. Tries to emulate the AK-47 for some reason. "),
+	AdditionalHint = T(894734213462, --[[ModItemInventoryItemCompositeDef Galil AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> High Crit chance\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Longer range\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> In-built bottle opener"),
 	LargeItem = true,
 	UnitStat = "Marksmanship",
 	is_valuable = true,
@@ -109,6 +109,6 @@ DefineClass.Galil = {
 	},
 	ShootAP = 6000,
 	ReloadAP = 3000,
-	ReadyAP = 2000,
+	ReadyAP = 3000,
 }
 

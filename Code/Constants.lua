@@ -1,0 +1,9 @@
+const.Combat.AimCritBonus = 5
+const.Combat.EnergyToDamageCoef =0.01663202
+const.Combat.HeadCritChance = 95
+const.Combat.LimbCritChance = 5
+const.Combat.MinCritChance = 5
+const.Combat.CriticalDamage = 50
+const.Combat.ArmorDamageReductionBase = 5
+const.Combat.ArmorDamageReductionAdditional = 45
+const.Combat.ArmorDegradePercent = 10
