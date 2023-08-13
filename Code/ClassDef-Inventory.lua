@@ -20,6 +20,8 @@ DefineClass.AmmoProperties = {
 			editor = "number", default = 10, min = 1, max = 100, modifiable = true, },
 		{ id = "BaseVelocity", name = "Velocity", help = "Base velocity of the bullet.", 
 		editor = "number", default = 800, min = 1, max = 1500, modifiable = true, },
+		{ id = "Projectiles", name = "Projectiles", help = "Number of projectiles shot.", 
+		editor = "number", default = 1, min = 1, max = 100, modifiable = true, },
 		{ category = "Caliber", id = "PenetrationClass", 
 			editor = "number", default = 1, template = true, 
 			name = function(self) return "Penetration Class: " .. (PenetrationClassIds[self.PenetrationClass] or "") end, slider = true, min = 1, max = 5, modifiable = true, },

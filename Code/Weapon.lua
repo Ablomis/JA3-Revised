@@ -5,6 +5,50 @@
 --    local accuracy = round(100 - 0.0001 * k * ((distance/1000)^3),1)
 --  return accuracy
 --end
+  function Firearm:GetDamageFromAmmo()
+    local ammo = self.ammo or false
+    if(ammo) then
+      local bullet_energy = 0.5 * ammo.Mass * (MulDivRound(ammo.BaseVelocity,self.BarrelLengthMod,100)^2) /1000
+      return round(bullet_energy * const.Combat.EnergyToDamageCoef + 0.5,1) * ammo.Projectiles
+    else
+      return self.Damage
+    end
+  end
+
+AppendClass.ObjMaterial = {
+  properties = {
+    {
+      id = "armor_class",
+      name = "Armor Class",
+      editor = "number",
+      default = 1,
+      name = function(self)
+        return "Armor Class: " .. (table.get(PenetrationClassIds, self.armor_class) or "")
+      end,
+      slider = true,
+      min = 0,
+      max = 5
+    }
+  },
+  EditorViewPresetPrefix = Untranslated("<style GedName>AC:<armor_class></style> ")
+}
+PenetrationClassIds = {
+  "None",
+  "Light",
+  "Medium",
+  "Heavy",
+  "Very-Heavy",
+  "Super-Heavy"
+}
+local PenetrationClassText = {
+  T(601695937982, "None"),
+  T(737270363459, "Light"),
+  T(557338364754, "Medium"),
+  T(446975864150, "Heavy"),
+  "Very-Heavy",
+  T(698360674337, "Super-Heavy")
+}
+
 function FindWeaponUpgradeTarget(item, mod)
     if not IsKindOfClasses(mod, "WeaponMod") or not IsKindOf(item, "Firearm") then
       return false
@@ -146,16 +190,6 @@ function FindWeaponReloadTarget(item, ammo)
     return prev_ammo, not suspend_fx, change
   end
 
-  function Firearm:GetDamageFromAmmo()
-    local ammo = self.ammo or false
-    if(ammo) then
-      local bullet_energy = 0.5 * ammo.Mass * (MulDivRound(ammo.BaseVelocity,self.BarrelLengthMod,100)^2) /1000
-      return round(bullet_energy * const.Combat.EnergyToDamageCoef + 0.5,1)
-    else
-      return self.Damage
-    end
-  end
-
   function Firearm:GetAreaAttackParams(action_id, attacker, target_pos, step_pos, stance)
     local params = {
       attacker = attacker,
@@ -247,6 +281,33 @@ function FindWeaponReloadTarget(item, ammo)
     end
     return list
   end
+
+  local find_first_hit = function(attack_results, hit_obj)
+    for si, shot in ipairs(attack_results.shots) do
+      for hi, hit in ipairs(shot.hits) do
+        if hit.obj == hit_obj then
+          return hit
+        end
+      end
+    end
+  end
+
+  function GetAoeDamageOverride(attack_args, attacker, weapon, damage_bonus)
+    local damage_override
+
+    if attack_args.aoe_damage_type == "fixed" then
+      damage_override = attack_args.aoe_damage_value
+    elseif attack_args.aoe_damage_type == "percent" then
+      local basedmg = attacker:GetBaseDamage(weapon)
+      damage_override = MulDivRound(basedmg, (100 + damage_bonus) * attack_args.aoe_damage_value, 10000)
+    end
+    return damage_override
+  end
+
+  function GetShotgunPelletDamage(attacker, weapon)
+      return attacker:GetBaseDamage(weapon)/weapon.ammo.Projectiles
+  end
+
 
   function Firearm:GetAttackResults(action, attack_args)
     local attacker = attack_args.obj
@@ -666,8 +727,12 @@ function FindWeaponReloadTarget(item, ammo)
     if not (0 < num_shots) or IsValid(target) then
     end
     local targetHitProjectile = target_hit
+    
     if aoe_params then
       local damage_override = GetAoeDamageOverride(shot_attack_args, attacker, self, shot_attack_args.damage_bonus)
+      if(IsKindOf(self, "Shotgun")) then
+        damage_override  = GetShotgunPelletDamage(attacker, self)
+      end
       aoe_params.prediction = shot_attack_args.prediction
       local hits, aoe_total_damage, aoe_friendly_fire_dmg = GetAreaAttackResults(aoe_params, shot_attack_args.aoe_damage_bonus, shot_attack_args.applied_status, damage_override)
       attack_results.area_hits = hits
@@ -689,14 +754,19 @@ function FindWeaponReloadTarget(item, ammo)
           else
             local direct_hit = find_first_hit(attack_results, hit.obj)
             if direct_hit then
-              direct_hit.damage = direct_hit.damage + hit.damage
-              hit.damage = 0
+              if(IsKindOf(self, "Shotgun")) then
+                direct_hit.damage = hit.damage + MulDivRound( attacker:GetBaseDamage(self),self.ammo.Projectiles - #hit_objs,self.ammo.Projectiles)
+                hit.damage = 0
+              else
+                direct_hit.damage = direct_hit.damage + hit.damage
+                hit.damage = 0
+              end
             end
           end
         end
       end
-      if not prediction and 0 < (shot_attack_args.buckshot_scatter_fx or 0) and target_pos then
-        attack_results.cosmetic_hits = self:CalcBuckshotScatter(attacker, action, attack_results.attack_pos, target_pos, shot_attack_args.buckshot_scatter_fx, aoe_params)
+      if not prediction and 0 < (shot_attack_args.buckshot_scatter_fx or 0) then
+        --attack_results.cosmetic_hits = self:CalcBuckshotScatter(attacker, action, attack_results.attack_pos, target_pos, shot_attack_args.buckshot_scatter_fx, aoe_params)
       end
     end
     attack_results.num_hits = num_hits
@@ -786,5 +856,4 @@ function Firearm:BulletCalcDamage(hit_data)
       end
     end
   end
-  print('Weapon')
 end

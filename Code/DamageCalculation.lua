@@ -143,5 +143,4 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       end
     end
   end
-  print(hit.damage)
 end

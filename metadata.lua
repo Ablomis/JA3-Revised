@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2610,
+	'version', 2677,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -28,7 +28,7 @@ return PlaceObj('ModDef', {
 		"Code/ChanceToHit.lua",
 		"Code/ClassDef-Inventory.lua",
 		"Code/ColoredAmmo.lua",
-		"Code/Combat.lua",
+		"Code/CombatObject.lua",
 		"Code/CombatActionGrenade.lua",
 		"Code/CombatActions.lua",
 		"Code/Constants.lua",
@@ -139,7 +139,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/FlakVest_CeramicPlates.lua",
 		"InventoryItem/DoubleBarrelShotgun.lua",
 	},
-	'saved', 1691944044,
-	'code_hash', 1790664108926358085,
+	'saved', 1691962924,
+	'code_hash', 5622409845398788862,
 	'steam_id', "3008768068",
 })

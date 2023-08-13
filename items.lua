@@ -156,8 +156,8 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/ColoredAmmo.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "Combat",
-	'CodeFileName', "Code/Combat.lua",
+	'name', "CombatObject",
+	'CodeFileName', "Code/CombatObject.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "CombatActionGrenade",

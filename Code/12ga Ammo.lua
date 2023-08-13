@@ -11,10 +11,11 @@ DefineClass._12gauge_Buckshot = {
   AdditionalHint = T(104397963477, "<bullet_point> Inflicts <em>Bleeding</em>"),
   MaxStacks = 500,
   Caliber = "12gauge",
-  Mass=31.5,
+  Mass=3.5,
   BaseVelocity = 403,
   CritChance = 60,
   PenetrationClass = 0,
+  Projectiles = 9,
   Modifications = {
 
   },
@@ -36,10 +37,11 @@ DefineClass._12gauge_Flechette = {
 <bullet_point> Inflicts <em>Bleeding</em>]]),
   MaxStacks = 500,
   Caliber = "12gauge",
-  Mass=31.5,
+  Mass=3.5,
   BaseVelocity = 403,
   CritChance = 60,
   PenetrationClass = 0,
+  Projectiles = 9,
   Modifications = {
 
   },
@@ -62,10 +64,11 @@ DefineClass._12gauge_Saltshot = {
 <bullet_point> Inflicts <em>Inaccurate</em>]]),
   MaxStacks = 500,
   Caliber = "12gauge",
-  Mass=31.5,
+  Mass=3.5,
   BaseVelocity = 403,
   CritChance = 60,
   PenetrationClass = 0,
+  Projectiles = 9,
   Modifications = {
 
   },
@@ -90,10 +93,11 @@ DefineClass._12gauge_Breacher = {
 <bullet_point> Inflicts <em>Suppressed</em>]]),
   MaxStacks = 500,
   Caliber = "12gauge",
-  Mass=31.5,
+  Mass=3.5,
   BaseVelocity = 403,
   CritChance = 60,
   PenetrationClass = 0,
+  Projectiles = 9,
   Modifications = {
 
   },
