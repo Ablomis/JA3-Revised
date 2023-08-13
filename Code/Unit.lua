@@ -278,13 +278,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       end
     end
     if IsKindOf(weapon, "Firearm") then
-      local ammo = weapon.ammo or false
-      if(ammo) then
-        local bullet_energy = 0.5 * ammo.Mass * (MulDivRound(ammo.BaseVelocity,weapon.BarrelLengthMod,100)^2) /1000
-        base_damage = round(bullet_energy * const.Combat.EnergyToDamageCoef + 0.5,1)
-      else
-        base_damage = weapon.Damage
-      end
+      base_damage = weapon:GetDamageFromAmmo()
       if HasPerk(self, "WeaponPersonalization") and weapon:IsFullyModified() then
         local baseDamageBonus = CharacterEffectDefs.WeaponPersonalization:ResolveValue("baseDamageBonus")
         base_damage = base_damage + baseDamageBonus

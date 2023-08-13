@@ -146,6 +146,16 @@ function FindWeaponReloadTarget(item, ammo)
     return prev_ammo, not suspend_fx, change
   end
 
+  function Firearm:GetDamageFromAmmo()
+    local ammo = self.ammo or false
+    if(ammo) then
+      local bullet_energy = 0.5 * ammo.Mass * (MulDivRound(ammo.BaseVelocity,self.BarrelLengthMod,100)^2) /1000
+      return round(bullet_energy * const.Combat.EnergyToDamageCoef + 0.5,1)
+    else
+      return self.Damage
+    end
+  end
+
   function Firearm:GetAreaAttackParams(action_id, attacker, target_pos, step_pos, stance)
     local params = {
       attacker = attacker,
@@ -163,7 +173,7 @@ function FindWeaponReloadTarget(item, ammo)
     end
     if action_id == "Buckshot" or action_id == "DoubleBarrel" or action_id == "BuckshotBurst" or action_id == "CancelShotCone" then
       if attacker then
-        params.attribute_bonus = MulDivRound(const.Combat.BuckshotAttribBonus, attacker.Marksmanship, 100)
+        params.attribute_bonus = MulDivRound(const.Combat.BuckshotAttribBonus, attacker.Marksmanship/2, 100)
       end
       params.falloff_start = self.BuckshotFalloffStart
       params.falloff_damage = self.BuckshotFalloffDamage

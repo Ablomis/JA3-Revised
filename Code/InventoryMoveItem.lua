@@ -1,7 +1,7 @@
 invprint = CreatePrint({})
 
 function IsUpgrade(mod, weapon)
-    return weapon and IsWeaponUpgradeTarget(mod, weapon)
+    --return weapon and IsWeaponUpgradeTarget(mod, weapon)
 end
 
 function IsReload(ammo, weapon)
@@ -403,7 +403,7 @@ function MoveItem(args)
     end
     return false, "no change"
   end
-  local is_upgrade = IsUpgrade(item, item_at_dest)
+  local is_upgrade = false --IsUpgrade(item, item_at_dest)
   local is_reload = IsReload(item, item_at_dest)
   local is_mag_reload = IsMagReload(item, item_at_dest)
   local is_refill = IsMedicineRefill(item, item_at_dest)

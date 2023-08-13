@@ -17,6 +17,7 @@ DefineClass.DoubleBarrelShotgun = {
 	UnitStat = "Marksmanship",
 	Cost = 700,
 	Caliber = "12gauge",
+	Platform = "M14",
 	Damage = 28,
 	ObjDamageMod = 150,
 	AimAccuracy = 1,

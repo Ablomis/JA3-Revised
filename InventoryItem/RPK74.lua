@@ -16,6 +16,7 @@ DefineClass.RPK74 = {
 	UnitStat = "Marksmanship",
 	Cost = 1800,
 	Caliber = "545x39",
+	Platform = "AK545",
 	Damage = 27,
 	BaseAccuracy = 80,
 	MagazineSize = 60,

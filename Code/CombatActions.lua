@@ -706,6 +706,175 @@ PlaceObj('CombatAction', {
 	id = "SniperRotate",
 })
 
-
-
-
+PlaceObj('CombatAction', {
+	ActionType = "Ranged Attack",
+	AimType = "cone",
+	ConfigurableKeybind = false,
+	Description = T(780359204834, --[[CombatAction Overwatch Description]] "<em>Spends all AP</em>\nAny targets who move or shoot in the overwatch area will provoke <GameTerm('Interrupt')> <em>attacks</em>.\nAccuracy is influenced by <em><dexterity></em>."),
+	DisplayName = T(396308001195, --[[CombatAction Overwatch DisplayName]] "Overwatch"),
+	Execute = function (self, units, args)
+		local unit = units[1]
+		local attacks, aim = unit:GetOverwatchAttacksAndAim(self, args)
+		args.num_attacks = attacks
+		args.aim_ap = aim
+		local ap = self:GetAPCost(unit, args)
+		NetStartCombatAction(self.id, unit, ap, args)
+	end,
+	GetAPCost = function (self, unit, args)
+		if args and args.action_cost_only then
+			return self.ActionPoints
+		end
+		local weapon = self:GetAttackWeapons(unit, args)
+		if not weapon or (weapon.PreparedAttackType ~= "Overwatch" and weapon.PreparedAttackType ~= "Both")then return -1 end
+		local attack = unit:GetDefaultAttackAction("ranged", "ungrouped")
+		local atk_cost = attack:GetAPCost(unit, args) + self.ActionPoints
+		return Max(unit:GetUIActionPoints(), atk_cost), atk_cost
+	end,
+	GetActionDescription = function (self, units)
+		local unit = units[1]
+		local apply, value = Presets.ChanceToHitModifier.Default.OpportunityAttack:CalcValue(unit, nil, nil, nil, nil, nil, nil, nil, true)
+		local total, cost = self:GetAPCost(unit)
+		local attacks = 1
+		
+		if unit and (cost or -1) >= 0 then
+			attacks = unit:GetOverwatchAttacksAndAim()
+		end
+		
+		local descr = g_Combat and self.Description or CombatActions.ExplorationOverwatch.Description
+		local description = descr
+		if g_Overwatch[unit] and (g_Overwatch[unit].num_attacks or 0) > 0 then
+			-- add remaining attacks text
+			attacks = g_Overwatch[unit].num_attacks
+			description = descr .. T{133054169959, "<newline><newline>Remaining attacks: <em><attacks></em>", attacks = attacks}
+		elseif unit:UIHasAP(cost, self.id) then
+			-- add max attacks text
+			description = descr .. T{452784485986, "<newline><newline>Max attacks: <em><attacks></em>", attacks = attacks}
+		end
+		
+		local action = unit and unit:GetDefaultAttackAction()
+		if action and (action.id == "Buckshot" or action.id == "DoubleBarrel") then
+			description = description .. "<newline><newline>" .. T(769183913636, "Collateral damage might hit units outside the overwatch cone.")
+		end
+		
+		return description
+	end,
+	GetActionDisplayName = function (self, units)
+		local name = g_Combat and self.DisplayName or CombatActions.ExplorationOverwatch.DisplayName
+		if (name or "") == "" then
+			name = Untranslated(self.id)
+		end
+		return name
+	end,
+	GetActionIcon = function (self, units)
+		if not g_Combat then
+			return CombatActions.ExplorationOverwatch.Icon
+		end
+		return self.Icon
+	end,
+	GetActionResults = function (self, unit, args)
+		local target = args.target
+		local weapon = self:GetAttackWeapons(unit, args)
+		if not weapon then return {} end
+		local sub_action = unit:GetDefaultAttackAction("ranged", "ungrouped")
+		local attack_args = unit:PrepareAttackArgs(self.id, args)
+		local targets = unit:GetVisibleEnemies()
+		
+		local results = {}
+		if sub_action.AimType == "cone" then
+			-- check for collateral damage around exact targets
+			local sub_attack_args = unit:PrepareAttackArgs(sub_action.id, args)
+			local aoe = GetAreaAttackResults(sub_attack_args)
+			for i, aoeHit in ipairs(aoe) do
+				if IsKindOf(aoeHit.obj, "Unit") then
+					table.insert_unique(targets, aoeHit.obj)
+					results[#results + 1] = aoeHit
+				end
+			end
+		end
+		
+		local modifiers = GetAreaAttackHitModifiers(self.id, attack_args, targets)
+		local sub_action_lof_params = {
+			can_use_covers = false,
+			can_stuck_on_unit = false,
+		}
+		local lof_data = GetLoFData(unit, targets, sub_action_lof_params)
+		for i, target in ipairs(targets) do
+			local mod = modifiers[i]
+			if mod > 0 then
+				sub_action_lof_params.target = target
+				local sub_action_results = sub_action:GetActionResults(unit, sub_action_lof_params)
+				if sub_action.AimType == "cone" then -- cause area action results are in different format...
+					sub_action_results = sub_action_results.area_hits
+				end
+				local target_hit
+				for i, hitData in ipairs(sub_action_results) do
+					if hitData.obj == target then
+						results[#results + 1] = hitData
+						target_hit = true
+					end
+				end
+				--if not target_hit then
+				local target_lof_data = lof_data[i]
+				if target_lof_data.clear_attacks == 0 then
+					results.no_lof_targets = results.no_lof_targets or {}
+					table.insert(results.no_lof_targets, target)
+				end
+			end
+		end
+		
+		-- We dont want to show damage prediction, just hit prediction.
+		for i, result in ipairs(results) do
+			result.damage = 0
+			result.display_only = true
+			result.ignore_armor = true
+		end
+		return results, attack_args
+	end,
+	GetAimParams = function (self, unit, weapon)
+		local params = weapon:GetAreaAttackParams(self.id, unit)
+		params.min_range = self:GetMinAimRange(unit, weapon)
+		params.max_range = self:GetMaxAimRange(unit, weapon)
+		assert(params.max_range >= params.min_range)
+		return params
+	end,
+	GetAttackWeapons = function (self, unit, args)
+		if args and args.weapon then return args.weapon end
+		return unit:GetActiveWeapons("Firearm")
+	end,
+	GetMaxAimRange = function (self, unit, weapon)
+		local range = weapon:GetOverwatchConeParam("MaxRange")
+		local sight = unit:GetSightRadius() / const.SlabSizeX
+		return Min(range, sight)
+	end,
+	GetMinAimRange = function (self, unit, weapon)
+		local range = weapon:GetOverwatchConeParam("MinRange")
+		local sight = unit:GetSightRadius() / const.SlabSizeX
+		return Min(range, sight)
+	end,
+	GetUIState = function (self, units, args)
+		local unit = units[1]
+		local cost = self:GetAPCost(unit, args)
+		if cost < 0 then return "hidden" end
+		if not unit:UIHasAP(cost) then return "disabled", GetUnitNoApReason(unit) end
+		local attack = unit:GetDefaultAttackAction()
+		local state, reason = attack:GetUIState(units, args)
+		
+		return state, reason
+	end,
+	Icon = "UI/Icons/Hud/overwatch",
+	IsAimableAttack = false,
+	KeybindingFromAction = "actionRedirectOverwatch",
+	MultiSelectBehavior = "first",
+	RequireState = "any",
+	Run = function (self, unit, ap, ...)
+		local vr = IsMerc(unit) and "Overwatch" or "AIOverwatch"
+		PlayVoiceResponse(unit, vr)
+		unit:SetActionCommand("OverwatchAction", self.id, ap, ...)
+	end,
+	SortKey = 20,
+	UIBegin = function (self, units, args)
+		CombatActionAttackStart(self, units, args, "IModeCombatAreaAim", "cancel")
+	end,
+	group = "Default",
+	id = "Overwatch",
+})

@@ -1,4 +1,4 @@
-PlaceObj("XTemplate", {
+--[[PlaceObj("XTemplate", {
     group = "Zulu Weapon Mod",
     id = "WeaponModChoicePopup",
     PlaceObj("XTemplateWindow", {
@@ -1001,4 +1001,4 @@ PlaceObj("XTemplate", {
         end
       })
     })
-  })
+  })]]--

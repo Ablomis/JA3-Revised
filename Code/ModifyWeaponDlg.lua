@@ -1,4 +1,4 @@
-DefineClass.ModifyWeaponDlg = {
+--[[DefineClass.ModifyWeaponDlg = {
     __parents = {
       "XContextWindow"
     },
@@ -1464,4 +1464,4 @@ DefineClass.ModifyWeaponDlg = {
       end
     end
     return icon
-  end
+  end]]--

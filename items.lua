@@ -84,6 +84,10 @@ PlaceObj('ModItemCharacterEffectCompositeDef', {
 	},
 }),
 PlaceObj('ModItemCode', {
+	'name', "12ga Ammo",
+	'CodeFileName', "Code/12ga Ammo.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', ".44 Ammo",
 	'CodeFileName', "Code/.44 Ammo.lua",
 }),
@@ -311,29 +315,6 @@ PlaceObj('ModItemGameRuleDef', {
 				    local attacker, time, ap = g_AttackSpentAPQueue[i], g_AttackSpentAPQueue[i + 1], g_AttackSpentAPQueue[i + 2]
 				      attacker:RemoveStatusEffect("SpentAP")
 				  end
-			end,
-			param_bindings = false,
-		}),
-	},
-}),
-PlaceObj('ModItemGameRuleDef', {
-	id = "AddItems",
-	msg_reactions = {
-		PlaceObj('MsgReaction', {
-			Event = "UnitStealthChanged",
-			Handler = function (self, unit)
-				--[[local dbItem = PlaceInventoryItem("ReflexSightAdvanced")
-				dbItem.condition= 100
-				dbItem.Slot= 'Scope'
-				dbItem.Name='ReflexSightAdvanced'
-				unit:AddItem('Inventory',dbItem)]]--
-			end,
-			HandlerCode = function (self, unit)
-				--[[local dbItem = PlaceInventoryItem("ReflexSightAdvanced")
-				dbItem.condition= 100
-				dbItem.Slot= 'Scope'
-				dbItem.Name='ReflexSightAdvanced'
-				unit:AddItem('Inventory',dbItem)]]--
 			end,
 			param_bindings = false,
 		}),
@@ -2788,6 +2769,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'UnitStat', "Marksmanship",
 	'Cost', 1800,
 	'Caliber', "545x39",
+	'Platform', "AK545",
 	'Damage', 27,
 	'BaseAccuracy', 80,
 	'MagazineSize', 60,
@@ -2889,6 +2871,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'UnitStat', "Marksmanship",
 	'Cost', 700,
 	'Caliber', "12gauge",
+	'Platform', "M14",
 	'Damage', 28,
 	'ObjDamageMod', 150,
 	'AimAccuracy', 1,
@@ -2986,16 +2969,16 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Shotgun",
-	'Id', "M41",
+	'Id', "M41Shotgun",
 	'object_class', "Shotgun",
 	'RepairCost', 50,
 	'Reliability', 71,
 	'ScrapParts', 10,
 	'Icon', "UI/Icons/Weapons/M1014",
-	'DisplayName', T(611150522288, --[[ModItemInventoryItemCompositeDef M41 DisplayName]] "M1014"),
-	'DisplayNamePlural', T(275681499910, --[[ModItemInventoryItemCompositeDef M41 DisplayNamePlural]] "M1014s"),
-	'Description', T(131084963169, --[[ModItemInventoryItemCompositeDef M41 Description]] "12-gauge semi-auto slick Italian. Boasting little need for maintenance and high level of reliability, it is loved by law enforcement and military alike."),
-	'AdditionalHint', T(701912818505, --[[ModItemInventoryItemCompositeDef M41 AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Longer range\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Increased bonus from Aiming"),
+	'DisplayName', T(611150522288, --[[ModItemInventoryItemCompositeDef M41Shotgun DisplayName]] "M1014"),
+	'DisplayNamePlural', T(275681499910, --[[ModItemInventoryItemCompositeDef M41Shotgun DisplayNamePlural]] "M1014s"),
+	'Description', T(131084963169, --[[ModItemInventoryItemCompositeDef M41Shotgun Description]] "12-gauge semi-auto slick Italian. Boasting little need for maintenance and high level of reliability, it is loved by law enforcement and military alike."),
+	'AdditionalHint', T(701912818505, --[[ModItemInventoryItemCompositeDef M41Shotgun AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Longer range\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Increased bonus from Aiming"),
 	'LargeItem', true,
 	'UnitStat', "Marksmanship",
 	'Cost', 1700,
