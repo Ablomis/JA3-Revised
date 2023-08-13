@@ -16,6 +16,7 @@ DefineClass.Glock18 = {
 	UnitStat = "Marksmanship",
 	Cost = 1500,
 	Caliber = "9mm",
+	Platform = "Glock",
 	Damage = 17,
 	AimAccuracy = 4,
 	BaseAccuracy = 95,

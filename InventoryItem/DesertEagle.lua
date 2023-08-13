@@ -17,6 +17,7 @@ DefineClass.DesertEagle = {
 	is_valuable = true,
 	Cost = 3000,
 	Caliber = "44CAL",
+	Platform = "DesertEagle",
 	Damage = 28,
 	ObjDamageMod = 200,
 	AimAccuracy = 4,

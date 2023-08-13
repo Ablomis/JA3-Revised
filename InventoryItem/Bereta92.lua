@@ -16,6 +16,7 @@ DefineClass.Bereta92 = {
 	UnitStat = "Marksmanship",
 	Cost = 700,
 	Caliber = "9mm",
+	Platform = "Beretta",
 	Damage = 18,
 	AimAccuracy = 6,
 	BaseAccuracy = 95,

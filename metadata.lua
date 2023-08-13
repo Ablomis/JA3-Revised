@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2533,
+	'version', 2551,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -139,7 +139,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/HeavyVest_CeramicPlates.lua",
 		"InventoryItem/FlakVest_CeramicPlates.lua",
 	},
-	'saved', 1691898959,
-	'code_hash', 7816722820814731041,
+	'saved', 1691900318,
+	'code_hash', 6084938845447805666,
 	'steam_id', "3008768068",
 })
