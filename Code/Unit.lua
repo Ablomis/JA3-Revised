@@ -194,6 +194,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
         }
       end
     end
+    print('CTH',final)
     return final, base, modifiers, penalty
   end
 
@@ -324,6 +325,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
         return "break"
       end
     end)
+    print('Pierced',pierced)
     return pierced
   end
 
@@ -384,6 +386,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     if HasPerk(self, "Deadeye") then
       crit_per_aim = crit_per_aim + CharacterEffectDefs.Deadeye:ResolveValue("crit_per_aim")
     end
+    print('Crit',critChance)
     return critChance + (aim or 0) * crit_per_aim
   end
 
@@ -455,4 +458,5 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     hit.damage = dmg
     hit.armor_decay = armor_decay
     hit.armor_pen = armor_pierced
+    print( 'DamageReduction',hit.damage)
   end

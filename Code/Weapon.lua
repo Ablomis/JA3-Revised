@@ -695,7 +695,7 @@ function FindWeaponReloadTarget(item, ammo)
           end
         end
       end
-      if not prediction and 0 < (shot_attack_args.buckshot_scatter_fx or 0) then
+      if not prediction and 0 < (shot_attack_args.buckshot_scatter_fx or 0) and target_pos then
         attack_results.cosmetic_hits = self:CalcBuckshotScatter(attacker, action, attack_results.attack_pos, target_pos, shot_attack_args.buckshot_scatter_fx, aoe_params)
       end
     end
@@ -786,4 +786,5 @@ function Firearm:BulletCalcDamage(hit_data)
       end
     end
   end
+  print('Weapon')
 end
