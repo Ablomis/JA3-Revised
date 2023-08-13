@@ -16,18 +16,7 @@ DefineClass._12gauge_Buckshot = {
   CritChance = 60,
   PenetrationClass = 0,
   Modifications = {
-    PlaceObj("CaliberModification", {
-      mod_mul = 250,
-      target_prop = "BuckshotConeAngle"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 1,
-      target_prop = "OverwatchAngle"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_add = 0,
-      target_prop = "WeaponRange"
-    })
+
   },
 }
 
@@ -52,22 +41,7 @@ DefineClass._12gauge_Flechette = {
   CritChance = 60,
   PenetrationClass = 0,
   Modifications = {
-    PlaceObj("CaliberModification", {
-      mod_mul = 500,
-      target_prop = "BuckshotConeAngle"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 500,
-      target_prop = "OverwatchAngle"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_add = 4,
-      target_prop = "WeaponRange"
-    }),
-    PlaceObj("CaliberModification", {
-        mod_add = 2,
-        target_prop = "PenetrationClass"
-      }),
+
   },
 }
 
@@ -93,19 +67,7 @@ DefineClass._12gauge_Saltshot = {
   CritChance = 60,
   PenetrationClass = 0,
   Modifications = {
-    PlaceObj("CaliberModification", {mod_mul = 500, target_prop = "Damage"}),
-    PlaceObj("CaliberModification", {
-      mod_mul = 1700,
-      target_prop = "BuckshotConeAngle"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_add = -2,
-      target_prop = "WeaponRange"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 1700,
-      target_prop = "OverwatchAngle"
-    })
+
   },
   AppliedEffects = {"Inaccurate"}
 }
@@ -133,30 +95,7 @@ DefineClass._12gauge_Breacher = {
   CritChance = 60,
   PenetrationClass = 0,
   Modifications = {
-    PlaceObj("CaliberModification", {
-      mod_add = 1,
-      target_prop = "IgnoreCoverReduction"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 500,
-      target_prop = "WeaponRange"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_add = 4,
-      target_prop = "PenetrationClass"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 2000,
-      target_prop = "ObjDamageMod"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 1700,
-      target_prop = "BuckshotConeAngle"
-    }),
-    PlaceObj("CaliberModification", {
-      mod_mul = 1700,
-      target_prop = "OverwatchAngle"
-    })
+
   },
   AppliedEffects = {"Suppressed"}
 }

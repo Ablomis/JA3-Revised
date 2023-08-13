@@ -6,7 +6,6 @@ PlaceObj('ActionFXInherit_Actor', {
 	Inherit = "Silencer",
 	group = "Weapons VFX",
 	id = "MJN43ers",
-	save_in = "Libs/Network",
 })
 
 PlaceObj('ActionFXInherit_Actor', {
@@ -15,6 +14,5 @@ PlaceObj('ActionFXInherit_Actor', {
 	Inherit = "Silencer",
 	group = "Weapons VFX",
 	id = "5BxWcYKs",
-	save_in = "Libs/Network",
 })
 
