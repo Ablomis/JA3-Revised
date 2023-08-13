@@ -470,14 +470,14 @@ function FindWeaponReloadTarget(item, ammo)
       if shot_attack_args.multishot then
         roll = attack_results.attack_roll[i]
         shot_cth = Max(0, attack_results.chance_to_hit - shot_attack_args.cth_loss_per_shot * (i - 1))
-        print(shot_cth)
+        print('Sho#:',i,'|',shot_cth)
         shot_miss = roll > shot_cth
         shot_crit = not shot_miss and attack_results.crit_roll[i] <= attack_results.crit_chance
         miss = miss and shot_miss
         crit = crit or shot_crit
       else
         shot_cth = Max(0, attack_results.chance_to_hit - shot_attack_args.cth_loss_per_shot * (i - 1))
-        print(shot_cth)
+        print('Sho#:',i,'|',shot_cth)
         shot_miss = (not kill or 1 < i) and roll > shot_cth
         shot_crit = crit and i == 1
       end
@@ -755,7 +755,8 @@ function FindWeaponReloadTarget(item, ammo)
             local direct_hit = find_first_hit(attack_results, hit.obj)
             if direct_hit then
               if(IsKindOf(self, "Shotgun")) then
-                direct_hit.damage = hit.damage + MulDivRound( attacker:GetBaseDamage(self),self.ammo.Projectiles - #hit_objs,self.ammo.Projectiles)
+                local pellets_hit =  Max(1, self.ammo.Projectiles - #hit_objs + 1 - attacker:GetDist(target)/1000/(self.BuckshotFalloffStart/10))
+                direct_hit.damage = MulDivRound( attacker:GetBaseDamage(self),pellets_hit,self.ammo.Projectiles)
                 hit.damage = 0
               else
                 direct_hit.damage = direct_hit.damage + hit.damage

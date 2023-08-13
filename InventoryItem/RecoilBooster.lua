@@ -6,8 +6,8 @@ DefineClass.RecoilBooster = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/booster_NATO",
-	DisplayName = T(256893766304, --[[ModItemInventoryItemCompositeDef RecoilBooster DisplayName]] "Recoil Booster"),
-	DisplayNamePlural = T(795167360898, --[[ModItemInventoryItemCompositeDef RecoilBooster DisplayNamePlural]] "Recoil Boosters"),
+	DisplayName = T(702539707985, --[[ModItemInventoryItemCompositeDef RecoilBooster DisplayName]] "Recoil Booster"),
+	DisplayNamePlural = T(983096075995, --[[ModItemInventoryItemCompositeDef RecoilBooster DisplayNamePlural]] "Recoil Boosters"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

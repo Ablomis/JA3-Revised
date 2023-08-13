@@ -6,8 +6,8 @@ DefineClass.VerticalGrip = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/mp5_grip",
-	DisplayName = T(369232058391, --[[ModItemInventoryItemCompositeDef VerticalGrip DisplayName]] "Vertical Grip"),
-	DisplayNamePlural = T(604197160612, --[[ModItemInventoryItemCompositeDef VerticalGrip DisplayNamePlural]] "Vertical Grip"),
+	DisplayName = T(292360956906, --[[ModItemInventoryItemCompositeDef VerticalGrip DisplayName]] "Vertical Grip"),
+	DisplayNamePlural = T(943536863728, --[[ModItemInventoryItemCompositeDef VerticalGrip DisplayNamePlural]] "Vertical Grip"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

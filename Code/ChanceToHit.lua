@@ -22,7 +22,7 @@ PlaceObj('ChanceToHitModifier', {
 		end
 		local dex_back = round(35 + 0.00055 * ((dex-70)^3) + 0.5,1)
 		--local bonus = num * min_bonus + MulDivRound(Max(0, mrk - min_mrk) * num, mrk_scale, 100) 
-		local bonus = (mrk/3) * num - dex_back
+		local bonus = round((mrk - dex_back)/3.0*num + 0.5,1)
 		
 		-- target camo
 		if IsKindOf(target, "Unit") then
@@ -251,4 +251,50 @@ PlaceObj('ChanceToHitModifier', {
 	display_name = T(520853928478, --[[ChanceToHitModifier Default Autofire display_name]] "Autofire"),
 	group = "Default",
 	id = "Autofire",
+})
+
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		return false,0
+	end,
+	Comment = "More accurate attacks against lower level targets",
+	Parameters = {
+		PlaceObj('PresetParamPercent', {
+			'Name', "bonus",
+			'Value', 10,
+			'Tag', "<bonus>%",
+		}),
+		PlaceObj('PresetParamNumber', {
+			'Name', "levelDiff",
+			'Value', 2,
+			'Tag', "<levelDiff>",
+		}),
+	},
+	RequireTarget = true,
+	display_name = T(713286242287, --[[ChanceToHitModifier Default TrainingAdvantage display_name]] "More experienced"),
+	group = "Default",
+	id = "TrainingAdvantage",
+})
+
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		return false, 0
+	end,
+	Comment = "Less accurate attacks against higher level targets",
+	Parameters = {
+		PlaceObj('PresetParamPercent', {
+			'Name', "penalty",
+			'Value', 10,
+			'Tag', "<penalty>%",
+		}),
+		PlaceObj('PresetParamNumber', {
+			'Name', "levelDiff",
+			'Value', 2,
+			'Tag', "<levelDiff>",
+		}),
+	},
+	RequireTarget = true,
+	display_name = T(133256021230, --[[ChanceToHitModifier Default TrainingDisadvantage display_name]] "Less Experienced"),
+	group = "Default",
+	id = "TrainingDisadvantage",
 })
