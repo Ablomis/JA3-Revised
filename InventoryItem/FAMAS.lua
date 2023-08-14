@@ -22,7 +22,6 @@ DefineClass.FAMAS = {
 	BaseAccuracy = 95,
 	MagazineSize = 25,
 	PenetrationClass = 2,
-	WeaponRange = 26,
 	DamageFalloff = 75,
 	Recoil = 25,
 	OverwatchAngle = 1440,

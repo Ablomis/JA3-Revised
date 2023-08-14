@@ -23,7 +23,6 @@ DefineClass.AUG = {
 	BaseAccuracy = 95,
 	MagazineSize = 30,
 	PenetrationClass = 2,
-	WeaponRange = 30,
 	DamageFalloff = 75,
 	Recoil = 25,
 	OverwatchAngle = 1440,

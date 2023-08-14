@@ -346,10 +346,10 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return 100
     end
 
-    local critChance = weapon.ammo.CritChance or 0
+    local critChance = (weapon.ammo.CritChance - const.Combat.AimCritBonus *3) or 0
+    local crit_per_aim = const.Combat.AimCritBonus
     local k
-    k = (critChance - const.Combat.MinCritChance)/(0.0001*weapon.WeaponRange^3)
-    critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/1000-weapon.WeaponRange)^3),1)),critChance)
+    k = (critChance - const.Combat.MinCritChance)/(0.0001*5^3)
 
     if(target_spot_group=='Head') then
       critChance = const.Combat.HeadCritChance
@@ -380,11 +380,12 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     if extraAimed then
       critChance = critChance + extraAimed
     end
-    local crit_per_aim = const.Combat.AimCritBonus
     if HasPerk(self, "Deadeye") then
       crit_per_aim = crit_per_aim + CharacterEffectDefs.Deadeye:ResolveValue("crit_per_aim")
     end
-    return critChance + (aim or 0) * crit_per_aim
+    critChance = critChance + (aim or 0) * crit_per_aim
+    critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/1000-10)^3),1)),critChance)
+    return critChance
   end
 
   function Unit:ApplyHitDamageReduction(hit, weapon, hit_body_part, ignore_cover, ignore_armor, record_breakdown)

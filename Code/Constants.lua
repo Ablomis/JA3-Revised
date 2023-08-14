@@ -4,6 +4,7 @@ const.Combat.HeadCritChance = 95
 const.Combat.LimbCritChance = 5
 const.Combat.MinCritChance = 5
 const.Combat.CriticalDamage = 40
+const.Combat.MaxCritDistance = 5
 const.Combat.ArmorDamageReductionBase = 5
 const.Combat.ArmorDamageReductionAdditional = 45
 const.Combat.ArmorDegradePercent = 10

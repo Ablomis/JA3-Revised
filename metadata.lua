@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2692,
+	'version', 2727,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -35,6 +35,7 @@ return PlaceObj('ModDef', {
 		"Code/CustomSuppActionFXInherit_Actor.lua",
 		"Code/CustomWeaponComponentEffect.lua",
 		"Code/DamageCalculation.lua",
+		"Code/Flanked.lua",
 		"Code/GetAttackAPCost.lua",
 		"Code/GetRangeAccuracy.lua",
 		"Code/IModeCombatAreaAim.lua",
@@ -139,7 +140,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/FlakVest_CeramicPlates.lua",
 		"InventoryItem/MP40Magazine.lua",
 	},
-	'saved', 1691970743,
-	'code_hash', -27517017351785607,
+	'saved', 1691979114,
+	'code_hash', -7058831199748378066,
 	'steam_id', "3008768068",
 })
