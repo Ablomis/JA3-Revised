@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 2727,
+	'version', 2822,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -55,6 +55,8 @@ return PlaceObj('ModDef', {
 		"Code/UnitCaching.lua",
 		"Code/UnitOverwatch.lua",
 		"Code/Weapon.lua",
+		"Code/WeaponComponentEffect.lua",
+		"Code/WeaponComponents.lua",
 		"Code/WeaponModChoicePopup.lua",
 		"Code/WeaponModsInventoryItems.lua",
 		"InventoryItem/HiPower.lua",
@@ -140,7 +142,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/FlakVest_CeramicPlates.lua",
 		"InventoryItem/MP40Magazine.lua",
 	},
-	'saved', 1691979114,
-	'code_hash', -7058831199748378066,
+	'saved', 1692050690,
+	'code_hash', -1903993597684684741,
 	'steam_id', "3008768068",
 })

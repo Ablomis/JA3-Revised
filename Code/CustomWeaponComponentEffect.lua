@@ -11,7 +11,6 @@ PlaceObj('WeaponComponentEffect', {
 	StatToModify = "Noise",
 	group = "FX Placeholders",
 	id = "SilentShots",
-	save_in = "Libs/Network",
 })
 PlaceObj('WeaponComponentEffect', {
 	Comment = "Multiplies Noise by 25%",

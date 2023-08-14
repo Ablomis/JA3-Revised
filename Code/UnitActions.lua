@@ -31,4 +31,11 @@ function Unit:SniperSetup(action_id, cost_ap, args)
     end
     ObjModified(self)
   end
+  function Unit:ExplorationStartCombatAction(action_id, ap, args) 
+    local action = CombatActions[action_id] 
+    if g_Combat or not action then 
+      return 
+    end 
+    self.ActionPoints = self:GetMaxActionPoints() 
+  end 
   
