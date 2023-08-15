@@ -9,10 +9,10 @@ DefineClass.FlakVest_WeavePadding = {
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/flak_vest",
 	SubIcon = "UI/Icons/Items/padded",
-	DisplayName = T(793569342362, --[[ModItemInventoryItemCompositeDef FlakVest_WeavePadding DisplayName]] "Flak Vest"),
-	DisplayNamePlural = T(778394694248, --[[ModItemInventoryItemCompositeDef FlakVest_WeavePadding DisplayNamePlural]] "Flak Vests"),
+	DisplayName = T(375128984392, --[[ModItemInventoryItemCompositeDef FlakVest_WeavePadding DisplayName]] "Flak Vest"),
+	DisplayNamePlural = T(410777366854, --[[ModItemInventoryItemCompositeDef FlakVest_WeavePadding DisplayNamePlural]] "Flak Vests"),
 	Description = "",
-	AdditionalHint = T(101864736823, --[[ModItemInventoryItemCompositeDef FlakVest_WeavePadding AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Weave Padding"),
+	AdditionalHint = T(934636119847, --[[ModItemInventoryItemCompositeDef FlakVest_WeavePadding AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Weave Padding"),
 	AdditionalReduction = 30,
 	ProtectedBodyParts = set( "Torso" ),
 }

@@ -6,8 +6,8 @@ DefineClass.AdvancedCompensator = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/muzzle_steyr_01",
-	DisplayName = T(906787530366, --[[ModItemInventoryItemCompositeDef AdvancedCompensator DisplayName]] "Advanced Compensator"),
-	DisplayNamePlural = T(117918065796, --[[ModItemInventoryItemCompositeDef AdvancedCompensator DisplayNamePlural]] "Advanced Compensators"),
+	DisplayName = T(149327486762, --[[ModItemInventoryItemCompositeDef AdvancedCompensator DisplayName]] "Advanced Compensator"),
+	DisplayNamePlural = T(128387636710, --[[ModItemInventoryItemCompositeDef AdvancedCompensator DisplayNamePlural]] "Advanced Compensators"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,
