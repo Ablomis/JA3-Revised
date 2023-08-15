@@ -1,5 +1,4 @@
 function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, damage, hit, effect, attack_args, record_breakdown, action, prediction)
-  print('PrecalcDamageAndStatusEffects')
   if IsKindOf(target, "Unit") then
     local effects = EffectsTable(effect)
     local ignoreGrazing = IsFullyAimedAttack(attack_args) and self:HasComponent("IgnoreGrazingHitsWhenFullyAimed")

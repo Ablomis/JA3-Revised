@@ -310,7 +310,6 @@ function FindWeaponReloadTarget(item, ammo)
 
 
   function Firearm:GetAttackResults(action, attack_args)
-    print('GetAttackResults')
     local attacker = attack_args.obj
     local anim = attack_args.anim
     local prediction = attack_args.prediction

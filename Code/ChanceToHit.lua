@@ -80,6 +80,102 @@ PlaceObj('ChanceToHitModifier', {
 	param_bindings = {}
 })
 
+PlaceObj('ChanceToHitModifier', { 
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos) 
+		if not attacker or not target then  
+			return false, 0 
+		end 
+		 
+		local param 
+		local metaText = {} 
+		 
+		local extra = 0 
+		if action.id == "BurstFire" then 
+			param = "burst_max_penalty" 
+		elseif action.id == "AutoFire" then 
+			param = "auto_max_penalty" 
+		elseif action.id == "MGBurstFire" then 
+			if g_Overwatch[attacker] and g_Overwatch[attacker].permanent then 
+				param = "mg_burst_max_penalty" 
+			else 
+				param = "mg_burst_max_held_penalty" 
+				if weapon1 and weapon1.Cumbersome then 
+					extra = -20 
+				end 
+			end 
+		elseif action.id == "GrizzlyPerk" then 
+			param = "mg_burst_max_penalty" 
+			metaText[#metaText + 1] = GrizzlyPerk.DisplayName 
+		else 
+			return false, 0 
+		end 
+		 
+		local penalty = 0 
+		local pb_dist = const.Weapons.PointBlankRange * const.SlabSizeX 
+		local dist = attacker_pos:Dist(target_pos) 
+		 
+		if dist > pb_dist then 
+			-- scale in the distance after point-blank range to max penalty 
+			local max_dist = 14 * const.SlabSizeX		 
+			local max_penalty = weapon1.Recoil + extra 
+			 
+			dist = Min(dist, max_dist) - pb_dist 
+			max_dist = max_dist - pb_dist 
+			penalty = -MulDivRound(dist, max_penalty - penalty, max_dist) 
+		end 
+		 
+		if penalty == 0 then 
+			return false, 0 
+		end 
+		 
+		if action.id == "BurstFire" then 
+			return true, penalty, T(913932180355, "Burst Fire"), #metaText ~= 0 and metaText 
+		end 
+		 
+		return true, penalty, false, #metaText ~= 0 and metaText 
+	end, 
+	Parameters = { 
+		PlaceObj('PresetParamNumber', { 
+			'Name', "max_dist", 
+			'Value', 14, 
+			'Tag', "<max_dist>", 
+		}), 
+		PlaceObj('PresetParamPercent', { 
+			'Name', "base_penalty", 
+			'Tag', "<base_penalty>%", 
+		}), 
+		PlaceObj('PresetParamPercent', { 
+			'Name', "auto_max_penalty", 
+			'Value', -50, 
+			'Tag', "<auto_max_penalty>%", 
+		}), 
+		PlaceObj('PresetParamPercent', { 
+			'Name', "burst_max_penalty", 
+			'Value', -20, 
+			'Tag', "<burst_max_penalty>%", 
+		}), 
+		PlaceObj('PresetParamPercent', { 
+			'Name', "mg_burst_max_penalty", 
+			'Value', -50, 
+			'Tag', "<mg_burst_max_penalty>%", 
+		}), 
+		PlaceObj('PresetParamPercent', { 
+			'Name', "mg_burst_max_held_penalty", 
+			'Value', -60, 
+			'Tag', "<mg_burst_max_held_penalty>%", 
+		}), 
+		PlaceObj('PresetParamPercent', { 
+			'Name', "mg_burst_cumbersome_penalty", 
+			'Value', -20, 
+			'Tag', "<mg_burst_cumbersome_penalty>%", 
+		}), 
+	}, 
+	group = "Default", 
+	id = "Autofire", 
+}) 
+ 
+
+
 PlaceObj('ChanceToHitModifier', {
 	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
 		if attacker and weapon1 and weapon1.PointBlankRange and attacker:IsPointBlankRange(target) then
@@ -244,77 +340,3 @@ PlaceObj('ChanceToHitModifier', {
 	id = "SniperScopeBonus",
 })
 
-PlaceObj('ChanceToHitModifier', {
-	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
-		if opportunity_attack or not IsKindOf(weapon1, "Firearm") or not IsKindOf(target, "Unit") then 
-			return false, 0 
-		end
-		local target_stance = target:GetHitStance()
-		if target_stance == "Prone" then
-			local value = const.Combat.ProneCTHPenalty 
-			return true, value, T(904752344471, "Target Prone")
-		end
-		
-		local cover, any, coverage
-		if weapon1 then
-			local ignoreCth = weapon1:HasComponent("IgnoreCoverCtHWhenFullyAimed") and IsFullyAimedAttack(aim)
-			if not ignoreCth and (opportunity_attack or target:IsAware()) and not target:HasStatusEffect("Exposed") then
-				cover, any, coverage = target:GetCoverPercentage(attacker_pos, target_pos)
-			end
-		end
-		
-		-- force exposed when aiming/shooting
-		local melee_attack = action and action.ActionType == "Melee Attack"
-		cover = not target.aim_action_id and not melee_attack and cover
-		
-		if cover then
-			local name = false
-			local exposed_value = const.Combat.ExposedCoverCTHPenalty
-			local full_value = const.Combat.CoverCTHPenalty
-			
-			if CheckSightCondition(attacker, target, const.usObscured) then
-				exposed_value = exposed_value + const.EnvEffects.DustStormCoverCTHPenalty
-				full_value = full_value + const.EnvEffects.DustStormCoverCTHPenalty
-				name = T(548829641491, "Behind Cover (Dust Storm)")
-			end
-			
-			local value = InterpolateCoverEffect(coverage, full_value, exposed_value)
-			local metaText = false
-		
-			if value < exposed_value then
-				return true, value, name, metaText, "Cover"
-			end
-		end
-		if target_stance == "Crouch" then
-			local value = const.Combat.CrouchedCTHPenalty
-			return true, value, T(309253003316, "Target Crouched")
-		end
-		return false, 0
-	end,
-	Parameters = {
-		PlaceObj('PresetParamNumber', {
-			'Name', "Cover",
-			'Value', -20,
-			'Tag', "<Cover>",
-		}),
-		PlaceObj('PresetParamNumber', {
-			'Name', "ExposedCover",
-			'Value', -5,
-			'Tag', "<ExposedCover>",
-		}),
-		PlaceObj('PresetParamNumber', {
-			'Name', "CrouchPenalty",
-			'Value', -5,
-			'Tag', "<CrouchPenalty>",
-		}),
-		PlaceObj('PresetParamNumber', {
-			'Name', "PronePenalty",
-			'Value', -10,
-			'Tag', "<PronePenalty>",
-		}),
-	},
-	RequireTarget = true,
-	display_name = T(879243129261, --[[ChanceToHitModifier Default RangeAttackTargetStanceCover display_name]] "Behind Cover"),
-	group = "Default",
-	id = "RangeAttackTargetStanceCover",
-})
