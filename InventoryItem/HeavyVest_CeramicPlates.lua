@@ -5,13 +5,13 @@ DefineClass.HeavyVest_CeramicPlates = {
 
 
 	object_class = "TransmutedArmor",
-	Degradation = 6,
+	Degradation = 10,
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/heavy_vest",
 	SubIcon = "UI/Icons/Items/plates",
-	DisplayName = T(174160174545, --[[ModItemInventoryItemCompositeDef HeavyVest_CeramicPlates DisplayName]] "Heavy Vest"),
-	DisplayNamePlural = T(835817909875, --[[ModItemInventoryItemCompositeDef HeavyVest_CeramicPlates DisplayNamePlural]] "Heavy Vests"),
-	AdditionalHint = T(423519983949, --[[ModItemInventoryItemCompositeDef HeavyVest_CeramicPlates AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Ceramic Plates\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> The ceramic plates will break after taking <color 124 130 96><RevertConditionCounter></color> hits\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Cumbersome (no Free Move)"),
+	DisplayName = T(114142401767, --[[ModItemInventoryItemCompositeDef HeavyVest_CeramicPlates DisplayName]] "Heavy Vest"),
+	DisplayNamePlural = T(426578990162, --[[ModItemInventoryItemCompositeDef HeavyVest_CeramicPlates DisplayNamePlural]] "Heavy Vests"),
+	AdditionalHint = T(652340780125, --[[ModItemInventoryItemCompositeDef HeavyVest_CeramicPlates AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Ceramic Plates\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> The ceramic plates will break after taking <color 124 130 96><RevertConditionCounter></color> hits\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Cumbersome (no Free Move)"),
 	Cumbersome = true,
 	is_valuable = true,
 	PenetrationClass = 4,

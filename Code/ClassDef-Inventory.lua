@@ -24,7 +24,7 @@ DefineClass.AmmoProperties = {
 		editor = "number", default = 1, min = 1, max = 100, modifiable = true, },
 		{ category = "Caliber", id = "PenetrationClass", 
 			editor = "number", default = 1, template = true, 
-			name = function(self) return "Penetration Class: " .. (PenetrationClassIds[self.PenetrationClass] or "") end, slider = true, min = 1, max = 5, modifiable = true, },
+			name = function(self) return "Penetration Class: " .. (PenetrationClassIds[self.PenetrationClass] or "") end, slider = true, min = 0, max = 5, modifiable = true, },
 		{ category = "Caliber", id = "MaxStacks", name = "Max Stacks", help = "Ammo can stack up to that number.", 
 			editor = "number", default = 10, template = true, slider = true, min = 0, max = 10000, },
 		{ id = "Modifications", 

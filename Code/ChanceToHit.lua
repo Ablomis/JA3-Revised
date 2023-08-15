@@ -298,3 +298,42 @@ PlaceObj('ChanceToHitModifier', {
 	group = "Default",
 	id = "TrainingDisadvantage",
 })
+
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		if IsKindOf(weapon1, "SniperRifle") and not attacker:HasStatusEffect("StationedSniper") then
+			return true, weapon1.NotDeployedPenalty
+		end
+
+		local dist = attacker:GetDist(target)
+		local cth_bonus = 0
+
+		if(weapon1:HasComponent("x5ScopeEffect")) then
+			if(dist < GetComponentEffectValue(weapon1, "x5ScopeEffect", "min_dist")) then
+				cth_bonus = -GetComponentEffectValue(weapon1, "x5ScopeEffect", "cth_bonus")
+			else
+				cth_bonus = GetComponentEffectValue(weapon1, "x5ScopeEffect", "cth_bonus")
+			end
+			return true, cth_bonus
+		elseif (weapon1:HasComponent("x10ScopeEffect")) then
+			if(dist < GetComponentEffectValue(weapon1, "x10ScopeEffect", "min_dist")) then
+				cth_bonus = -GetComponentEffectValue(weapon1, "x10ScopeEffect", "cth_bonus")
+			else
+				cth_bonus = GetComponentEffectValue(weapon1, "x10ScopeEffect", "cth_bonus")
+			end
+			return true, cth_bonus
+		elseif (weapon1:HasComponent("ACOGcopeEffect")) then
+			if(dist < GetComponentEffectValue(weapon1, "ACOGcopeEffect", "min_dist")) then
+				cth_bonus = -GetComponentEffectValue(weapon1, "ACOGcopeEffect", "cth_bonus")
+			else
+				cth_bonus = GetComponentEffectValue(weapon1, "ACOGcopeEffect", "cth_bonus")
+			end
+			return true, cth_bonus
+		else
+			return false, 0
+		end
+	end,
+	group = "Default",
+	display_name='Scope',
+	id = "SniperScopeBonus",
+})

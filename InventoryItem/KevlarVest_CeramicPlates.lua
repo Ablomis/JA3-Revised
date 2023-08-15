@@ -5,13 +5,13 @@ DefineClass.KevlarVest_CeramicPlates = {
 
 
 	object_class = "TransmutedArmor",
-	Degradation = 6,
+	Degradation = 10,
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/kevlar_armor",
 	SubIcon = "UI/Icons/Items/plates",
-	DisplayName = T(469065089356, --[[ModItemInventoryItemCompositeDef KevlarVest_CeramicPlates DisplayName]] "Kevlar Armor"),
-	DisplayNamePlural = T(251454163071, --[[ModItemInventoryItemCompositeDef KevlarVest_CeramicPlates DisplayNamePlural]] "Kevlar Armors"),
-	AdditionalHint = T(701327764458, --[[ModItemInventoryItemCompositeDef KevlarVest_CeramicPlates AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Ceramic Plates\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> The ceramic plates will break after taking <color 124 130 96><RevertConditionCounter></color> hits"),
+	DisplayName = T(970493869829, --[[ModItemInventoryItemCompositeDef KevlarVest_CeramicPlates DisplayName]] "Kevlar Armor"),
+	DisplayNamePlural = T(902078697998, --[[ModItemInventoryItemCompositeDef KevlarVest_CeramicPlates DisplayNamePlural]] "Kevlar Armors"),
+	AdditionalHint = T(865219007593, --[[ModItemInventoryItemCompositeDef KevlarVest_CeramicPlates AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Ceramic Plates\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> The ceramic plates will break after taking <color 124 130 96><RevertConditionCounter></color> hits"),
 	PenetrationClass = 3,
 	DamageReduction = 40,
 	AdditionalReduction = 30,

@@ -71,7 +71,7 @@ PlaceObj('WeaponComponentEffect', {
 	Parameters = {
         PlaceObj('PresetParamNumber', {
 			'Name', "min_dist",
-			'Value', 15,
+			'Value', 18,
 			'Tag', "<min_dist>",
 		}),
         PlaceObj('PresetParamNumber', {
@@ -84,8 +84,29 @@ PlaceObj('WeaponComponentEffect', {
 	id = "x10ScopeEffect",
 })
 
+PlaceObj('WeaponComponentEffect', {
+	Comment = "Increase accuracy",
+	Description = "Increases accuracy at medium range" ,
+    ModificationType = "Subtract",
+	Parameters = {
+        PlaceObj('PresetParamNumber', {
+			'Name', "min_dist",
+			'Value', 5,
+			'Tag', "<min_dist>",
+		}),
+        PlaceObj('PresetParamNumber', {
+			'Name', "bonus_cth",
+			'Value', 15,
+			'Tag', "<bonus_cth>",
+		}),
+    },
+	group = "Aiming",
+	id = "ACOGcopeEffect",
+})
+
 g_PresetParamCache[WeaponComponentEffects.FasterWeaponReady] = { ready_ap = 1}
 g_PresetParamCache[WeaponComponentEffects.BonusCritChance] = { bonus_crit = 15}
 g_PresetParamCache[WeaponComponentEffects.x5ScopeEffect] = { min_dist = 10, bonus_cth = 25}
- 
+g_PresetParamCache[WeaponComponentEffects.x10ScopeEffect] = { min_dist = 15, bonus_cth = 35}
+g_PresetParamCache[WeaponComponentEffects.ACOGScopeEffect] = { min_dist = 5, bonus_cth = 15}
 

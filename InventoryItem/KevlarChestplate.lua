@@ -5,11 +5,11 @@ DefineClass.KevlarChestplate = {
 
 
 	object_class = "Armor",
-	Degradation = 6,
+	Degradation = 10,
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/kevlar_vest",
-	DisplayName = T(919552813578, --[[ModItemInventoryItemCompositeDef KevlarChestplate DisplayName]] "Kevlar Vest"),
-	DisplayNamePlural = T(337619222369, --[[ModItemInventoryItemCompositeDef KevlarChestplate DisplayNamePlural]] "Kevlar Vests"),
+	DisplayName = T(412612091271, --[[ModItemInventoryItemCompositeDef KevlarChestplate DisplayName]] "Kevlar Vest"),
+	DisplayNamePlural = T(860090411673, --[[ModItemInventoryItemCompositeDef KevlarChestplate DisplayNamePlural]] "Kevlar Vests"),
 	PenetrationClass = 2,
 	AdditionalReduction = 30,
 	ProtectedBodyParts = set( "Torso" ),

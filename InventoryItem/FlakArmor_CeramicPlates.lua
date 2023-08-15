@@ -5,13 +5,13 @@ DefineClass.FlakArmor_CeramicPlates = {
 
 
 	object_class = "TransmutedArmor",
-	Degradation = 6,
+	Degradation = 10,
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/flak_armor",
 	SubIcon = "UI/Icons/Items/plates",
-	DisplayName = T(312878002521, --[[ModItemInventoryItemCompositeDef FlakArmor_CeramicPlates DisplayName]] "Flak Armor"),
-	DisplayNamePlural = T(382601721139, --[[ModItemInventoryItemCompositeDef FlakArmor_CeramicPlates DisplayNamePlural]] "Flak Armors"),
-	AdditionalHint = T(959394500159, --[[ModItemInventoryItemCompositeDef FlakArmor_CeramicPlates AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Ceramic Plates\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> The ceramic plates will break after taking <color 124 130 96><RevertConditionCounter></color> hits"),
+	DisplayName = T(179561855505, --[[ModItemInventoryItemCompositeDef FlakArmor_CeramicPlates DisplayName]] "Flak Armor"),
+	DisplayNamePlural = T(554247435413, --[[ModItemInventoryItemCompositeDef FlakArmor_CeramicPlates DisplayNamePlural]] "Flak Armors"),
+	AdditionalHint = T(120713979083, --[[ModItemInventoryItemCompositeDef FlakArmor_CeramicPlates AdditionalHint]] "<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> Damage reduction improved by Ceramic Plates\n<image UI/Conversation/T_Dialogue_IconBackgroundCircle.tga 400 130 128 120> The ceramic plates will break after taking <color 124 130 96><RevertConditionCounter></color> hits"),
 	PenetrationClass = 2,
 	DamageReduction = 40,
 	AdditionalReduction = 20,

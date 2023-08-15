@@ -147,6 +147,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       end
     end
     base = Max(0, base)
+    base = Min(99, base)
     local target_pos = IsPoint(target) and target or target:GetPos()
     local knife_throw = IsKindOf(weapon, "MeleeWeapon") and action.ActionType == "Ranged Attack"
     local penalty = weapon:GetAccuracy(attacker_pos:Dist(target_pos), self, action, knife_throw) - 100

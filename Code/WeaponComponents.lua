@@ -1320,3 +1320,635 @@ PlaceObj('WeaponComponent', {
 	group = "Scope",
 	id = "LROpticsAdvanced",
 })
+
+PlaceObj('WeaponComponent', {
+	AdditionalCosts = {
+		PlaceObj('WeaponComponentCost', {
+			'Amount', 1,
+			'Type', "Microchip",
+		}),
+	},
+	Cost = 15,
+	DisplayName = T(997246680419, --[[WeaponComponent ReflexSight DisplayName]] "Compact Reflex Sight"),
+	Icon = "UI/Icons/Upgrades/compact_reflex_sight",
+	ModificationDifficulty = 0,
+	ModificationEffects = {
+		"IncreaseOverwatchAngle",
+        "MinAim"
+	},
+	Parameters = {
+		PlaceObj('PresetParamNumber', {
+			'Name', "OverwatchAngleIncrease",
+			'Value', 140,
+			'Tag', "<OverwatchAngleIncrease>",
+		}),
+	},
+	Slot = "Scope",
+	StoreAsTable = true,
+	Visuals = {
+		PlaceObj('WeaponComponentVisual', {
+			Entity = "WeaponAttA_CompactReflexSight",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AA12",
+			Entity = "WeaponAttA_MountAA12_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AA12",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK47",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AKSU",
+			Entity = "WeaponAttA_MountAKS74U_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "RPK74",
+			Entity = "WeaponAttA_MountRPK74",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "RPK74",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK74",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK74",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AR15",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AUG",
+			Entity = "WeaponAttA_MountSteyr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Bereta92",
+			Entity = "WeaponAttA_MountBeretta",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HiPower",
+			Entity = "WeaponAttA_MountBHP",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Galil",
+			Entity = "WeaponAttA_MountGalil",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M24Sniper",
+			Entity = "WeaponAttA_MountM24",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "DragunovSVD",
+			Entity = "WeaponAttA_MountDragunov_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5K",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "UZI",
+			Entity = "WeaponAttA_MountUzi_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M14SAW",
+			Entity = "WeaponAttA_MountM14",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Gewehr98",
+			Entity = "WeaponAttA_MountGewehr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "ColtAnaconda",
+			Entity = "WeaponAttA_MountAnaconda",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "FNFAL",
+			Entity = "WeaponAttA_MountFNFal_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "FNFAL",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HK21",
+			Entity = "WeaponAttA_MountHK21_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HK21",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Winchester1894",
+			Entity = "WeaponAttA_MountWinchester",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M4Commando",
+			Entity = "WeaponAttA_MountCAR15",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M16A2",
+			Entity = "WeaponAttA_MountM16_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "FNMinimi",
+			Entity = "WeaponAttA_CompactReflexSightLifted",
+			Slot = "Scope",
+		}),
+	},
+	group = "Scope",
+	id = "ReflexSight",
+})
+
+PlaceObj('WeaponComponent', {
+	AdditionalCosts = {
+		PlaceObj('WeaponComponentCost', {
+			'Amount', 1,
+			'Type', "Microchip",
+		}),
+	},
+	Cost = 35,
+	DisplayName = T(828562540830, --[[WeaponComponent ReflexSightAdvanced DisplayName]] "Reflex Sight"),
+	Icon = "UI/Icons/Upgrades/scope_reflex",
+	ModificationDifficulty = 0,
+	ModificationEffects = {
+		"OpportunityAttackBonusCth",
+		"IncreaseOverwatchAngle",
+        "MinAim"
+	},
+	Parameters = {
+		PlaceObj('PresetParamPercent', {
+			'Name', "bonus_cth",
+			'Value', 10,
+			'Tag', "<bonus_cth>%",
+		}),
+		PlaceObj('PresetParamNumber', {
+			'Name', "OverwatchAngleIncrease",
+			'Value', 140,
+			'Tag', "<OverwatchAngleIncrease>",
+		}),
+	},
+	Slot = "Scope",
+	StoreAsTable = true,
+	Visuals = {
+		PlaceObj('WeaponComponentVisual', {
+			Entity = "WeaponAttA_ScopeReflex",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK47",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AKSU",
+			Entity = "WeaponAttA_MountAKS74U_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "RPK74",
+			Entity = "WeaponAttA_MountRPK74",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK74",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AUG",
+			Entity = "WeaponAttA_MountSteyr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Bereta92",
+			Entity = "WeaponAttA_MountBeretta",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HiPower",
+			Entity = "WeaponAttA_MountBHP",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Galil",
+			Entity = "WeaponAttA_MountGalil",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Galil_FlagHill",
+			Entity = "WeaponAttA_MountGalil",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M24Sniper",
+			Entity = "WeaponAttA_MountM24",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "DragunovSVD",
+			Entity = "WeaponAttA_MountDragunov_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5K",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "UZI",
+			Entity = "WeaponAttA_MountUzi_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M14SAW",
+			Entity = "WeaponAttA_MountM14",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Gewehr98",
+			Entity = "WeaponAttA_MountGewehr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "ColtAnaconda",
+			Entity = "WeaponAttA_MountAnaconda",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AA12",
+			Entity = "WeaponAttA_MountAA12_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "FNFAL",
+			Entity = "WeaponAttA_MountFNFal_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HK21",
+			Entity = "WeaponAttA_MountHK21_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Winchester1894",
+			Entity = "WeaponAttA_MountWinchester",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M4Commando",
+			Entity = "WeaponAttA_MountCAR15",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M16A2",
+			Entity = "WeaponAttA_MountM16_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "G36",
+			Entity = "WeaponAttA_MountHKG36_01",
+			Slot = "Mount1",
+		}),
+	},
+	group = "Scope",
+	id = "ReflexSightAdvanced",
+})
+
+PlaceObj('WeaponComponent', {
+	AdditionalCosts = {
+		PlaceObj('WeaponComponentCost', {
+			'Amount', 1,
+			'Type', "OpticalLens",
+		}),
+	},
+	Cost = 20,
+	DisplayName = T(334947143407, --[[WeaponComponent ScopeCOG DisplayName]] "Prism Scope "),
+	Icon = "UI/Icons/Upgrades/prism_scope",
+	ModificationDifficulty = 0,
+	ModificationEffects = {
+		"CritBonusWhenFullyAimed",
+	},
+	Parameters = {
+		PlaceObj('PresetParamPercent', {
+			'Name', "crit",
+			'Value', 15,
+			'Tag', "<crit>%",
+		}),
+	},
+	Slot = "Scope",
+	Visuals = {
+		PlaceObj('WeaponComponentVisual', {
+			Entity = "WeaponAttA_ScopeCOG",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK47",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "RPK74",
+			Entity = "WeaponAttA_MountRPK74",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK74",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AKSU",
+			Entity = "WeaponAttA_MountAKS74U_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AUG",
+			Entity = "WeaponAttA_MountSteyr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Bereta92",
+			Entity = "WeaponAttA_MountBeretta",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HiPower",
+			Entity = "WeaponAttA_MountBHP",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Galil",
+			Entity = "WeaponAttA_MountGalil",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M24Sniper",
+			Entity = "WeaponAttA_MountM24",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "DragunovSVD",
+			Entity = "WeaponAttA_MountDragunov_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5K",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "UZI",
+			Entity = "WeaponAttA_MountUzi_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M14SAW",
+			Entity = "WeaponAttA_MountM14",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Gewehr98",
+			Entity = "WeaponAttA_MountGewehr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "ColtAnaconda",
+			Entity = "WeaponAttA_MountAnaconda",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AA12",
+			Entity = "WeaponAttA_MountAA12_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "FNFAL",
+			Entity = "WeaponAttA_MountFNFal_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HK21",
+			Entity = "WeaponAttA_MountHK21_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Winchester1894",
+			Entity = "WeaponAttA_MountWinchester",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M4Commando",
+			Entity = "WeaponAttA_MountCAR15",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M16A2",
+			Entity = "WeaponAttA_MountM16_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "G36",
+			Entity = "WeaponAttA_ScopeHKG36_01",
+			Icon = "UI/Icons/Upgrades/g36_scope_01",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "BarretM82",
+			Entity = "WeaponAttA_IronSightBarrettM82_Folded",
+			Slot = "Ironsight",
+		}),
+	},
+	group = "Scope",
+	id = "ScopeCOG",
+})
+
+PlaceObj('WeaponComponent', {
+	AdditionalCosts = {
+		PlaceObj('WeaponComponentCost', {
+			'Amount', 1,
+			'Type', "OpticalLens",
+		}),
+	},
+	Cost = 35,
+	DisplayName = T(739676174855, --[[WeaponComponent ScopeCOGQuick DisplayName]] "Quick Prism Scope "),
+	Icon = "UI/Icons/Upgrades/scope_thermal",
+	ModificationDifficulty = 0,
+	ModificationEffects = {
+		"ACOGScopeEffect",
+	},
+	Slot = "Scope",
+	Visuals = {
+		PlaceObj('WeaponComponentVisual', {
+			Entity = "WeaponAttA_ScopeACOG",
+			Slot = "Scope",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK47",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "RPK74",
+			Entity = "WeaponAttA_MountRPK74",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AK74",
+			Entity = "WeaponAttA_MountAK47",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AKSU",
+			Entity = "WeaponAttA_MountAKS74U_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AUG",
+			Entity = "WeaponAttA_MountSteyr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Bereta92",
+			Entity = "WeaponAttA_MountBeretta",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HiPower",
+			Entity = "WeaponAttA_MountBHP",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Galil",
+			Entity = "WeaponAttA_MountGalil",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M24Sniper",
+			Entity = "WeaponAttA_MountM24",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "DragunovSVD",
+			Entity = "WeaponAttA_MountDragunov_01",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "MP5K",
+			Entity = "WeaponAttA_MountMP5",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "UZI",
+			Entity = "WeaponAttA_MountUzi_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M14SAW",
+			Entity = "WeaponAttA_MountM14",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Gewehr98",
+			Entity = "WeaponAttA_MountGewehr",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "ColtAnaconda",
+			Entity = "WeaponAttA_MountAnaconda",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "AA12",
+			Entity = "WeaponAttA_MountAA12_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "FNFAL",
+			Entity = "WeaponAttA_MountFNFal_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "HK21",
+			Entity = "WeaponAttA_MountHK21_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "Winchester1894",
+			Entity = "WeaponAttA_MountWinchester",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M4Commando",
+			Entity = "WeaponAttA_MountCAR15",
+			Slot = "Mount",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "M16A2",
+			Entity = "WeaponAttA_MountM16_01",
+			Slot = "Mount1",
+		}),
+		PlaceObj('WeaponComponentVisual', {
+			ApplyTo = "BarretM82",
+			Entity = "WeaponAttA_IronSightBarrettM82_Folded",
+			Slot = "Ironsight",
+		}),
+	},
+	group = "Scope",
+	id = "ScopeCOGQuick",
+})

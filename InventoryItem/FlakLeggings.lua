@@ -5,11 +5,11 @@ DefineClass.FlakLeggings = {
 
 
 	object_class = "Armor",
-	Degradation = 6,
+	Degradation = 10,
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/flak_leggings",
-	DisplayName = T(342986388321, --[[ModItemInventoryItemCompositeDef FlakLeggings DisplayName]] "Flak Leggings"),
-	DisplayNamePlural = T(780571388332, --[[ModItemInventoryItemCompositeDef FlakLeggings DisplayNamePlural]] "Flak Leggings"),
+	DisplayName = T(733732141136, --[[ModItemInventoryItemCompositeDef FlakLeggings DisplayName]] "Flak Leggings"),
+	DisplayNamePlural = T(370848311731, --[[ModItemInventoryItemCompositeDef FlakLeggings DisplayNamePlural]] "Flak Leggings"),
 	Slot = "Legs",
 	AdditionalReduction = 20,
 	ProtectedBodyParts = set( "Groin", "Legs" ),
