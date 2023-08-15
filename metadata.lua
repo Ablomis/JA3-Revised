@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 3012,
+	'version', 3021,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -164,7 +164,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/HeavyArmorLeggings.lua",
 		"InventoryItem/HeavyArmorLeggings_WeavePadding.lua",
 	},
-	'saved', 1692138027,
-	'code_hash', 3762069029806066662,
+	'saved', 1692139281,
+	'code_hash', -4645212055230468751,
 	'steam_id', "3008768068",
 })

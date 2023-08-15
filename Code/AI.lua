@@ -1,5 +1,4 @@
 function AIStartCombatAction(action_id, unit, ap, args, ...)
-    print(action_id)
     ap = ap or CombatActions[action_id]:GetAPCost(unit, args, ...)
     if not ap or ap < 0 or not unit:HasAP(ap, action_id) then
       return false
@@ -41,7 +40,6 @@ function AIStartCombatAction(action_id, unit, ap, args, ...)
   end
 
   function StandardAI:Think(unit, debug_data)
-    print(unit)
     self:BeginStep("think", debug_data)
     local context = unit.ai_context
     self:BeginStep("destinations", debug_data)
@@ -67,5 +65,4 @@ function AIStartCombatAction(action_id, unit, ap, args, ...)
     context.movement_action = AIChooseMovementAction(context)
     self:EndStep("movement action", debug_data)
     self:EndStep("think", debug_data)
-    print('unit.id')
   end
