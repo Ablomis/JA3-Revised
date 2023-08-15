@@ -7,7 +7,7 @@ return PlaceObj('ModDef', {
 	'content_path', "Mod/Db7c5fd/",
 	'author', "Ablomis",
 	'version_minor', 1,
-	'version', 3021,
+	'version', 3027,
 	'lua_revision', 233360,
 	'saved_with_revision', 339125,
 	'code', {
@@ -48,7 +48,6 @@ return PlaceObj('ModDef', {
 		"Code/MaxActionPoints.lua",
 		"Code/ModifyWeaponDlg.lua",
 		"Code/RolloverInventoryWeaponBase.lua",
-		"Code/AI.lua",
 		"Code/SniperSetup.lua",
 		"Code/Unit.lua",
 		"Code/UnitActions.lua",
@@ -164,7 +163,7 @@ return PlaceObj('ModDef', {
 		"InventoryItem/HeavyArmorLeggings.lua",
 		"InventoryItem/HeavyArmorLeggings_WeavePadding.lua",
 	},
-	'saved', 1692139281,
-	'code_hash', -4645212055230468751,
+	'saved', 1692140792,
+	'code_hash', 9063417850060946881,
 	'steam_id', "3008768068",
 })

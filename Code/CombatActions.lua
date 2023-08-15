@@ -23,8 +23,8 @@ PlaceObj('CombatAction', {
 		local weapon = self:GetAttackWeapons(unit, args)
 		if not weapon then return -1 end
 		local ap = unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0)
-		--if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
-		local readyAP = weapon.ReadyAP or 0
+		if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+		local readyAP = weapon.ReadyAP
 		local apReduction = GetComponentEffectValue(weapon, "FasterWeaponReady", "ready_ap")
 		if(apReduction) then readyAP=Max(0, readyAP-apReduction) end
 		return ap+readyAP
@@ -151,7 +151,6 @@ PlaceObj('CombatAction', {
 	DisplayName = T(776288626327, --[[CombatAction SingleShot DisplayName]] "Single Shot"),
 	DisplayNameShort = T(641608509701, --[[CombatAction SingleShot DisplayNameShort]] "Single"),
 	GetAPCost = function (self, unit, args)
-		print('GetAPCost')
 		local weapon1, weapon2 = self:GetAttackWeapons(unit, args)
 		if unit:OutOfAmmo(weapon2) or unit:IsWeaponJammed(weapon2) then
 			weapon2 = nil
@@ -161,12 +160,10 @@ PlaceObj('CombatAction', {
 		end
 		if not weapon1 then return -1 end
 		local ap = unit:GetAttackAPCost(self, weapon1, false, args and args.aim or 0, self.ActionPointDelta) or -1
-		print(ap)
-		--if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
-		local readyAP = weapon1.ReadyAP or 0
+		if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+		local readyAP = weapon1.ReadyAP
 		local apReduction = GetComponentEffectValue(weapon1, "FasterWeaponReady", "ready_ap")
 		if(apReduction) then readyAP=Max(0, readyAP-apReduction) end
-		print(ap+readyAP)
 		return ap+readyAP
 	end,
 	GetActionDamage = function (self, unit, target, args)
@@ -188,11 +185,8 @@ PlaceObj('CombatAction', {
 		return CombatActionsAppendFreeAimActionName(self, unit, name)
 	end,
 	GetActionResults = function (self, unit, args)
-		print('GetActionResults')
 		local attack_args = unit:PrepareAttackArgs(self.id, args)
-		print(self.id)
 		local results = attack_args.weapon:GetAttackResults(self, attack_args)
-		print('results')
 		return results, attack_args
 	end,
 	GetAttackWeapons = function (self, unit, args)
@@ -251,7 +245,7 @@ PlaceObj('CombatAction', {
 		if self.CostBasedOnWeapon then
 			local weapon = self:GetAttackWeapons(unit, args)	
 			local ap = weapon and (unit:GetAttackAPCost(self, weapon, nil, args and args.aim or 0) + self.ActionPointDelta) or -1
-			--if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+			if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
 			local readyAP = weapon.ReadyAP
 			local apReduction = GetComponentEffectValue(weapon, "FasterWeaponReady", "ready_ap")
 			if(apReduction) then readyAP=Max(0, readyAP-apReduction) end
@@ -739,7 +733,7 @@ PlaceObj('CombatAction', {
 		if not weapon1 then return -1 end 
 		local ap = unit:GetAttackAPCost(self, weapon1, false, args and args.aim or 0) or -1
 
-		--if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
+		if( args~= nil and unit:GetLastAttack()==args.target) then return ap end
 		local readyAP = weapon1.ReadyAP
 		local apReduction = GetComponentEffectValue(weapon1, "FasterWeaponReady", "ready_ap")
 		if(apReduction) then readyAP=Max(0, readyAP-apReduction) end
