@@ -101,7 +101,7 @@ PlaceObj('WeaponComponentEffect', {
 		}),
     },
 	group = "Aiming",
-	id = "ACOGcopeEffect",
+	id = "ACOGScopeEffect",
 })
 
 g_PresetParamCache[WeaponComponentEffects.FasterWeaponReady] = { ready_ap = 1}

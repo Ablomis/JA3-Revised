@@ -36,9 +36,7 @@ if not explosion_pos and attack_args.lof then
 end
 local results
 if explosion_pos then
-    print('aoe_params')
     local aoe_params = self:GetAreaAttackParams(action.id, attacker, explosion_pos, attack_args.step_pos)
-    print(aoe_params)
     if attack_args.stealth_attack then
     aoe_params.stealth_attack_roll = not attack_args.prediction and attacker:Random(100) or 100
     end
@@ -46,7 +44,9 @@ if explosion_pos then
     if aoe_params.aoe_type ~= "none" or IsKindOf(self, "Flare") then
     aoe_params.damage_mod = "no damage"
     end
+    print(aoe_params)
     results = GetAreaAttackResults(aoe_params)
+    print(results)
     local radius = aoe_params.max_range * const.SlabSizeX
     local explosion_voxel_pos = SnapToVoxel(explosion_pos) + point(0, 0, const.SlabSizeZ / 2)
     local impact_force = self:GetImpactForce()

@@ -80,6 +80,23 @@ PlaceObj('ChanceToHitModifier', {
 	param_bindings = {}
 })
 
+--[[PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		local target_stance = target:GetHitStance() 
+		if target_stance == "Prone" then 
+			local value = const.Combat.ProneCTHPenalty  
+			return true, value, T(904752344471, "Target Prone") 
+		elseif target_stance == "Crouch" then 
+			local value = const.Combat.CrouchedCTHPenalty 
+			return true, value, T(309253003316, "Target Crouched") 
+		end
+		return false, 0
+	end,
+	group = "Default",
+	display_name='Stance',
+	id = "StanceModifier",
+})]]--
+
 PlaceObj('ChanceToHitModifier', {
 	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
 		if attacker and weapon1 and weapon1.PointBlankRange and attacker:IsPointBlankRange(target) then
@@ -228,11 +245,11 @@ PlaceObj('ChanceToHitModifier', {
 				cth_bonus = GetComponentEffectValue(weapon1, "x10ScopeEffect", "cth_bonus")
 			end
 			return true, cth_bonus
-		elseif (weapon1:HasComponent("ACOGcopeEffect")) then
-			if(dist < GetComponentEffectValue(weapon1, "ACOGcopeEffect", "min_dist")) then
-				cth_bonus = -GetComponentEffectValue(weapon1, "ACOGcopeEffect", "cth_bonus")
+		elseif (weapon1:HasComponent("ACOGScopeEffect")) then
+			if(dist < GetComponentEffectValue(weapon1, "ACOGScopeEffect", "min_dist")) then
+				cth_bonus = -GetComponentEffectValue(weapon1, "ACOGScopeEffect", "cth_bonus")
 			else
-				cth_bonus = GetComponentEffectValue(weapon1, "ACOGcopeEffect", "cth_bonus")
+				cth_bonus = GetComponentEffectValue(weapon1, "ACOGScopeEffect", "cth_bonus")
 			end
 			return true, cth_bonus
 		else
@@ -243,4 +260,9 @@ PlaceObj('ChanceToHitModifier', {
 	display_name='Scope',
 	id = "SniperScopeBonus",
 })
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['Cover'] =-40
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['ExposedCover'] =-10
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['CrouchPenalty'] =-15
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['PronePenalty'] =-30
+
 

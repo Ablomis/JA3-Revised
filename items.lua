@@ -156,10 +156,6 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/ColoredAmmo.lua",
 }),
 PlaceObj('ModItemCode', {
-	'name', "CombatActionGrenade",
-	'CodeFileName', "Code/CombatActionGrenade.lua",
-}),
-PlaceObj('ModItemCode', {
 	'name', "CombatActions",
 	'CodeFileName', "Code/CombatActions.lua",
 }),
@@ -191,6 +187,10 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "GetRangeAccuracy",
 	'CodeFileName', "Code/GetRangeAccuracy.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "Grenade",
+	'CodeFileName', "Code/Grenade.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "IModeCombatAreaAim",
@@ -238,6 +238,10 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "ModifyWeaponDlg",
 	'CodeFileName', "Code/ModifyWeaponDlg.lua",
+}),
+PlaceObj('ModItemCode', {
+	'name', "Visibility",
+	'CodeFileName', "Code/Visibility.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
@@ -366,6 +370,15 @@ PlaceObj('ModItemGameRuleDef', {
 					end
 				end
 			end,
+			param_bindings = false,
+		}),
+	},
+}),
+PlaceObj('ModItemGameRuleDef', {
+	id = "",
+	msg_reactions = {
+		PlaceObj('MsgReaction', {
+			Event = "GatherCTHModifications",
 			param_bindings = false,
 		}),
 	},

@@ -198,36 +198,6 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     return final, base, modifiers, penalty
   end
 
-  function Unit:CanStealth(stance)
-    stance = stance or self.stance
-    local is_stealthy_stance
-    if self.species == "Human" then
-      is_stealthy_stance = stance ~= "Standing"
-      if HasPerk(self, "FleetingShadow") then
-        is_stealthy_stance = true
-      end
-    elseif self.species == "Crocodile" then
-      is_stealthy_stance = true
-    end
-    local effects = self.StatusEffects
-    local visual_contact = self.enemy_visual_contact
-    if g_Combat and effects.Spotted then
-      visual_contact = false
-    elseif not self:HasStatusEffect("Hidden") then
-      local enemies = GetAllEnemyUnits(self)
-      for _, enemy in ipairs(enemies) do
-        visual_contact = visual_contact or HasVisibilityTo(enemy, self)
-      end
-    end
-    if not (not visual_contact and is_stealthy_stance and not self:IsDead() and not self:IsDowned() and (self.command ~= "ExitCombat" or self:HasStatusEffect("Hidden")) and self:IsValidPos()) or self.team.side == "neutral" then
-      return false
-    end
-    if effects.BandagingDowned or effects.Revealed or effects.StationedMachineGun or effects.StationedSniper or effects.ManningEmplacement then
-      return false
-    end
-    return true
-  end
-
   function Unit:IsStanceChangeLocked()
     if IsKindOf(self:GetActiveWeapons(), "MachineGun") and (self.behavior == "OverwatchAction" or self.combat_behavior == "OverwatchAction") then
       return true
@@ -346,11 +316,15 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     if IsKindOf(target, "Unit") and IsKindOf(weapon, "GutHookKnife") then
       return 100
     end
-
-    local critChance = weapon.ammo.CritChance or 0
+    local critChance = 0
     local crit_per_aim = const.Combat.AimCritBonus
-    local k
-    k = (critChance - const.Combat.MinCritChance)/(0.0001*5^3)
+    local k = 0
+    if IsKindOf(weapon, "Firearm") then
+      critChance = weapon.ammo.CritChance or 5  
+      k = (critChance - const.Combat.MinCritChance)/(0.0001*5^3)
+    else
+      critChance = self:GetBaseCrit(weapon)
+    end
 
     if(target_spot_group=='Head') then
       critChance = const.Combat.HeadCritChance
@@ -393,7 +367,13 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local damage = hit.damage or 0
     local dmg = damage
     local armor_decay, armor_pierced = {}, {}
-    local weapon_pen_class = weapon.ammo.PenetrationClass or 1
+    local weapon_pen_class
+    if(IsKindOf(weapon, "Firearm")) then
+      weapon_pen_class = weapon.ammo.PenetrationClass or 1
+    else
+      weapon_pen_class = weapon.PenetrationClass or 1
+    end
+    
     self:ForEachItem("Armor", function(item, slot)
       if 0 < dmg and slot ~= "Inventory" and item.ProtectedBodyParts and item.ProtectedBodyParts[hit_body_part] then
         local dr, degrade = 0, 0

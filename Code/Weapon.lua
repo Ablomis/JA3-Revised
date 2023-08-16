@@ -292,7 +292,7 @@ function FindWeaponReloadTarget(item, ammo)
     end
   end
 
-  function GetAoeDamageOverride(attack_args, attacker, weapon, damage_bonus)
+  --[[function GetAoeDamageOverride(attack_args, attacker, weapon, damage_bonus)
     local damage_override
 
     if attack_args.aoe_damage_type == "fixed" then
@@ -302,7 +302,7 @@ function FindWeaponReloadTarget(item, ammo)
       damage_override = MulDivRound(basedmg, (100 + damage_bonus) * attack_args.aoe_damage_value, 10000)
     end
     return damage_override
-  end
+  end]]--
 
   function GetShotgunPelletDamage(attacker, weapon)
       return attacker:GetBaseDamage(weapon)/weapon.ammo.Projectiles
@@ -474,10 +474,12 @@ function FindWeaponReloadTarget(item, ammo)
         shot_crit = not shot_miss and attack_results.crit_roll[i] <= attack_results.crit_chance
         miss = miss and shot_miss
         crit = crit or shot_crit
+        if not prediction then print('Shot #',i,'|', shot_cth) end
       else
         shot_cth = Max(0, attack_results.chance_to_hit - shot_attack_args.cth_loss_per_shot * (i - 1))
         shot_miss = (not kill or 1 < i) and roll > shot_cth
         shot_crit = crit and i == 1
+        if not prediction then print('Shot #',i,'|', shot_cth) end
       end
       local data = band(shot_cth, sfCthMask)
       data = bor(data, band(shift(roll, sfRollOffset), sfRollMask))
