@@ -297,10 +297,8 @@ PlaceObj('ModItemGameRuleDef', {
 				else target:AddStatusEffect("SpentAP") 
 				end
 				target:SetEffectValue("spent_ap", ap_penalty)
-				local ko_prob = MulDivRound(dmg, 100, target.MaxHitpoints*const.Combat.UnconsciousMult)
 				local roll = target:Random(100)
-				if(roll<=ko_prob) then
-					print('ko')
+				if(roll<=target.HitPoints) then
 					target:AddStatusEffect('Unconscious')
 					target:SetEffectValue('unconscious_recovery_turn', (g_Combat and g_Combat.current_turn or 1) + const.Combat.UnconsciousDelay)
 				end
@@ -312,10 +310,8 @@ PlaceObj('ModItemGameRuleDef', {
 				else target:AddStatusEffect("SpentAP") 
 				end
 				target:SetEffectValue("spent_ap", ap_penalty)
-				local ko_prob = MulDivRound(dmg, 100, target.MaxHitpoints*const.Combat.UnconsciousMult)
 				local roll = target:Random(100)
-				if(roll<=ko_prob) then
-					print('ko')
+				if(roll<=target.HitPoints) then
 					target:AddStatusEffect('Unconscious')
 					target:SetEffectValue('unconscious_recovery_turn', (g_Combat and g_Combat.current_turn or 1) + const.Combat.UnconsciousDelay)
 				end

@@ -347,7 +347,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return 100
     end
 
-    local critChance = weapon.ammo.CritChance - const.Combat.AimCritBonus or 0
+    local critChance = weapon.ammo.CritChance or 0
     local crit_per_aim = const.Combat.AimCritBonus
     local k
     k = (critChance - const.Combat.MinCritChance)/(0.0001*5^3)
