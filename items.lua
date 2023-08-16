@@ -126,6 +126,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/9mm AMMO.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "AI",
+	'CodeFileName', "Code/AI.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "AIApplyAttacks",
 	'comment', "SniperPack for AI",
 	'CodeFileName', "Code/AIApplyAttacks.lua",
@@ -234,10 +238,6 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "ModifyWeaponDlg",
 	'CodeFileName', "Code/ModifyWeaponDlg.lua",
-}),
-PlaceObj('ModItemCode', {
-	'name', "RolloverInventoryWeaponBase",
-	'CodeFileName', "Code/RolloverInventoryWeaponBase.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",

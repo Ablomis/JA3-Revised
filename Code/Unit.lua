@@ -347,7 +347,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return 100
     end
 
-    local critChance = (weapon.ammo.CritChance - const.Combat.AimCritBonus *3) or 0
+    local critChance = weapon.ammo.CritChance - const.Combat.AimCritBonus or 0
     local crit_per_aim = const.Combat.AimCritBonus
     local k
     k = (critChance - const.Combat.MinCritChance)/(0.0001*5^3)
@@ -400,7 +400,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
         if not ignore_armor and 0 < item.Condition and self:Random(100)<=item.Condition then
           local pen_difference = weapon_pen_class - item.PenetrationClass
           if pen_difference < 0 then
-            dr = Max(const.Combat.ArmorDamageReductionBase - pen_difference * const.Combat.ArmorDamageReductionAdditional, 95)
+            dr = Min(const.Combat.ArmorDamageReductionBase - pen_difference * const.Combat.ArmorDamageReductionAdditional, 95)
             degrade = const.Combat.ArmorDegradePercent
           else
             armor_pierced[item] = true
@@ -458,3 +458,24 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     hit.armor_decay = armor_decay
     hit.armor_pen = armor_pierced
   end
+
+  function Unit:GetMoveModifier(stance, action_id)
+    stance = stance or self.stance
+    action_id = action_id or "Move"
+    local modValue = const.Combat.MoveModifier
+    local effectId = self:HasStatusEffect("Slowed")
+    if effectId then
+      modValue = modValue + (self.StatusEffects[effectId]:ResolveValue("move_ap_modifier") or 0)
+    end
+    effectId = self:HasStatusEffect("Mobile")
+    if effectId and action_id == "Move" then
+      modValue = modValue - (self.StatusEffects[effectId]:ResolveValue("move_ap_modifier") or 0)
+    end
+    if self:HasStatusEffect("Hidden") then
+      modValue = modValue + Hidden:ResolveValue("ap_cost_modifier")
+    end
+    if GameState.DustStorm then
+      modValue = modValue + const.EnvEffects.DustStormMoveCostMod
+    end
+    return modValue
+    end
