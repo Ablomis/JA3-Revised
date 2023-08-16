@@ -65,11 +65,13 @@ function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_con
     end
     local inv_unit = GetInventoryUnit()
     unit = IsKindOf(dest_unit, "Unit") and not dest_unit:IsDead() and dest_unit or inv_unit
-    local action = CombatActions.Reload
-    local pos = dest_container:GetItemPackedPos(item_at_dest)
-    ap = 10
+    ap = ap + CombatActions.Reload:GetAPCost(unit, {
+      weapon = item_at_dest.class,
+      pos = pos,
+      item = item
+    }) or 0
     action_name = T(160472488023, "Reload")
-    elseif is_mag_reload then
+  elseif is_mag_reload then
         local dest_unit = dest_container
         if IsKindOf(dest_unit, "UnitData") then
           dest_unit = g_Units[dest_unit.session_id]
@@ -78,10 +80,7 @@ function GetAPCostAndUnit(item, src_container, src_container_slot_name, dest_con
         unit = IsKindOf(dest_unit, "Unit") and not dest_unit:IsDead() and dest_unit or inv_unit
         local action = CombatActions.Reload
         local pos = dest_container:GetItemPackedPos(item_at_dest)
-        ap = ap + action:GetAPCost(unit, {
-          weapon = item_at_dest.class,
-          pos = pos
-        }) or 0
+        ap = 10000
         action_name = T(160472488023, "Reload")
     elseif is_upgrade then
         local dest_unit = dest_container
@@ -593,11 +592,13 @@ function MoveItem(args)
     return false
   end
   if is_mag_reload then
+    print(is_mag_reload)
     local mag_obj = FindMagReloadTarget(item_at_dest, item)
     if not mag_obj then
       return "invalid reload target"
     end
     if Sync() then
+      print('here')
       return sync_err
     end
     local prev_loaded_ammo = MagReload(mag_obj, item)

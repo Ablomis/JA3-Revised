@@ -90,7 +90,7 @@ DefineClass.FAMAS = {
 		"CancelShot",
 	},
 	ShootAP = 6000,
-	ReloadAP = 4000,
+	ReloadAP = 10000,
 	ReadyAP = 2000,
 }
 

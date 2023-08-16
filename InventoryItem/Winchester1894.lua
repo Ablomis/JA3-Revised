@@ -67,7 +67,7 @@ DefineClass.Winchester1894 = {
 		"CancelShot",
 	},
 	ShootAP = 7000,
-	ReloadAP = 3000,
+	ReloadAP = 6000,
 	ReadyAP = 3000,
 }
 

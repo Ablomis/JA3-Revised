@@ -115,7 +115,7 @@ DefineClass.HK21 = {
 		"MGBurstFire",
 	},
 	ShootAP = 4000,
-	ReloadAP = 5000,
+	ReloadAP = 10000,
 	ReadyAP = 4000,
 }
 

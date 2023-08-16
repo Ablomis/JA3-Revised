@@ -94,7 +94,7 @@ DefineClass.PSG1 = {
 		"CancelShot",
 	},
 	ShootAP = 7000,
-	ReloadAP = 2000,
+	ReloadAP = 10000,
 	ReadyAP = 4000,
 }
 

@@ -94,6 +94,6 @@ DefineClass.UZI = {
 		"CancelShot",
 	},
 	ShootAP = 5000,
-	ReloadAP = 3000,
+	ReloadAP = 10000,
 }
 

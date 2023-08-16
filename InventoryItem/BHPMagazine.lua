@@ -10,9 +10,10 @@ DefineClass.BHPMagazine = {
 	DisplayName = T(346004830998, --[[ModItemInventoryItemCompositeDef BHPMagazine DisplayName]] "BHP Magazine"),
 	DisplayNamePlural = T(164970496762, --[[ModItemInventoryItemCompositeDef BHPMagazine DisplayNamePlural]] "BHP Magazines"),
 	Description = T(387546731096, --[[ModItemInventoryItemCompositeDef BHPMagazine Description]] "Standard HiPower magazine"),
-	AdditionalHint = T(239008233091, --[[ModItemInventoryItemCompositeDef BHPMagazine AdditionalHint]] ".44cal"),
+	AdditionalHint = T(239008233091, --[[ModItemInventoryItemCompositeDef BHPMagazine AdditionalHint]] "9mm"),
 	Platform = "HiPower",
 	MagazineSize = 10,
-	Caliber = "44CAL",
+	Amount = 10,
+	Caliber = "9mm",
 }
 

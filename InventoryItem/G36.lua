@@ -107,7 +107,7 @@ DefineClass.G36 = {
 		"CancelShot",
 	},
 	ShootAP = 6000,
-	ReloadAP = 3000,
+	ReloadAP = 10000,
 	ReadyAP = 3000,
 }
 

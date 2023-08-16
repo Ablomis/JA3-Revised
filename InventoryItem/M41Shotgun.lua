@@ -72,7 +72,7 @@ DefineClass.M41Shotgun = {
 		"CancelShotCone",
 	},
 	ShootAP = 5000,
-	ReloadAP = 3000,
+	ReloadAP = 8000,
 	ReadyAP = 2000,
 }
 

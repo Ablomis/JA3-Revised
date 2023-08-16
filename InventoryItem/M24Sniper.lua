@@ -91,7 +91,7 @@ DefineClass.M24Sniper = {
 		"CancelShot",
 	},
 	ShootAP = 7000,
-	ReloadAP = 3000,
+	ReloadAP = 10000,
 	ReadyAP = 4000,
 }
 

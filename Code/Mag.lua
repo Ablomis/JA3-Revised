@@ -27,6 +27,14 @@ function FindMagReloadTarget(item, ammo)
     end
     return true
   end
+
+  function GetReloadAP(weapon, ammo)
+    if(IsKindOf(ammo, "Mag")) then
+      return ammo.ReloadAP or 6000
+    else
+      return weapon.ReloadAP
+    end
+  end 
   
   function MagReload(mag, ammo, suspend_fx, delayed_fx)
     local prev_ammo = mag.ammo

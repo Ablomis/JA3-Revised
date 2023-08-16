@@ -76,7 +76,7 @@ DefineClass.BarretM82 = {
 		"CancelShot",
 	},
 	ShootAP = 8000,
-	ReloadAP = 3000,
+	ReloadAP = 10000,
 	ReadyAP = 5000,
 }
 

@@ -99,7 +99,7 @@ DefineClass.RPK74 = {
 		"MGBurstFire",
 	},
 	ShootAP = 4000,
-	ReloadAP = 3000,
+	ReloadAP = 10000,
 	ReadyAP = 3000,
 }
 

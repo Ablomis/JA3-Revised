@@ -43,7 +43,7 @@ DefineClass.MG42 = {
 		"MGBurstFire",
 	},
 	ShootAP = 4000,
-	ReloadAP = 5000,
+	ReloadAP = 8000,
 	ReadyAP = 4000,
 }
 

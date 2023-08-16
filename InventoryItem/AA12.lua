@@ -82,7 +82,7 @@ DefineClass.AA12 = {
 		"CancelShotCone",
 	},
 	ShootAP = 5000,
-	ReloadAP = 3000,
+	ReloadAP = 5000,
 	ReadyAP = 2000,
 }
 

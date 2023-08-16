@@ -87,7 +87,7 @@ DefineClass.FNMinimi = {
 		"MGBurstFire",
 	},
 	ShootAP = 4000,
-	ReloadAP = 5000,
+	ReloadAP = 10000,
 	ReadyAP = 3000,
 }
 

@@ -43,6 +43,6 @@ DefineClass.ColtPeacemaker = {
 		"MobileShot",
 	},
 	ShootAP = 4000,
-	ReloadAP = 3000,
+	ReloadAP = 10000,
 }
 

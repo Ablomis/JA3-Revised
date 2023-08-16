@@ -374,15 +374,6 @@ PlaceObj('ModItemGameRuleDef', {
 		}),
 	},
 }),
-PlaceObj('ModItemGameRuleDef', {
-	id = "",
-	msg_reactions = {
-		PlaceObj('MsgReaction', {
-			Event = "GatherCTHModifications",
-			param_bindings = false,
-		}),
-	},
-}),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
 	'Id', "HiPower",
@@ -450,7 +441,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
@@ -530,7 +521,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
@@ -614,7 +605,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
@@ -658,7 +649,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
@@ -704,7 +695,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 5000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
@@ -766,7 +757,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 5000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - Handgun",
@@ -849,7 +840,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MobileShot",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 5000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - SMG",
@@ -896,7 +887,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 1000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -992,7 +983,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - SMG",
@@ -1108,7 +1099,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 1000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1212,7 +1203,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Group', "Firearm - SMG",
@@ -1315,7 +1306,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1421,7 +1412,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1528,7 +1519,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1629,7 +1620,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1721,7 +1712,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 4000,
+	'ReloadAP', 10000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1834,7 +1825,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -1950,7 +1941,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2171,7 +2162,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2310,7 +2301,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2420,7 +2411,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2539,7 +2530,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 6000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 4000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2584,7 +2575,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MGBurstFire",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 5000,
+	'ReloadAP', 8000,
 	'ReadyAP', 4000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2673,7 +2664,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MGBurstFire",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 5000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2790,7 +2781,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MGBurstFire",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 5000,
+	'ReloadAP', 10000,
 	'ReadyAP', 4000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2891,7 +2882,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"MGBurstFire",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -2943,7 +2934,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShotCone",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 5000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3003,7 +2994,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShotCone",
 	},
 	'ShootAP', 4000,
-	'ReloadAP', 3000,
+	'ReloadAP', 8000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3077,7 +3068,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShotCone",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 8000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3160,7 +3151,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShotCone",
 	},
 	'ShootAP', 5000,
-	'ReloadAP', 3000,
+	'ReloadAP', 5000,
 	'ReadyAP', 2000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3266,7 +3257,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 7000,
-	'ReloadAP', 3000,
+	'ReloadAP', 6000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3327,7 +3318,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 7000,
-	'ReloadAP', 3000,
+	'ReloadAP', 6000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3415,7 +3406,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 7000,
-	'ReloadAP', 3000,
+	'ReloadAP', 6000,
 	'ReadyAP', 3000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3508,7 +3499,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 7000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 4000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3604,7 +3595,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 7000,
-	'ReloadAP', 2000,
+	'ReloadAP', 10000,
 	'ReadyAP', 4000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -3682,7 +3673,7 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 		"CancelShot",
 	},
 	'ShootAP', 8000,
-	'ReloadAP', 3000,
+	'ReloadAP', 10000,
 	'ReadyAP', 5000,
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
@@ -4045,10 +4036,11 @@ PlaceObj('ModItemInventoryItemCompositeDef', {
 	'DisplayName', T(346004830998, --[[ModItemInventoryItemCompositeDef BHPMagazine DisplayName]] "BHP Magazine"),
 	'DisplayNamePlural', T(164970496762, --[[ModItemInventoryItemCompositeDef BHPMagazine DisplayNamePlural]] "BHP Magazines"),
 	'Description', T(387546731096, --[[ModItemInventoryItemCompositeDef BHPMagazine Description]] "Standard HiPower magazine"),
-	'AdditionalHint', T(239008233091, --[[ModItemInventoryItemCompositeDef BHPMagazine AdditionalHint]] ".44cal"),
+	'AdditionalHint', T(239008233091, --[[ModItemInventoryItemCompositeDef BHPMagazine AdditionalHint]] "9mm"),
 	'Platform', "HiPower",
 	'MagazineSize', 10,
-	'Caliber', "44CAL",
+	'Amount', 10,
+	'Caliber', "9mm",
 }),
 PlaceObj('ModItemInventoryItemCompositeDef', {
 	'Id', "DesertEagleMagazine",
@@ -4573,7 +4565,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_AK47Mag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "AK47Magazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4583,7 +4574,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_AK74Mag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "AK74Magazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4593,7 +4583,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_AK74MagExpanded",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "AK74MagazineExpanded",
 		stack_max = 2,
 		stack_min = 1,
@@ -4603,7 +4592,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_BHPMag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "BHPMagazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4613,7 +4601,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_BerettaMag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "BerettaMagazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4623,7 +4610,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_DesertEagleMag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "DesertEagleMagazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4633,7 +4619,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_AR15Mag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "AR15Magazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4643,7 +4628,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_GlockMag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "GlockMagazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4653,7 +4637,6 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_MP40Mag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "MP40Magazine",
 		stack_max = 2,
 		stack_min = 1,
@@ -4663,8 +4646,88 @@ PlaceObj('ModItemLootDef', {
 	id = "LootDef_UZIMag",
 	loot = "all",
 	PlaceObj('LootEntryInventoryItem', {
-		generate_chance = 10,
 		item = "UZIMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_STANAGMag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "STANAGMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_AugMag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "AUGMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_FAMASMag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "FAMASMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_FNFALMag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "FNFALMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_GalilMag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "GalilMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_M14Mag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "M14Magazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_MP5Mag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "MP5MagazineNormal",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_SVDMag",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "SVDMagazine",
+		stack_max = 2,
+		stack_min = 1,
+	}),
+}),
+PlaceObj('ModItemLootDef', {
+	id = "LootDef_HK21",
+	loot = "all",
+	PlaceObj('LootEntryInventoryItem', {
+		item = "HK21Magazine",
 		stack_max = 2,
 		stack_min = 1,
 	}),
