@@ -965,3 +965,64 @@ PlaceObj('CombatAction', {
 	group = "Hidden",
 	id = "Reload",
 })
+
+PlaceObj('CombatAction', {
+	ActionPoints = 6000,
+	ActionShortcut = "U",
+	Description = T(784247279587, --[[CombatAction ChangeWeapon Description]] "Swap to the alternative weapon set: <items>"),
+	DisplayName = T(692166142490, --[[CombatAction ChangeWeapon DisplayName]] "Change Weapon"),
+	GetAPCost = function (self, unit, args)
+		if(IsKindOf(unit.current_weapon, "Pistol")) then
+			return RevisedConfigValues.PistolSwapAP
+		end
+		if unit:CanActivatePerk("Scoundrel") then return 0 end
+		local otherSet = "Handheld A"
+		if unit and unit.current_weapon == "Handheld A" then
+			otherSet = "Handheld B"
+		end
+		local weapons = unit:GetEquippedWeapons(otherSet)
+		for _, weapon in ipairs(weapons) do
+			if weapon:HasComponent("FreeWeaponSwap") then
+				return 0
+			end
+		end
+		
+		return self.ActionPoints
+	end,
+	GetActionDescription = function (self, units)
+		local otherSetItems = GetUnitWeapons(units[1], "otherSet")
+		local itemsConcat = {}
+		for i, item in ipairs(otherSetItems) do
+			itemsConcat[#itemsConcat + 1] = item.DisplayName
+		end
+		itemsConcat = table.concat(itemsConcat, ", ")
+		
+		return T{self.Description, items = itemsConcat}
+	end,
+	GetUIState = function (self, units, args)
+		local unit = units[1]
+		if not IsKindOf(unit, "Unit") then return "hidden" end
+		if unit:GetBandageTarget() then
+			return "disabled", AttackDisableReasons.BandagingDowned
+		end
+		if unit:HasStatusEffect("ManningEmplacement") or unit:HasStatusEffect("StationedMachineGun") then
+			return "hidden", AttackDisableReasons.UsingMachineGun
+		end
+		if not unit:UIHasAP(self:GetAPCost(unit, args)) then return "disabled", AttackDisableReasons.NoAP end
+		if g_Combat and HasCombatActionInProgress(unit) then return "hidden" end	
+		
+		return "enabled" -- always available to allow switching to unarmed attacks
+	end,
+	Icon = "UI/Icons/Hud/change_weapon_set",
+	IsAimableAttack = false,
+	KeybindingSortId = "2295",
+	MultiSelectBehavior = "first",
+	RequireState = "any",
+	Run = function (self, unit, ap, ...)
+		unit:SetActionCommand("SwapActiveWeapon", self.id, ap)
+	end,
+	ShowIn = "Special",
+	SortKey = 11,
+	group = "Hidden",
+	id = "ChangeWeapon",
+})

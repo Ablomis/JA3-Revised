@@ -7,5 +7,6 @@ RevisedConfigValues = {
     CrouchedCTHPenalty = -15,
     ProneCTHPenalty = -30,
     CoverCTHPenalty = -40,
-    MoveModifier = 50
+    MoveModifier = 50,
+    PistolSwapAP = 0
 }
