@@ -972,9 +972,6 @@ PlaceObj('CombatAction', {
 	Description = T(784247279587, --[[CombatAction ChangeWeapon Description]] "Swap to the alternative weapon set: <items>"),
 	DisplayName = T(692166142490, --[[CombatAction ChangeWeapon DisplayName]] "Change Weapon"),
 	GetAPCost = function (self, unit, args)
-		if(IsKindOf(unit.current_weapon, "Pistol")) then
-			return RevisedConfigValues.PistolSwapAP
-		end
 		if unit:CanActivatePerk("Scoundrel") then return 0 end
 		local otherSet = "Handheld A"
 		if unit and unit.current_weapon == "Handheld A" then
@@ -982,6 +979,9 @@ PlaceObj('CombatAction', {
 		end
 		local weapons = unit:GetEquippedWeapons(otherSet)
 		for _, weapon in ipairs(weapons) do
+			if(IsKindOf(weapon, "Pistol")) then
+				return RevisedConfigValues.PistolSwapAP
+			end
 			if weapon:HasComponent("FreeWeaponSwap") then
 				return 0
 			end

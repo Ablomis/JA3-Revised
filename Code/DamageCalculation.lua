@@ -57,11 +57,13 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
       damage = Max(0, MulDivRound(data.base_damage + data.damage_add, data.damage_percent, 100))
       local damage_min = 0
       if not hit.aoe then
-        damage = Max(0, MulDivRound(data.base_damage + data.damage_add, data.damage_percent, 100))
-        damage_min = MulDivRound(damage,self.DamageFalloff, 100)
-        local k
-        k = (damage - damage_min)/(0.0001*self.WeaponRange^3)
-        damage = Min(Max(damage_min,round(damage - 0.0001 * k * ((hit.distance/1000-self.WeaponRange)^3),1)),damage) 
+        if(IsKindOf(self, "Firearm")) then
+          damage = Max(0, MulDivRound(data.base_damage + data.damage_add, data.damage_percent, 100))
+          damage_min = MulDivRound(damage,self.DamageFalloff, 100)
+          local k
+          k = (damage - damage_min)/(0.0001*self.WeaponRange^3)
+          damage = Min(Max(damage_min,round(damage - 0.0001 * k * ((hit.distance/1000-self.WeaponRange)^3),1)),damage) 
+        end
       end
 
       for _, effect in ipairs(data.effects) do

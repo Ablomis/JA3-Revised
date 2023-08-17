@@ -135,6 +135,21 @@ function LoadLoot()
         end
     end
 end
-if FirstLoad then
-    LoadLoot()
+
+function OnMsg.CombatStart()
+    if not (LootDefs['LegionGoon'][5]) then
+        
+        LoadLoot()
+        print(LootDefs['LegionGoon'])
+    end
 end
+
+
+function OnMsg.ZuluGameLoaded(game)
+    if not (LootDefs['LegionGoon'][5]) then
+        
+        LoadLoot()
+        print(LootDefs['LegionGoon'])
+    end
+end
+

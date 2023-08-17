@@ -25,8 +25,13 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local attacker_pos = args and (args.step_pos or args.goto_pos) or self:GetPos()
     local target_pos = args and args.target_pos or IsPoint(target) and target or target:GetPos()
     local base = 0
+    local skill
     local modifiers = not chance_only and {}
-    local skill  = round(35 + 0.00055 * ((self.Dexterity-70)^3) + 0.5,1)
+    if(IsKindOf(weapon, "Firearm")) then
+      skill  = round(35 + 0.00055 * ((self.Dexterity-70)^3) + 0.5,1)
+    else
+      skill = self[weapon.base_skill]
+    end
     --local skill  = round(self.Dexterity/2,1)
     if action.id == "SteroidPunch" then
       skill = self.Strength
@@ -288,11 +293,20 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return true, "ignored"
     end
     self:ForEachItem("Armor", function(item, slot)
-      if slot ~= "Inventory" and item.Condition > 0 and weapon.ammo.PenetrationClass < item.PenetrationClass and (item.ProtectedBodyParts or empty_table)[target_spot_group] then
-        if(self:Random(100)<=item.Condition) then
-          pierced = false
+      if(IsKindOf(weapon, "Firearm")) then
+        if slot ~= "Inventory" and item.Condition > 0 and weapon.ammo.PenetrationClass < item.PenetrationClass and (item.ProtectedBodyParts or empty_table)[target_spot_group] then
+          if(self:Random(100)<=item.Condition) then
+            pierced = false
+          end
+          return "break"
         end
-        return "break"
+      else
+        if slot ~= "Inventory" and item.Condition > 0 and weapon.PenetrationClass < item.PenetrationClass and (item.ProtectedBodyParts or empty_table)[target_spot_group] then
+          if(self:Random(100)<=item.Condition) then
+            pierced = false
+          end
+          return "break"
+        end
       end
     end)
     return pierced
@@ -323,7 +337,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       critChance = MulDivRound(weapon.ammo.CritChance, RevisedConfigValues.CritChanceScale, 100)  
       k = (critChance - const.Combat.MinCritChance)/(0.0001*RevisedConfigValues.RevisedMaxCritDistance^3)
     else
-      critChance = self:GetBaseCrit(weapon)
+      critChance = MulDivRound(self:GetBaseCrit(weapon)*5, RevisedConfigValues.CritChanceScale, 100) 
     end
 
     if(target_spot_group=='Head') then
@@ -359,7 +373,10 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       crit_per_aim = crit_per_aim + CharacterEffectDefs.Deadeye:ResolveValue("crit_per_aim")
     end
     critChance = critChance + (aim or 0) * crit_per_aim
-    critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/1000-10)^3),1)),critChance)
+    
+    if IsKindOf(weapon, "Firearm") then
+      critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/1000-10)^3),1)),critChance)
+    end
     return critChance
   end
 
