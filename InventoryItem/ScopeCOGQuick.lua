@@ -6,8 +6,8 @@ DefineClass.ScopeCOGQuick = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/scope_thermal",
-	DisplayName = T(423698985132, --[[ModItemInventoryItemCompositeDef ScopeCOGQuick DisplayName]] "Quick Prism Scope"),
-	DisplayNamePlural = T(899576498367, --[[ModItemInventoryItemCompositeDef ScopeCOGQuick DisplayNamePlural]] "Quick Prism Scope"),
+	DisplayName = T(533003653680, --[[ModItemInventoryItemCompositeDef ScopeCOGQuick DisplayName]] "Quick Prism Scope"),
+	DisplayNamePlural = T(471990417421, --[[ModItemInventoryItemCompositeDef ScopeCOGQuick DisplayNamePlural]] "Quick Prism Scope"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

@@ -6,8 +6,8 @@ DefineClass.ImprovedIronsight = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/ironsights",
-	DisplayName = T(198731881205, --[[ModItemInventoryItemCompositeDef ImprovedIronsight DisplayName]] "Improved Iron Sight"),
-	DisplayNamePlural = T(935713276221, --[[ModItemInventoryItemCompositeDef ImprovedIronsight DisplayNamePlural]] "Improved Iron Sights"),
+	DisplayName = T(121909585140, --[[ModItemInventoryItemCompositeDef ImprovedIronsight DisplayName]] "Improved Iron Sight"),
+	DisplayNamePlural = T(625628034173, --[[ModItemInventoryItemCompositeDef ImprovedIronsight DisplayNamePlural]] "Improved Iron Sights"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

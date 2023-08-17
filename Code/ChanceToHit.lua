@@ -260,9 +260,9 @@ PlaceObj('ChanceToHitModifier', {
 	display_name='Scope',
 	id = "SniperScopeBonus",
 })
-g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['Cover'] =-40
-g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['ExposedCover'] =-10
-g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['CrouchPenalty'] =-15
-g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['PronePenalty'] =-30
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['Cover'] = RevisedConfigValues.CoverCTHPenalty
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['ExposedCover'] = RevisedConfigValues.ExposedCoverCTHPenalty
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['CrouchPenalty'] = RevisedConfigValues.CrouchedCTHPenalty
+g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['PronePenalty'] = RevisedConfigValues.ProneCTHPenalty
 
 

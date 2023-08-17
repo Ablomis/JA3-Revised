@@ -8,8 +8,8 @@ DefineClass.FlakArmor = {
 	Degradation = 10,
 	ScrapParts = 4,
 	Icon = "UI/Icons/Items/flak_armor",
-	DisplayName = T(691460135367, --[[ModItemInventoryItemCompositeDef FlakArmor DisplayName]] "Flak Armor"),
-	DisplayNamePlural = T(431538762019, --[[ModItemInventoryItemCompositeDef FlakArmor DisplayNamePlural]] "Flak Armors"),
+	DisplayName = T(538893846818, --[[ModItemInventoryItemCompositeDef FlakArmor DisplayName]] "Flak Armor"),
+	DisplayNamePlural = T(191721858576, --[[ModItemInventoryItemCompositeDef FlakArmor DisplayNamePlural]] "Flak Armors"),
 	AdditionalReduction = 20,
 	ProtectedBodyParts = set( "Arms", "Torso" ),
 }

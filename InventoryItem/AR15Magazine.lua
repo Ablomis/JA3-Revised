@@ -7,10 +7,10 @@ DefineClass.AR15Magazine = {
 	object_class = "Mag",
 	Repairable = false,
 	Icon = "UI/Icons/Upgrades/ar15_mag_ergo_normal",
-	DisplayName = T(805238337772, --[[ModItemInventoryItemCompositeDef AR15Magazine DisplayName]] "AR15 Magazine"),
-	DisplayNamePlural = T(838402982151, --[[ModItemInventoryItemCompositeDef AR15Magazine DisplayNamePlural]] "AR15 Magazines"),
-	Description = T(537234913982, --[[ModItemInventoryItemCompositeDef AR15Magazine Description]] "Ergonomic AR15 magazine for the 5.56mm round"),
-	AdditionalHint = T(829709640732, --[[ModItemInventoryItemCompositeDef AR15Magazine AdditionalHint]] "5.56mm"),
+	DisplayName = T(875806948357, --[[ModItemInventoryItemCompositeDef AR15Magazine DisplayName]] "AR15 Magazine"),
+	DisplayNamePlural = T(475328049896, --[[ModItemInventoryItemCompositeDef AR15Magazine DisplayNamePlural]] "AR15 Magazines"),
+	Description = T(770050576548, --[[ModItemInventoryItemCompositeDef AR15Magazine Description]] "Ergonomic AR15 magazine for the 5.56mm round"),
+	AdditionalHint = T(523674806168, --[[ModItemInventoryItemCompositeDef AR15Magazine AdditionalHint]] "5.56mm"),
 	Caliber = "556",
 }
 

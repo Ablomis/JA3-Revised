@@ -465,6 +465,9 @@ function FindWeaponReloadTarget(item, ammo)
     local sfRollOffset = 8
     local num_hits, num_misses = 0, 0
     local shots_data = {}
+    if(HasPerk(attacker,"AutoWeapons")) then
+      shot_attack_args.cth_loss_per_shot = Max(0,shot_attack_args.cth_loss_per_shot -const.Combat.AutofireBonus)
+    end
     for i = 1, num_shots do
       local shot_miss, shot_crit, shot_cth
       if shot_attack_args.multishot then

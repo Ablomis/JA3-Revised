@@ -1,4 +1,4 @@
-function OnMsg.EnterSector()
+function LoadLoot()
     for _, loot_def in pairs(LootDefs) do
         for k,v in pairs(loot_def) do
             if(v.item == 'HiPower') then 
@@ -6,7 +6,7 @@ function OnMsg.EnterSector()
             end
         end
     end
-    
+
     for _, loot_def in pairs(LootDefs) do
         for k,v in pairs(loot_def) do
             if(v.item == 'Bereta92') then 
@@ -14,7 +14,7 @@ function OnMsg.EnterSector()
             end
         end
     end
-    
+
     for _, loot_def in pairs(LootDefs) do
         for k,v in pairs(loot_def) do
             if(v.item == 'Glock18') then 
@@ -22,7 +22,7 @@ function OnMsg.EnterSector()
             end
         end
     end
-    
+
     for _, loot_def in pairs(LootDefs) do
         for k,v in pairs(loot_def) do
             if(v.item == 'DesertEagle') then 
@@ -30,7 +30,7 @@ function OnMsg.EnterSector()
             end
         end
     end
-    
+
     for _, loot_def in pairs(LootDefs) do
         for k,v in pairs(loot_def) do
             if(v.item == 'MP40') then 
@@ -38,7 +38,7 @@ function OnMsg.EnterSector()
             end
         end
     end
-    
+
     for _, loot_def in pairs(LootDefs) do
         for k,v in pairs(loot_def) do
             if(v.item == 'UZI') then 
@@ -134,4 +134,7 @@ function OnMsg.EnterSector()
             end
         end
     end
-  end
+end
+if FirstLoad then
+    LoadLoot()
+end

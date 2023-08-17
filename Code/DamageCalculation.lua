@@ -87,7 +87,7 @@ function BaseWeapon:PrecalcDamageAndStatusEffects(attacker, target, attack_pos, 
     if hit.critical then
       --local crit_mod = IsKindOf(attacker, "Unit") and attacker:GetCritDamageMod() or const.Weapons.CriticalDamage
       --damage = MulDivRound(damage, 100 + crit_mod, 100)
-      hit.damage = hit.damage + MulDivRound(const.Combat.CriticalDamage, target:Random(100) + 50,100)
+      hit.damage = hit.damage + MulDivRound(RevisedConfigValues.CriticalDamage, target:Random(100) + 50,100)
     end
     if hit.grazing then
       hit.effects = {}

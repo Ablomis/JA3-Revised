@@ -317,11 +317,11 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return 100
     end
     local critChance = 0
-    local crit_per_aim = const.Combat.AimCritBonus
+    local crit_per_aim = RevisedConfigValues.AimCritBonus
     local k = 0
     if IsKindOf(weapon, "Firearm") then
-      critChance = weapon.ammo.CritChance or 5  
-      k = (critChance - const.Combat.MinCritChance)/(0.0001*5^3)
+      critChance = MulDivRound(weapon.ammo.CritChance, RevisedConfigValues.CritChanceScale, 100)  
+      k = (critChance - const.Combat.MinCritChance)/(0.0001*RevisedConfigValues.RevisedMaxCritDistance^3)
     else
       critChance = self:GetBaseCrit(weapon)
     end
@@ -442,7 +442,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
   function Unit:GetMoveModifier(stance, action_id)
     stance = stance or self.stance
     action_id = action_id or "Move"
-    local modValue = const.Combat.MoveModifier
+    local modValue = RevisedConfigValues.MoveModifier
     local effectId = self:HasStatusEffect("Slowed")
     if effectId then
       modValue = modValue + (self.StatusEffects[effectId]:ResolveValue("move_ap_modifier") or 0)
