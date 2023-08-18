@@ -819,6 +819,7 @@ PlaceObj('CombatAction', {
 	Description = T(646737101780, --[[CombatAction Reload Description]] "<em>Reload</em> or <em>change</em> ammo."),
 	DisplayName = T(642187794904, --[[CombatAction Reload DisplayName]] "Reload"),
 	GetAPCost = function (self, unit, args)
+		print('GetAPCost')
 		if unit:HasStatusEffect("ManningEmplacement") then return -1 end
 		local weapon
 		if args and args.item_id then
@@ -833,6 +834,8 @@ PlaceObj('CombatAction', {
 				weapon = unit:GetWeaponByDefIdOrDefault("Firearm", args and args.weapon)
 			end
 		end	
+		--print('end')
+		--print(GetReloadAP(weapon, args.item))
 		return (weapon and not weapon.jammed) and GetReloadAP(weapon, args.item) or -1
 	end,
 	GetActionDisplayName = function (self, units)
@@ -1026,3 +1029,64 @@ PlaceObj('CombatAction', {
 	group = "Hidden",
 	id = "ChangeWeapon",
 })
+
+PlaceObj('CombatAction', {
+	ActionPoints = 1000,
+	DisplayName = T(796190228832, --[[CombatAction Move DisplayName]] "Move"),
+	GetAPCost = function (self, unit, args)
+		if not g_Combat then return 0 end
+		if unit:HasStatusEffect("StationedMachineGun") or unit:HasStatusEffect("ManningEmplacement") or unit:HasStatusEffect("StationedSniper") then return -1 end
+		local stance = args and args.stance
+		local pos = args and args.goto_pos
+		if not pos then return -1 end
+		
+		local startStance = args and args.stanceAtStart
+		local endStance = args and args.stanceAtEnd
+		local move_ap = args and args.available_move_ap or unit.ActionPoints
+		local combatPath = GetCombatPath(unit, startStance or stance, move_ap, endStance or stance)
+		local apCost = combatPath:GetAP(pos)
+		if not apCost or apCost == -1 then return -1 end
+		return apCost
+	end,
+	GetTargets = function (self, units)
+		return units[1]:GetVisibleEnemies()
+	end,
+	GetUIState = function (self, units, args)
+		local unit = units[1]
+		if args then
+			local cost = self:GetAPCost(unit, args)
+			if cost < 0 then return "hidden" end
+			if not unit:UIHasAP(cost, self.id) then return "disabled" end
+		end
+		if g_Combat and (unit:HasStatusEffect("StationedMachineGun") or unit:HasStatusEffect("ManningEmplacement") or unit:HasStatusEffect("StationedSniper") or unit:HasPreparedAttack()) then
+			return "hidden"
+		end
+		if unit:GetBandageTarget() or unit:IsBeingBandaged() then
+			return "hidden"
+		end
+		return "enabled"
+	end,
+	Icon = "UI/Icons/Hud/placeholder",
+	InterruptInExploration = true,
+	IsAimableAttack = false,
+	MultiSelectBehavior = "hidden",
+	RequireState = "any",
+	Run = function (self, unit, ap, ...)
+		local args = ...
+		if g_Combat then
+			unit:SetActionCommand("CombatGoto", self.id, ap, args.goto_pos, args.path, args.forced_run, args.stanceAtStart, args.stanceAtEnd, args.willBeTracked, args.visibleMovement)
+		else
+			if unit:IsInterruptable() then
+				unit:InterruptCommand("GotoSlab", args.goto_pos, nil, nil, nil, args.follow_target)
+			else
+				unit:QueueCommand("GotoSlab", args.goto_pos, nil, nil, nil, args.follow_target)
+			end
+		end
+	end,
+	ShowIn = false,
+	SimultaneousPlay = true,
+	UseFreeMove = true,
+	group = "Default",
+	id = "Move",
+})
+

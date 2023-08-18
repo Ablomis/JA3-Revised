@@ -294,7 +294,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     end
     self:ForEachItem("Armor", function(item, slot)
       if(IsKindOf(weapon, "Firearm")) then
-        if slot ~= "Inventory" and item.Condition > 0 and weapon.ammo.PenetrationClass < item.PenetrationClass and (item.ProtectedBodyParts or empty_table)[target_spot_group] then
+        if slot ~= "Inventory" and item.Condition > 0 and (weapon.ammo.PenetrationClass or 0) < item.PenetrationClass and (item.ProtectedBodyParts or empty_table)[target_spot_group] then
           if(self:Random(100)<=item.Condition) then
             pierced = false
           end
@@ -334,7 +334,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local crit_per_aim = RevisedConfigValues.AimCritBonus
     local k = 0
     if IsKindOf(weapon, "Firearm") then
-      critChance = MulDivRound(weapon.ammo.CritChance, RevisedConfigValues.CritChanceScale, 100)  
+      critChance = MulDivRound(weapon.ammo.CritChance or 0, RevisedConfigValues.CritChanceScale, 100)  
       k = (critChance - const.Combat.MinCritChance)/(0.0001*RevisedConfigValues.RevisedMaxCritDistance^3)
     else
       critChance = MulDivRound(self:GetBaseCrit(weapon)*5, RevisedConfigValues.CritChanceScale, 100) 
