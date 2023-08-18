@@ -36,9 +36,7 @@ if not explosion_pos and attack_args.lof then
 end
 local results
 if explosion_pos then
-    print('aoe_params')
     local aoe_params = self:GetAreaAttackParams(action.id, attacker, explosion_pos, attack_args.step_pos)
-    print(aoe_params)
     if attack_args.stealth_attack then
     aoe_params.stealth_attack_roll = not attack_args.prediction and attacker:Random(100) or 100
     end
@@ -52,13 +50,11 @@ if explosion_pos then
     local impact_force = self:GetImpactForce()
     local unit_damage = {}
     for _, hit in ipairs(results) do
-        print(hit)
         local obj = hit.obj
         if obj and hit.damage ~= 0 then
             local dist = hit.obj:GetDist(explosion_voxel_pos)
             if IsKindOf(obj, "Unit") and not obj:IsDead() then
             unit_damage[obj] = (unit_damage[obj] or 0) + hit.damage
-            print(hit.damage)
             if unit_damage[obj] >= obj:GetTotalHitPoints() then
                 results.killed_units = results.killed_units or {}
                 table.insert_unique(results.killed_units, obj)
