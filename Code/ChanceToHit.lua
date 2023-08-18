@@ -120,6 +120,19 @@ PlaceObj('ChanceToHitModifier', {
 
 PlaceObj('ChanceToHitModifier', {
 	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		if target:HasStatusEffect("Unconscious") and (attacker:GetDist(target)/1000 <5) then return true, 100 end
+		
+		return false, 0
+	end,
+	Parameters = {
+	},
+	group = "Default",
+	display_name='Unconscious',
+	id = "Unconscious",
+})
+
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
 		if not IsPlayerEnemy(attacker) and IsKindOf(weapon1, "SniperRifle") and not attacker:HasStatusEffect("StationedSniper") then
 			return true, weapon1.NotDeployedPenalty
 		end
