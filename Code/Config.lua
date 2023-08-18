@@ -8,5 +8,6 @@ RevisedConfigValues = {
     ProneCTHPenalty = -30,
     CoverCTHPenalty = -40,
     MoveModifier = 50,
-    PistolSwapAP = 0
+    PistolSwapAP = 0,
+    UnconsiousMult = 2,
 }

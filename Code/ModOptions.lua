@@ -8,5 +8,6 @@ function OnMsg.ApplyModOptions()
         RevisedConfigValues.CrouchedCTHPenalty = CurrentModOptions['RevisedCrouchedPenalty']
         RevisedConfigValues.ProneCTHPenalty = CurrentModOptions['RevisedPronePenalty']
         RevisedConfigValues.MoveModifier = CurrentModOptions['RevisedMoveMod']
+        RevisedConfigValues.UnconsiousMult = CurrentModOptions['UnconsiousMult']
 end
 

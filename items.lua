@@ -306,7 +306,7 @@ PlaceObj('ModItemGameRuleDef', {
 				end
 				target:SetEffectValue("spent_ap", ap_penalty)
 				local roll = target:Random(100)
-				if(roll>target.HitPoints) then
+				if(roll<(target.MaxHitPoints-target.HitPoints)/RevisedConfigValues.UnconsiousMult) then
 					target:AddStatusEffect('Unconscious')
 					target:SetEffectValue('unconscious_recovery_turn', (g_Combat and g_Combat.current_turn or 1) + const.Combat.UnconsciousDelay)
 				end
@@ -319,7 +319,7 @@ PlaceObj('ModItemGameRuleDef', {
 				end
 				target:SetEffectValue("spent_ap", ap_penalty)
 				local roll = target:Random(100)
-				if(roll>target.HitPoints) then
+				if(roll<(target.MaxHitPoints-target.HitPoints)/RevisedConfigValues.UnconsiousMult) then
 					target:AddStatusEffect('Unconscious')
 					target:SetEffectValue('unconscious_recovery_turn', (g_Combat and g_Combat.current_turn or 1) + const.Combat.UnconsciousDelay)
 				end
@@ -6581,6 +6581,18 @@ PlaceObj('ModItemOptionChoice', {
 		"-30",
 		"-40",
 		"-50",
+	},
+}),
+PlaceObj('ModItemOptionChoice', {
+	'name', "RevisedUnconsiousMult",
+	'DisplayName', "Unconscious Multiplyer",
+	'Help', "Higher value - lower chance",
+	'DefaultValue', "2",
+	'ChoiceList', {
+		"1",
+		"2",
+		"3",
+		"4",
 	},
 }),
 }

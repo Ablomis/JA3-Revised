@@ -819,7 +819,6 @@ PlaceObj('CombatAction', {
 	Description = T(646737101780, --[[CombatAction Reload Description]] "<em>Reload</em> or <em>change</em> ammo."),
 	DisplayName = T(642187794904, --[[CombatAction Reload DisplayName]] "Reload"),
 	GetAPCost = function (self, unit, args)
-		print('GetAPCost')
 		if unit:HasStatusEffect("ManningEmplacement") then return -1 end
 		local weapon
 		if args and args.item_id then
@@ -834,8 +833,6 @@ PlaceObj('CombatAction', {
 				weapon = unit:GetWeaponByDefIdOrDefault("Firearm", args and args.weapon)
 			end
 		end	
-		--print('end')
-		--print(GetReloadAP(weapon, args.item))
 		return (weapon and not weapon.jammed) and GetReloadAP(weapon, args.item) or -1
 	end,
 	GetActionDisplayName = function (self, units)
