@@ -206,6 +206,10 @@ PlaceObj('ModItemCode', {
 	'CodeFileName', "Code/Grenade.lua",
 }),
 PlaceObj('ModItemCode', {
+	'name', "HitEffects",
+	'CodeFileName', "Code/HitEffects.lua",
+}),
+PlaceObj('ModItemCode', {
 	'name', "Inventory",
 	'CodeFileName', "Code/Inventory.lua",
 }),
@@ -246,10 +250,6 @@ PlaceObj('ModItemCode', {
 PlaceObj('ModItemCode', {
 	'name', "ModifyWeaponDlg",
 	'CodeFileName', "Code/ModifyWeaponDlg.lua",
-}),
-PlaceObj('ModItemCode', {
-	'name', "HitEffects",
-	'CodeFileName', "Code/HitEffects.lua",
 }),
 PlaceObj('ModItemCode', {
 	'name', "SniperSetup",
@@ -6445,6 +6445,18 @@ PlaceObj('ModItemLootDef', {
 	}),
 }),
 PlaceObj('ModItemOptionChoice', {
+	'name', "RevisedAPPenaltyOnHit",
+	'DisplayName', "AP Penalty On Hit",
+	'Help', "How much AP you lose on hit",
+	'DefaultValue', "1",
+	'ChoiceList', {
+		"0",
+		"1",
+		"2",
+		"3",
+	},
+}),
+PlaceObj('ModItemOptionChoice', {
 	'name', "RevisedAimCritBonus",
 	'DisplayName', "Crit Aim Bonus",
 	'Help', "Increased crit chance per aim",
@@ -6525,6 +6537,20 @@ PlaceObj('ModItemOptionChoice', {
 	},
 }),
 PlaceObj('ModItemOptionChoice', {
+	'name', "RevisedMagBaseReloadAP",
+	'DisplayName', "Base AP for Mag Relaod",
+	'Help', "How much AP required to reload with a mag",
+	'DefaultValue', "6",
+	'ChoiceList', {
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+	},
+}),
+PlaceObj('ModItemOptionChoice', {
 	'name', "RevisedMaxCritDistance",
 	'DisplayName', "Max Crit Distance",
 	'Help', "Distance beyond which crit chance is decreasing",
@@ -6579,16 +6605,10 @@ PlaceObj('ModItemOptionChoice', {
 		"1000",
 	},
 }),
-PlaceObj('ModItemOptionChoice', {
-	'name', "RevisedAPPenaltyOnHit",
-	'DisplayName', "AP Penalty On Hit",
-	'Help', "How much AP you lose on hit",
-	'DefaultValue', "1",
-	'ChoiceList', {
-		"0",
-		"1",
-		"2",
-		"3",
-	},
+PlaceObj('ModItemOptionToggle', {
+	'name', "RevisedReadyAP",
+	'DisplayName', "Ready AP",
+	'Help', "Turns Ready AP off",
+	'DefaultValue', true,
 }),
 }

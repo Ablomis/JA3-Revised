@@ -30,7 +30,7 @@ function FindMagReloadTarget(item, ammo)
 
   function GetReloadAP(weapon, ammo)
     if(ammo and IsKindOf(ammo, "Mag")) then
-      return ammo.ReloadAP or 6000
+      return ammo.ReloadAP or RevisedConfigValues.MagBaseReloadAP
     end
     return weapon.ReloadAP
   end

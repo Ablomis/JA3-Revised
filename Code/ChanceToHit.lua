@@ -237,10 +237,6 @@ PlaceObj('ChanceToHitModifier', {
 
 PlaceObj('ChanceToHitModifier', {
 	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
-		if IsKindOf(weapon1, "SniperRifle") and not attacker:HasStatusEffect("StationedSniper") then
-			return true, weapon1.NotDeployedPenalty
-		end
-
 		local dist = attacker:GetDist(target)
 		local cth_bonus = 0
 
@@ -273,6 +269,8 @@ PlaceObj('ChanceToHitModifier', {
 	display_name='Scope',
 	id = "SniperScopeBonus",
 })
+
+
 
 function OnMsg.CombatStart()
 	g_PresetParamCache[Presets.ChanceToHitModifier.Default.RangeAttackTargetStanceCover]['Cover'] = round(RevisedConfigValues.CoverCTHPenalty,1)

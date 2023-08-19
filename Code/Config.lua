@@ -7,8 +7,13 @@ RevisedConfigValues = {
     CrouchedCTHPenalty = -15,
     ProneCTHPenalty = -30,
     CoverCTHPenalty = -40,
+    MoveCTHPenaltyBase = -10,
+    MoveCTHPenaltyTile = -1,
     MoveModifier = 50,
     PistolSwapAP = 0,
     UnconsciousMult = 2,
     APPenaltyOnHit = 1,
+    NonMagReloadAP = 10,
+    MagBaseReloadAP = 6,
+    ReadyAP = true
 }

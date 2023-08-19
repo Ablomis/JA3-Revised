@@ -10,5 +10,7 @@ function OnMsg.ApplyModOptions()
         RevisedConfigValues.MoveModifier = CurrentModOptions['RevisedMoveMod']
         RevisedConfigValues.APPenaltyOnHit = CurrentModOptions['RevisedAPPenaltyOnHit']
         RevisedConfigValues.UnconsciousMult = CurrentModOptions['RevisedUnconsciousMult']
+        RevisedConfigValues.MagBaseReloadAP = CurrentModOptions['RevisedMagBaseReloadAP'] * 1000
+        --RevisedConfigValues.ReadyAP = CurrentModOptions['RevisedReadyAP']
 end
 
