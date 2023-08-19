@@ -9,5 +9,6 @@ RevisedConfigValues = {
     CoverCTHPenalty = -40,
     MoveModifier = 50,
     PistolSwapAP = 0,
-    UnconsiousMult = 2,
+    UnconsciousMult = 2,
+    APPenaltyOnHit = 1,
 }
