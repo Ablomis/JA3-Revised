@@ -6,8 +6,8 @@ DefineClass.ThermalScope = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/scope_ACOG",
-	DisplayName = T(595525565401, --[[ModItemInventoryItemCompositeDef ThermalScope DisplayName]] "Thermal Scope"),
-	DisplayNamePlural = T(489624396725, --[[ModItemInventoryItemCompositeDef ThermalScope DisplayNamePlural]] "Thermal Scope"),
+	DisplayName = T(213274847778, --[[ModItemInventoryItemCompositeDef ThermalScope DisplayName]] "Thermal Scope"),
+	DisplayNamePlural = T(312385339178, --[[ModItemInventoryItemCompositeDef ThermalScope DisplayNamePlural]] "Thermal Scope"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

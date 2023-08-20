@@ -11,9 +11,10 @@ RevisedConfigValues = {
     MoveCTHPenaltyTile = -1,
     MoveModifier = 50,
     PistolSwapAP = 0,
-    UnconsciousMult = 2,
+    UnconsciousMult = 100,
     APPenaltyOnHit = 1,
     NonMagReloadAP = 10,
     MagBaseReloadAP = 6,
+    PointBlankBonus = 100,
     ReadyAP = true
 }

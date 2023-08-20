@@ -6,8 +6,8 @@ DefineClass.Compensator = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/m16_muzzle",
-	DisplayName = T(270039256099, --[[ModItemInventoryItemCompositeDef Compensator DisplayName]] "Compensator"),
-	DisplayNamePlural = T(453125816974, --[[ModItemInventoryItemCompositeDef Compensator DisplayNamePlural]] "Compensators"),
+	DisplayName = T(744009829837, --[[ModItemInventoryItemCompositeDef Compensator DisplayName]] "Compensator"),
+	DisplayNamePlural = T(965677216910, --[[ModItemInventoryItemCompositeDef Compensator DisplayNamePlural]] "Compensators"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

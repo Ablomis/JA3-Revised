@@ -100,7 +100,7 @@ PlaceObj('ChanceToHitModifier', {
 PlaceObj('ChanceToHitModifier', {
 	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
 		if attacker and weapon1 and weapon1.PointBlankRange and attacker:IsPointBlankRange(target) then
-			local dexBonus = round(attacker.Dexterity/5,1)
+			local dexBonus = MulDivRound(attacker.Dexterity/2, RevisedConfigValues.PointBlankBonus, 100)
 			return true, dexBonus
 		end
 		
@@ -270,6 +270,61 @@ PlaceObj('ChanceToHitModifier', {
 	id = "SniperScopeBonus",
 })
 
+PlaceObj('ChanceToHitModifier', {
+	CalcValue = function (self, attacker, target, body_part_def, action, weapon1, weapon2, lof, aim, opportunity_attack, attacker_pos, target_pos)
+		
+		if not IsKindOf(target, "Unit") then return false, 0 end
+		
+		if not target:HasStatusEffect('Moved') then return false, 0
+		else
+			local dist = target:GetEffectValue("tiles_moved") or 0
+			if dist == 0 then
+				return false, 0
+			else
+				local penalty = RevisedConfigValues.MoveCTHPenaltyBase + dist * RevisedConfigValues.MoveCTHPenaltyTile
+				print(penalty)
+				return true, penalty
+			end
+		end
+
+
+
+
+		--[[
+		local move_dir = SetLen(movement, guim)
+		local dir = target:GetVisualPos() - attacker_pos
+		local dp = dir:Equal2D(point20) and guim or abs(Dot2D(SetLen(dir:SetZ(0), guim), move_dir) / guim)
+		
+		-- scale by dot
+		local mod = MulDivRound(self:ResolveValue("MaxPenalty"), guim - dp, guim)
+		-- scale by distance (up to param1 tiles)
+		local max_dist = self:ResolveValue("MaxDistTiles") * const.SlabSizeX
+		mod = MulDivRound(mod, Min(dist, max_dist), max_dist)
+		
+		return mod < self:ResolveValue("MinPenalty"), mod]]--
+	end,
+	Parameters = {
+		PlaceObj('PresetParamNumber', {
+			'Name', "MaxDistTiles",
+			'Value', 10,
+			'Tag', "<MaxDistTiles>",
+		}),
+		PlaceObj('PresetParamNumber', {
+			'Name', "MaxPenalty",
+			'Value', -25,
+			'Tag', "<MaxPenalty>",
+		}),
+		PlaceObj('PresetParamNumber', {
+			'Name', "MinPenalty",
+			'Value', -5,
+			'Tag', "<MinPenalty>",
+		}),
+	},
+	RequireTarget = true,
+	display_name = T(330773997382, --[[ChanceToHitModifier Default EvasiveMovement display_name]] "Enemy Moved"),
+	group = "Default",
+	id = "EvasiveMovement",
+})
 
 
 function OnMsg.CombatStart()

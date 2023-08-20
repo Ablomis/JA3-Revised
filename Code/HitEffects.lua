@@ -8,9 +8,11 @@ function OnMsg.DamageTaken(attacker, target, dmg, hit_descr)
 
     local roll = target:Random(100)
     print(roll)
-    local threshold = MulDivRound(target.HitPoints,RevisedConfigValues.UnconsciousMult,100)
+    print(dmg)
+    local threshold = MulDivRound(dmg,RevisedConfigValues.UnconsciousMult,100)
     print(threshold)
-    if(roll>threshold) then
+    if(roll<threshold) then
+        print('KO')
         target:AddStatusEffect('Unconscious')
         target:SetEffectValue('unconscious_recovery_turn', (g_Combat and g_Combat.current_turn or 1) + const.Combat.UnconsciousDelay)
     end

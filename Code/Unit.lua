@@ -27,7 +27,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local base = 0
     local skill
     local modifiers = not chance_only and {}
-    if(IsKindOf(weapon, "Firearm")) then
+    if(IsKindOf(weapon, "Firearm") and not IsKindOf(weapon, "HeavyWeapon")) then
       skill  = round(35 + 0.00055 * ((self.Dexterity-70)^3) + 0.5,1)
     else
       skill = self[weapon.base_skill]
@@ -253,7 +253,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
         end
       end
     end
-    if IsKindOf(weapon, "Firearm") then
+    if IsKindOf(weapon, "Firearm") and not IsKindOf(weapon, "HeavyWeapon") then
       base_damage = weapon:GetDamageFromAmmo()
       if HasPerk(self, "WeaponPersonalization") and weapon:IsFullyModified() then
         local baseDamageBonus = CharacterEffectDefs.WeaponPersonalization:ResolveValue("baseDamageBonus")
@@ -293,7 +293,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       return true, "ignored"
     end
     self:ForEachItem("Armor", function(item, slot)
-      if(IsKindOf(weapon, "Firearm")) then
+      if(IsKindOf(weapon, "Firearm") and not IsKindOf(weapon, "HeavyWeapon")) then
         if slot ~= "Inventory" and item.Condition > 0 and (weapon.ammo.PenetrationClass or 0) < item.PenetrationClass and (item.ProtectedBodyParts or empty_table)[target_spot_group] then
           if(self:Random(100)<=item.Condition) then
             pierced = false
@@ -333,7 +333,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local critChance = 0
     local crit_per_aim = RevisedConfigValues.AimCritBonus
     local k = 0
-    if IsKindOf(weapon, "Firearm") then
+    if IsKindOf(weapon, "Firearm") and not IsKindOf(weapon, "HeavyWeapon") then
       critChance = MulDivRound(weapon.ammo.CritChance or 0, RevisedConfigValues.CritChanceScale, 100)  
       k = (critChance - const.Combat.MinCritChance)/(0.0001*RevisedConfigValues.RevisedMaxCritDistance^3)
     else
@@ -374,7 +374,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     end
     critChance = critChance + (aim or 0) * crit_per_aim
     
-    if IsKindOf(weapon, "Firearm") then
+    if IsKindOf(weapon, "Firearm") and not IsKindOf(weapon, "HeavyWeapon") then
       critChance = Min(Max(const.Combat.MinCritChance,round(critChance - 0.0001 * k * ((distance/1000-10)^3),1)),critChance)
     end
     return critChance
@@ -385,7 +385,7 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
     local dmg = damage
     local armor_decay, armor_pierced = {}, {}
     local weapon_pen_class
-    if(IsKindOf(weapon, "Firearm")) then
+    if(IsKindOf(weapon, "Firearm") and not IsKindOf(weapon, "HeavyWeapon")) then
       weapon_pen_class = weapon.ammo.PenetrationClass or 1
     else
       weapon_pen_class = weapon.PenetrationClass or 1
@@ -475,4 +475,43 @@ function Unit:CalcChanceToHit(target, action, args, chance_only)
       modValue = modValue + const.EnvEffects.DustStormMoveCostMod
     end
     return modValue
+    end
+
+    function Unit:OnEndTurn()
+      self:RemoveStatusEffect("FreeMove")
+      if self.start_turn_pos then
+        self.last_turn_movement = self:GetVisualPos() - self.start_turn_pos
+        local dist = self.last_turn_movement:Len2D()/1000
+        if dist>0 then
+          if not self:HasStatusEffect("Moved") then self:AddStatusEffect("Moved") end
+          self:SetEffectValue("tiles_moved", dist)
+        else
+          self:RemoveStatusEffect("Moved")
+        end
+      else
+        self.last_turn_movement = nil
+      end
+      self.last_turn_damaged = nil
+      SetCombatActionState(self, false)
+      local overwatch = g_Overwatch[self]
+      if overwatch and overwatch.permanent then
+        overwatch.num_attacks = self:GetNumMGInterruptAttacks()
+        self:UpdateOverwatchVisual(overwatch)
+      end
+      Msg("UnitEndTurn", self)
+      for i = #self.StatusEffects, 1, -1 do
+        local effect = self.StatusEffects[i]
+        if effect.lifetime ~= "Indefinite" then
+          local expiration = self:GetEffectExpirationTurn(effect.class, "expiration")
+          if g_Combat and expiration <= g_Combat.current_turn then
+            self:RemoveStatusEffect(effect.class, "all")
+          end
+        end
+      end
+      if self.command == "Die" then
+        SnapCameraToObj(self)
+        while self.command == "Die" do
+          WaitMsg("UnitDied", 20)
+        end
+      end
     end
