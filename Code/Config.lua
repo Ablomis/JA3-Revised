@@ -16,5 +16,6 @@ RevisedConfigValues = {
     NonMagReloadAP = 10,
     MagBaseReloadAP = 6,
     PointBlankBonus = 100,
+    MinStrengthForAutoBonus = 80,
     ReadyAP = true
 }

@@ -282,7 +282,6 @@ PlaceObj('ChanceToHitModifier', {
 				return false, 0
 			else
 				local penalty = RevisedConfigValues.MoveCTHPenaltyBase + dist * RevisedConfigValues.MoveCTHPenaltyTile
-				print(penalty)
 				return true, penalty
 			end
 		end
