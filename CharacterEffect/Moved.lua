@@ -6,8 +6,8 @@ DefineClass.Moved = {
 
 	object_class = "CharacterEffect",
 	msg_reactions = {},
-	DisplayName = T(210433473195, --[[ModItemCharacterEffectCompositeDef Moved DisplayName]] "Moved"),
-	Description = T(167280549032, --[[ModItemCharacterEffectCompositeDef Moved Description]] "Character moved"),
+	DisplayName = T(254179090353, --[[ModItemCharacterEffectCompositeDef Moved DisplayName]] "Moved"),
+	Description = T(286992388727, --[[ModItemCharacterEffectCompositeDef Moved Description]] "Character moved"),
 	AddEffectText = "",
 	RemoveOnEndCombat = true,
 	RemoveOnSatViewTravel = true,

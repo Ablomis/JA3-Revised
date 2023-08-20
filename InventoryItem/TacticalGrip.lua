@@ -6,8 +6,8 @@ DefineClass.TacticalGrip = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/tactical_grip",
-	DisplayName = T(487574646920, --[[ModItemInventoryItemCompositeDef TacticalGrip DisplayName]] "Tactical Grip"),
-	DisplayNamePlural = T(343521089636, --[[ModItemInventoryItemCompositeDef TacticalGrip DisplayNamePlural]] "Tactical Grip"),
+	DisplayName = T(166353237506, --[[ModItemInventoryItemCompositeDef TacticalGrip DisplayName]] "Tactical Grip"),
+	DisplayNamePlural = T(495089204268, --[[ModItemInventoryItemCompositeDef TacticalGrip DisplayNamePlural]] "Tactical Grip"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

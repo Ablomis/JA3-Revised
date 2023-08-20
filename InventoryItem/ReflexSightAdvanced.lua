@@ -6,8 +6,8 @@ DefineClass.ReflexSightAdvanced = {
 
 	object_class = "WeaponMod",
 	Icon = "UI/Icons/Upgrades/scope_reflex",
-	DisplayName = T(450799299783, --[[ModItemInventoryItemCompositeDef ReflexSightAdvanced DisplayName]] "Advanced Reflex Sight"),
-	DisplayNamePlural = T(713289057781, --[[ModItemInventoryItemCompositeDef ReflexSightAdvanced DisplayNamePlural]] "Advanced Reflex Sights"),
+	DisplayName = T(759414977105, --[[ModItemInventoryItemCompositeDef ReflexSightAdvanced DisplayName]] "Advanced Reflex Sight"),
+	DisplayNamePlural = T(774912784099, --[[ModItemInventoryItemCompositeDef ReflexSightAdvanced DisplayNamePlural]] "Advanced Reflex Sights"),
 	AdditionalHint = "",
 	UnitStat = "Mechanical",
 	is_valuable = true,

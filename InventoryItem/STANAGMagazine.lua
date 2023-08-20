@@ -7,10 +7,10 @@ DefineClass.STANAGMagazine = {
 	object_class = "Mag",
 	Repairable = false,
 	Icon = "UI/Icons/Upgrades/m16_magazine",
-	DisplayName = T(131833807607, --[[ModItemInventoryItemCompositeDef STANAGMagazine DisplayName]] "STANAG Magazine"),
-	DisplayNamePlural = T(942326587207, --[[ModItemInventoryItemCompositeDef STANAGMagazine DisplayNamePlural]] "STANAG Magazines"),
-	Description = T(257060401556, --[[ModItemInventoryItemCompositeDef STANAGMagazine Description]] "Standard STANAG Magazine for 5.56 round"),
-	AdditionalHint = T(986021977299, --[[ModItemInventoryItemCompositeDef STANAGMagazine AdditionalHint]] "5.56mm"),
+	DisplayName = T(909868599273, --[[ModItemInventoryItemCompositeDef STANAGMagazine DisplayName]] "STANAG Magazine"),
+	DisplayNamePlural = T(313473278284, --[[ModItemInventoryItemCompositeDef STANAGMagazine DisplayNamePlural]] "STANAG Magazines"),
+	Description = T(508022144000, --[[ModItemInventoryItemCompositeDef STANAGMagazine Description]] "Standard STANAG Magazine for 5.56 round"),
+	AdditionalHint = T(224708752380, --[[ModItemInventoryItemCompositeDef STANAGMagazine AdditionalHint]] "5.56mm"),
 	Caliber = "556",
 }
 

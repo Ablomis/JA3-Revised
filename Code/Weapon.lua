@@ -5,15 +5,24 @@
 --    local accuracy = round(100 - 0.0001 * k * ((distance/1000)^3),1)
 --  return accuracy
 --end
-  function Firearm:GetDamageFromAmmo()
-    local ammo = self.ammo or false
-    if(ammo) then
-      local bullet_energy = 0.5 * ammo.Mass * (MulDivRound(ammo.BaseVelocity,self.BarrelLengthMod,100)^2) /1000
-      return round(bullet_energy * const.Combat.EnergyToDamageCoef + 0.5,1) * ammo.Projectiles
-    else
-      return self.Damage
-    end
+function Firearm:GetDamageFromAmmo()
+  local ammo = self.ammo or false
+  if(ammo) then
+    local bullet_energy = 0.5 * ammo.Mass * (MulDivRound(ammo.BaseVelocity,self.BarrelLengthMod,100)^2) /1000
+    return round(bullet_energy * const.Combat.EnergyToDamageCoef + 0.5,1) * ammo.Projectiles
+  else
+    return self.Damage
   end
+end
+
+function Firearm:GetCritChanceFromAmmo()
+  local ammo = self.ammo or false
+  if(ammo) then
+    return ammo.CritChance
+  else
+    return self.CritChance
+  end
+end
 
 AppendClass.ObjMaterial = {
   properties = {
@@ -454,7 +463,7 @@ function FindWeaponReloadTarget(item, ammo)
     attack_results.lof_pos1 = shot_lof_data and shot_lof_data.lof_pos1 or attack_results.step_pos
     attack_results.attack_pos = shot_lof_data and shot_lof_data.attack_pos or attack_results.step_pos
     attack_results.shots = {}
-    attack_results.hit_objs = hit_objs
+    attack_results.hit_objs = hit_objscrit_roll
     attack_results.stealth_kill = kill
     attack_results.clear_attacks = 0
     local sfHit = 65536
